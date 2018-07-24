@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ceying.tools.dao.scyp.biz.TaoperationsMapper">
+  <resultMap id="BaseResultMap" type="com.ceying.tools.entity.scyp.biz.Taoperations">
+    <id column="urid" jdbcType="VARCHAR" property="urid" />
+    <result column="tripartiteagreementid" jdbcType="VARCHAR" property="tripartiteagreementid" />
+    <result column="signature" jdbcType="VARCHAR" property="signature" />
+    <result column="createdby" jdbcType="VARCHAR" property="createdby" />
+    <result column="createdon" jdbcType="TIMESTAMP" property="createdon" />
+    <result column="lastmodifiedby" jdbcType="VARCHAR" property="lastmodifiedby" />
+    <result column="lastmodifiedon" jdbcType="TIMESTAMP" property="lastmodifiedon" />
+    <result column="rowversion" jdbcType="INTEGER" property="rowversion" />
+    <result column="operate_flag" jdbcType="VARCHAR" property="operateFlag" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    urid, tripartiteagreementid, signature, createdby, createdon, lastmodifiedby, lastmodifiedon, 
+    rowversion, operate_flag
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_biz_taoperations
+    where urid = #{urid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from t_biz_taoperations
+    where urid = #{urid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ceying.tools.entity.scyp.biz.Taoperations">
+    insert into t_biz_taoperations (urid, tripartiteagreementid, signature, 
+      createdby, createdon, lastmodifiedby, 
+      lastmodifiedon, rowversion, operate_flag
+      )
+    values (#{urid,jdbcType=VARCHAR}, #{tripartiteagreementid,jdbcType=VARCHAR}, #{signature,jdbcType=VARCHAR}, 
+      #{createdby,jdbcType=VARCHAR}, #{createdon,jdbcType=TIMESTAMP}, #{lastmodifiedby,jdbcType=VARCHAR}, 
+      #{lastmodifiedon,jdbcType=TIMESTAMP}, #{rowversion,jdbcType=INTEGER}, #{operateFlag,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ceying.tools.entity.scyp.biz.Taoperations">
+    insert into t_biz_taoperations
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="urid != null">
+        urid,
+      </if>
+      <if test="tripartiteagreementid != null">
+        tripartiteagreementid,
+      </if>
+      <if test="signature != null">
+        signature,
+      </if>
+      <if test="createdby != null">
+        createdby,
+      </if>
+      <if test="createdon != null">
+        createdon,
+      </if>
+      <if test="lastmodifiedby != null">
+        lastmodifiedby,
+      </if>
+      <if test="lastmodifiedon != null">
+        lastmodifiedon,
+      </if>
+      <if test="rowversion != null">
+        rowversion,
+      </if>
+      <if test="operateFlag != null">
+        operate_flag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="urid != null">
+        #{urid,jdbcType=VARCHAR},
+      </if>
+      <if test="tripartiteagreementid != null">
+        #{tripartiteagreementid,jdbcType=VARCHAR},
+      </if>
+      <if test="signature != null">
+        #{signature,jdbcType=VARCHAR},
+      </if>
+      <if test="createdby != null">
+        #{createdby,jdbcType=VARCHAR},
+      </if>
+      <if test="createdon != null">
+        #{createdon,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastmodifiedby != null">
+        #{lastmodifiedby,jdbcType=VARCHAR},
+      </if>
+      <if test="lastmodifiedon != null">
+        #{lastmodifiedon,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rowversion != null">
+        #{rowversion,jdbcType=INTEGER},
+      </if>
+      <if test="operateFlag != null">
+        #{operateFlag,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ceying.tools.entity.scyp.biz.Taoperations">
+    update t_biz_taoperations
+    <set>
+      <if test="tripartiteagreementid != null">
+        tripartiteagreementid = #{tripartiteagreementid,jdbcType=VARCHAR},
+      </if>
+      <if test="signature != null">
+        signature = #{signature,jdbcType=VARCHAR},
+      </if>
+      <if test="createdby != null">
+        createdby = #{createdby,jdbcType=VARCHAR},
+      </if>
+      <if test="createdon != null">
+        createdon = #{createdon,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastmodifiedby != null">
+        lastmodifiedby = #{lastmodifiedby,jdbcType=VARCHAR},
+      </if>
+      <if test="lastmodifiedon != null">
+        lastmodifiedon = #{lastmodifiedon,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rowversion != null">
+        rowversion = #{rowversion,jdbcType=INTEGER},
+      </if>
+      <if test="operateFlag != null">
+        operate_flag = #{operateFlag,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where urid = #{urid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ceying.tools.entity.scyp.biz.Taoperations">
+    update t_biz_taoperations
+    set tripartiteagreementid = #{tripartiteagreementid,jdbcType=VARCHAR},
+      signature = #{signature,jdbcType=VARCHAR},
+      createdby = #{createdby,jdbcType=VARCHAR},
+      createdon = #{createdon,jdbcType=TIMESTAMP},
+      lastmodifiedby = #{lastmodifiedby,jdbcType=VARCHAR},
+      lastmodifiedon = #{lastmodifiedon,jdbcType=TIMESTAMP},
+      rowversion = #{rowversion,jdbcType=INTEGER},
+      operate_flag = #{operateFlag,jdbcType=VARCHAR}
+    where urid = #{urid,jdbcType=VARCHAR}
+  </update>
+</mapper>

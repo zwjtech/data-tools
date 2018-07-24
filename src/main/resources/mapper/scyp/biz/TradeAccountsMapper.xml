@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ceying.tools.dao.scyp.biz.TradeAccountsMapper">
+  <resultMap id="BaseResultMap" type="com.ceying.tools.entity.scyp.biz.TradeAccounts">
+    <id column="urid" jdbcType="VARCHAR" property="urid" />
+    <result column="tenantid" jdbcType="VARCHAR" property="tenantid" />
+    <result column="accountnumber" jdbcType="VARCHAR" property="accountnumber" />
+    <result column="accountname" jdbcType="VARCHAR" property="accountname" />
+    <result column="accountcategory" jdbcType="VARCHAR" property="accountcategory" />
+    <result column="accountstate" jdbcType="VARCHAR" property="accountstate" />
+    <result column="orgid" jdbcType="VARCHAR" property="orgid" />
+    <result column="contactname" jdbcType="VARCHAR" property="contactname" />
+    <result column="cellphone" jdbcType="VARCHAR" property="cellphone" />
+    <result column="certtype" jdbcType="VARCHAR" property="certtype" />
+    <result column="certnumber" jdbcType="VARCHAR" property="certnumber" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="createdby" jdbcType="VARCHAR" property="createdby" />
+    <result column="createdon" jdbcType="TIMESTAMP" property="createdon" />
+    <result column="lastmodifiedby" jdbcType="VARCHAR" property="lastmodifiedby" />
+    <result column="lastmodifiedon" jdbcType="TIMESTAMP" property="lastmodifiedon" />
+    <result column="rowversion" jdbcType="INTEGER" property="rowversion" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    urid, tenantid, accountnumber, accountname, accountcategory, accountstate, orgid, 
+    contactname, cellphone, certtype, certnumber, email, address, createdby, createdon, 
+    lastmodifiedby, lastmodifiedon, rowversion, description
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_biz_tradeaccounts
+    where urid = #{urid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from t_biz_tradeaccounts
+    where urid = #{urid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ceying.tools.entity.scyp.biz.TradeAccounts">
+    insert into t_biz_tradeaccounts (urid, tenantid, accountnumber, 
+      accountname, accountcategory, accountstate, 
+      orgid, contactname, cellphone, 
+      certtype, certnumber, email, 
+      address, createdby, createdon, 
+      lastmodifiedby, lastmodifiedon, rowversion, 
+      description)
+    values (#{urid,jdbcType=VARCHAR}, #{tenantid,jdbcType=VARCHAR}, #{accountnumber,jdbcType=VARCHAR}, 
+      #{accountname,jdbcType=VARCHAR}, #{accountcategory,jdbcType=VARCHAR}, #{accountstate,jdbcType=VARCHAR}, 
+      #{orgid,jdbcType=VARCHAR}, #{contactname,jdbcType=VARCHAR}, #{cellphone,jdbcType=VARCHAR}, 
+      #{certtype,jdbcType=VARCHAR}, #{certnumber,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{createdby,jdbcType=VARCHAR}, #{createdon,jdbcType=TIMESTAMP}, 
+      #{lastmodifiedby,jdbcType=VARCHAR}, #{lastmodifiedon,jdbcType=TIMESTAMP}, #{rowversion,jdbcType=INTEGER}, 
+      #{description,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ceying.tools.entity.scyp.biz.TradeAccounts">
+    insert into t_biz_tradeaccounts
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="urid != null">
+        urid,
+      </if>
+      <if test="tenantid != null">
+        tenantid,
+      </if>
+      <if test="accountnumber != null">
+        accountnumber,
+      </if>
+      <if test="accountname != null">
+        accountname,
+      </if>
+      <if test="accountcategory != null">
+        accountcategory,
+      </if>
+      <if test="accountstate != null">
+        accountstate,
+      </if>
+      <if test="orgid != null">
+        orgid,
+      </if>
+      <if test="contactname != null">
+        contactname,
+      </if>
+      <if test="cellphone != null">
+        cellphone,
+      </if>
+      <if test="certtype != null">
+        certtype,
+      </if>
+      <if test="certnumber != null">
+        certnumber,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="createdby != null">
+        createdby,
+      </if>
+      <if test="createdon != null">
+        createdon,
+      </if>
+      <if test="lastmodifiedby != null">
+        lastmodifiedby,
+      </if>
+      <if test="lastmodifiedon != null">
+        lastmodifiedon,
+      </if>
+      <if test="rowversion != null">
+        rowversion,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="urid != null">
+        #{urid,jdbcType=VARCHAR},
+      </if>
+      <if test="tenantid != null">
+        #{tenantid,jdbcType=VARCHAR},
+      </if>
+      <if test="accountnumber != null">
+        #{accountnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="accountname != null">
+        #{accountname,jdbcType=VARCHAR},
+      </if>
+      <if test="accountcategory != null">
+        #{accountcategory,jdbcType=VARCHAR},
+      </if>
+      <if test="accountstate != null">
+        #{accountstate,jdbcType=VARCHAR},
+      </if>
+      <if test="orgid != null">
+        #{orgid,jdbcType=VARCHAR},
+      </if>
+      <if test="contactname != null">
+        #{contactname,jdbcType=VARCHAR},
+      </if>
+      <if test="cellphone != null">
+        #{cellphone,jdbcType=VARCHAR},
+      </if>
+      <if test="certtype != null">
+        #{certtype,jdbcType=VARCHAR},
+      </if>
+      <if test="certnumber != null">
+        #{certnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="createdby != null">
+        #{createdby,jdbcType=VARCHAR},
+      </if>
+      <if test="createdon != null">
+        #{createdon,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastmodifiedby != null">
+        #{lastmodifiedby,jdbcType=VARCHAR},
+      </if>
+      <if test="lastmodifiedon != null">
+        #{lastmodifiedon,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rowversion != null">
+        #{rowversion,jdbcType=INTEGER},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ceying.tools.entity.scyp.biz.TradeAccounts">
+    update t_biz_tradeaccounts
+    <set>
+      <if test="tenantid != null">
+        tenantid = #{tenantid,jdbcType=VARCHAR},
+      </if>
+      <if test="accountnumber != null">
+        accountnumber = #{accountnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="accountname != null">
+        accountname = #{accountname,jdbcType=VARCHAR},
+      </if>
+      <if test="accountcategory != null">
+        accountcategory = #{accountcategory,jdbcType=VARCHAR},
+      </if>
+      <if test="accountstate != null">
+        accountstate = #{accountstate,jdbcType=VARCHAR},
+      </if>
+      <if test="orgid != null">
+        orgid = #{orgid,jdbcType=VARCHAR},
+      </if>
+      <if test="contactname != null">
+        contactname = #{contactname,jdbcType=VARCHAR},
+      </if>
+      <if test="cellphone != null">
+        cellphone = #{cellphone,jdbcType=VARCHAR},
+      </if>
+      <if test="certtype != null">
+        certtype = #{certtype,jdbcType=VARCHAR},
+      </if>
+      <if test="certnumber != null">
+        certnumber = #{certnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="createdby != null">
+        createdby = #{createdby,jdbcType=VARCHAR},
+      </if>
+      <if test="createdon != null">
+        createdon = #{createdon,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastmodifiedby != null">
+        lastmodifiedby = #{lastmodifiedby,jdbcType=VARCHAR},
+      </if>
+      <if test="lastmodifiedon != null">
+        lastmodifiedon = #{lastmodifiedon,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rowversion != null">
+        rowversion = #{rowversion,jdbcType=INTEGER},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where urid = #{urid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ceying.tools.entity.scyp.biz.TradeAccounts">
+    update t_biz_tradeaccounts
+    set tenantid = #{tenantid,jdbcType=VARCHAR},
+      accountnumber = #{accountnumber,jdbcType=VARCHAR},
+      accountname = #{accountname,jdbcType=VARCHAR},
+      accountcategory = #{accountcategory,jdbcType=VARCHAR},
+      accountstate = #{accountstate,jdbcType=VARCHAR},
+      orgid = #{orgid,jdbcType=VARCHAR},
+      contactname = #{contactname,jdbcType=VARCHAR},
+      cellphone = #{cellphone,jdbcType=VARCHAR},
+      certtype = #{certtype,jdbcType=VARCHAR},
+      certnumber = #{certnumber,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      createdby = #{createdby,jdbcType=VARCHAR},
+      createdon = #{createdon,jdbcType=TIMESTAMP},
+      lastmodifiedby = #{lastmodifiedby,jdbcType=VARCHAR},
+      lastmodifiedon = #{lastmodifiedon,jdbcType=TIMESTAMP},
+      rowversion = #{rowversion,jdbcType=INTEGER},
+      description = #{description,jdbcType=VARCHAR}
+    where urid = #{urid,jdbcType=VARCHAR}
+  </update>
+</mapper>

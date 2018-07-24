@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ceying.tools.dao.scyp.key.KeyInitRecordMapper">
+  <resultMap id="BaseResultMap" type="com.ceying.tools.entity.scyp.key.KeyInitRecord">
+    <id column="urid" jdbcType="VARCHAR" property="urid" />
+    <result column="tenantid" jdbcType="VARCHAR" property="tenantid" />
+    <result column="orgid" jdbcType="VARCHAR" property="orgid" />
+    <result column="initdate" jdbcType="TIMESTAMP" property="initdate" />
+    <result column="handler" jdbcType="VARCHAR" property="handler" />
+    <result column="handlerpubkey" jdbcType="VARCHAR" property="handlerpubkey" />
+    <result column="handlerserialno" jdbcType="VARCHAR" property="handlerserialno" />
+    <result column="checker" jdbcType="VARCHAR" property="checker" />
+    <result column="checkerpubkey" jdbcType="VARCHAR" property="checkerpubkey" />
+    <result column="checkerserialno" jdbcType="VARCHAR" property="checkerserialno" />
+    <result column="approver" jdbcType="VARCHAR" property="approver" />
+    <result column="approverpubkey" jdbcType="VARCHAR" property="approverpubkey" />
+    <result column="approverserialno" jdbcType="VARCHAR" property="approverserialno" />
+    <result column="witness" jdbcType="VARCHAR" property="witness" />
+    <result column="signature" jdbcType="VARCHAR" property="signature" />
+    <result column="createdby" jdbcType="VARCHAR" property="createdby" />
+    <result column="createdon" jdbcType="TIMESTAMP" property="createdon" />
+    <result column="lastmodifiedby" jdbcType="VARCHAR" property="lastmodifiedby" />
+    <result column="lastmodifiedon" jdbcType="TIMESTAMP" property="lastmodifiedon" />
+    <result column="rowversion" jdbcType="INTEGER" property="rowversion" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="identno" jdbcType="VARCHAR" property="identno" />
+    <result column="keyinitversion" jdbcType="INTEGER" property="keyinitversion" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ceying.tools.entity.scyp.key.KeyInitRecord">
+    <result column="confirmation" jdbcType="LONGVARBINARY" property="confirmation" />
+    <result column="timestamp" jdbcType="LONGVARBINARY" property="timestamp" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    urid, tenantid, orgid, initdate, `handler`, handlerpubkey, handlerserialno, checker, 
+    checkerpubkey, checkerserialno, approver, approverpubkey, approverserialno, witness, 
+    signature, createdby, createdon, lastmodifiedby, lastmodifiedon, rowversion, description, 
+    identno, keyinitversion
+  </sql>
+  <sql id="Blob_Column_List">
+    confirmation, `timestamp`
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_key_keyinitrecord
+    where urid = #{urid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from t_key_keyinitrecord
+    where urid = #{urid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ceying.tools.entity.scyp.key.KeyInitRecord">
+    insert into t_key_keyinitrecord (urid, tenantid, orgid, 
+      initdate, `handler`, handlerpubkey, 
+      handlerserialno, checker, checkerpubkey, 
+      checkerserialno, approver, approverpubkey, 
+      approverserialno, witness, signature, 
+      createdby, createdon, lastmodifiedby, 
+      lastmodifiedon, rowversion, description, 
+      identno, keyinitversion, confirmation, 
+      `timestamp`)
+    values (#{urid,jdbcType=VARCHAR}, #{tenantid,jdbcType=VARCHAR}, #{orgid,jdbcType=VARCHAR}, 
+      #{initdate,jdbcType=TIMESTAMP}, #{handler,jdbcType=VARCHAR}, #{handlerpubkey,jdbcType=VARCHAR}, 
+      #{handlerserialno,jdbcType=VARCHAR}, #{checker,jdbcType=VARCHAR}, #{checkerpubkey,jdbcType=VARCHAR}, 
+      #{checkerserialno,jdbcType=VARCHAR}, #{approver,jdbcType=VARCHAR}, #{approverpubkey,jdbcType=VARCHAR}, 
+      #{approverserialno,jdbcType=VARCHAR}, #{witness,jdbcType=VARCHAR}, #{signature,jdbcType=VARCHAR}, 
+      #{createdby,jdbcType=VARCHAR}, #{createdon,jdbcType=TIMESTAMP}, #{lastmodifiedby,jdbcType=VARCHAR}, 
+      #{lastmodifiedon,jdbcType=TIMESTAMP}, #{rowversion,jdbcType=INTEGER}, #{description,jdbcType=VARCHAR}, 
+      #{identno,jdbcType=VARCHAR}, #{keyinitversion,jdbcType=INTEGER}, #{confirmation,jdbcType=LONGVARBINARY}, 
+      #{timestamp,jdbcType=LONGVARBINARY})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ceying.tools.entity.scyp.key.KeyInitRecord">
+    insert into t_key_keyinitrecord
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="urid != null">
+        urid,
+      </if>
+      <if test="tenantid != null">
+        tenantid,
+      </if>
+      <if test="orgid != null">
+        orgid,
+      </if>
+      <if test="initdate != null">
+        initdate,
+      </if>
+      <if test="handler != null">
+        `handler`,
+      </if>
+      <if test="handlerpubkey != null">
+        handlerpubkey,
+      </if>
+      <if test="handlerserialno != null">
+        handlerserialno,
+      </if>
+      <if test="checker != null">
+        checker,
+      </if>
+      <if test="checkerpubkey != null">
+        checkerpubkey,
+      </if>
+      <if test="checkerserialno != null">
+        checkerserialno,
+      </if>
+      <if test="approver != null">
+        approver,
+      </if>
+      <if test="approverpubkey != null">
+        approverpubkey,
+      </if>
+      <if test="approverserialno != null">
+        approverserialno,
+      </if>
+      <if test="witness != null">
+        witness,
+      </if>
+      <if test="signature != null">
+        signature,
+      </if>
+      <if test="createdby != null">
+        createdby,
+      </if>
+      <if test="createdon != null">
+        createdon,
+      </if>
+      <if test="lastmodifiedby != null">
+        lastmodifiedby,
+      </if>
+      <if test="lastmodifiedon != null">
+        lastmodifiedon,
+      </if>
+      <if test="rowversion != null">
+        rowversion,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="identno != null">
+        identno,
+      </if>
+      <if test="keyinitversion != null">
+        keyinitversion,
+      </if>
+      <if test="confirmation != null">
+        confirmation,
+      </if>
+      <if test="timestamp != null">
+        `timestamp`,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="urid != null">
+        #{urid,jdbcType=VARCHAR},
+      </if>
+      <if test="tenantid != null">
+        #{tenantid,jdbcType=VARCHAR},
+      </if>
+      <if test="orgid != null">
+        #{orgid,jdbcType=VARCHAR},
+      </if>
+      <if test="initdate != null">
+        #{initdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="handler != null">
+        #{handler,jdbcType=VARCHAR},
+      </if>
+      <if test="handlerpubkey != null">
+        #{handlerpubkey,jdbcType=VARCHAR},
+      </if>
+      <if test="handlerserialno != null">
+        #{handlerserialno,jdbcType=VARCHAR},
+      </if>
+      <if test="checker != null">
+        #{checker,jdbcType=VARCHAR},
+      </if>
+      <if test="checkerpubkey != null">
+        #{checkerpubkey,jdbcType=VARCHAR},
+      </if>
+      <if test="checkerserialno != null">
+        #{checkerserialno,jdbcType=VARCHAR},
+      </if>
+      <if test="approver != null">
+        #{approver,jdbcType=VARCHAR},
+      </if>
+      <if test="approverpubkey != null">
+        #{approverpubkey,jdbcType=VARCHAR},
+      </if>
+      <if test="approverserialno != null">
+        #{approverserialno,jdbcType=VARCHAR},
+      </if>
+      <if test="witness != null">
+        #{witness,jdbcType=VARCHAR},
+      </if>
+      <if test="signature != null">
+        #{signature,jdbcType=VARCHAR},
+      </if>
+      <if test="createdby != null">
+        #{createdby,jdbcType=VARCHAR},
+      </if>
+      <if test="createdon != null">
+        #{createdon,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastmodifiedby != null">
+        #{lastmodifiedby,jdbcType=VARCHAR},
+      </if>
+      <if test="lastmodifiedon != null">
+        #{lastmodifiedon,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rowversion != null">
+        #{rowversion,jdbcType=INTEGER},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="identno != null">
+        #{identno,jdbcType=VARCHAR},
+      </if>
+      <if test="keyinitversion != null">
+        #{keyinitversion,jdbcType=INTEGER},
+      </if>
+      <if test="confirmation != null">
+        #{confirmation,jdbcType=LONGVARBINARY},
+      </if>
+      <if test="timestamp != null">
+        #{timestamp,jdbcType=LONGVARBINARY},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ceying.tools.entity.scyp.key.KeyInitRecord">
+    update t_key_keyinitrecord
+    <set>
+      <if test="tenantid != null">
+        tenantid = #{tenantid,jdbcType=VARCHAR},
+      </if>
+      <if test="orgid != null">
+        orgid = #{orgid,jdbcType=VARCHAR},
+      </if>
+      <if test="initdate != null">
+        initdate = #{initdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="handler != null">
+        `handler` = #{handler,jdbcType=VARCHAR},
+      </if>
+      <if test="handlerpubkey != null">
+        handlerpubkey = #{handlerpubkey,jdbcType=VARCHAR},
+      </if>
+      <if test="handlerserialno != null">
+        handlerserialno = #{handlerserialno,jdbcType=VARCHAR},
+      </if>
+      <if test="checker != null">
+        checker = #{checker,jdbcType=VARCHAR},
+      </if>
+      <if test="checkerpubkey != null">
+        checkerpubkey = #{checkerpubkey,jdbcType=VARCHAR},
+      </if>
+      <if test="checkerserialno != null">
+        checkerserialno = #{checkerserialno,jdbcType=VARCHAR},
+      </if>
+      <if test="approver != null">
+        approver = #{approver,jdbcType=VARCHAR},
+      </if>
+      <if test="approverpubkey != null">
+        approverpubkey = #{approverpubkey,jdbcType=VARCHAR},
+      </if>
+      <if test="approverserialno != null">
+        approverserialno = #{approverserialno,jdbcType=VARCHAR},
+      </if>
+      <if test="witness != null">
+        witness = #{witness,jdbcType=VARCHAR},
+      </if>
+      <if test="signature != null">
+        signature = #{signature,jdbcType=VARCHAR},
+      </if>
+      <if test="createdby != null">
+        createdby = #{createdby,jdbcType=VARCHAR},
+      </if>
+      <if test="createdon != null">
+        createdon = #{createdon,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastmodifiedby != null">
+        lastmodifiedby = #{lastmodifiedby,jdbcType=VARCHAR},
+      </if>
+      <if test="lastmodifiedon != null">
+        lastmodifiedon = #{lastmodifiedon,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rowversion != null">
+        rowversion = #{rowversion,jdbcType=INTEGER},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="identno != null">
+        identno = #{identno,jdbcType=VARCHAR},
+      </if>
+      <if test="keyinitversion != null">
+        keyinitversion = #{keyinitversion,jdbcType=INTEGER},
+      </if>
+      <if test="confirmation != null">
+        confirmation = #{confirmation,jdbcType=LONGVARBINARY},
+      </if>
+      <if test="timestamp != null">
+        `timestamp` = #{timestamp,jdbcType=LONGVARBINARY},
+      </if>
+    </set>
+    where urid = #{urid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.ceying.tools.entity.scyp.key.KeyInitRecord">
+    update t_key_keyinitrecord
+    set tenantid = #{tenantid,jdbcType=VARCHAR},
+      orgid = #{orgid,jdbcType=VARCHAR},
+      initdate = #{initdate,jdbcType=TIMESTAMP},
+      `handler` = #{handler,jdbcType=VARCHAR},
+      handlerpubkey = #{handlerpubkey,jdbcType=VARCHAR},
+      handlerserialno = #{handlerserialno,jdbcType=VARCHAR},
+      checker = #{checker,jdbcType=VARCHAR},
+      checkerpubkey = #{checkerpubkey,jdbcType=VARCHAR},
+      checkerserialno = #{checkerserialno,jdbcType=VARCHAR},
+      approver = #{approver,jdbcType=VARCHAR},
+      approverpubkey = #{approverpubkey,jdbcType=VARCHAR},
+      approverserialno = #{approverserialno,jdbcType=VARCHAR},
+      witness = #{witness,jdbcType=VARCHAR},
+      signature = #{signature,jdbcType=VARCHAR},
+      createdby = #{createdby,jdbcType=VARCHAR},
+      createdon = #{createdon,jdbcType=TIMESTAMP},
+      lastmodifiedby = #{lastmodifiedby,jdbcType=VARCHAR},
+      lastmodifiedon = #{lastmodifiedon,jdbcType=TIMESTAMP},
+      rowversion = #{rowversion,jdbcType=INTEGER},
+      description = #{description,jdbcType=VARCHAR},
+      identno = #{identno,jdbcType=VARCHAR},
+      keyinitversion = #{keyinitversion,jdbcType=INTEGER},
+      confirmation = #{confirmation,jdbcType=LONGVARBINARY},
+      `timestamp` = #{timestamp,jdbcType=LONGVARBINARY}
+    where urid = #{urid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ceying.tools.entity.scyp.key.KeyInitRecord">
+    update t_key_keyinitrecord
+    set tenantid = #{tenantid,jdbcType=VARCHAR},
+      orgid = #{orgid,jdbcType=VARCHAR},
+      initdate = #{initdate,jdbcType=TIMESTAMP},
+      `handler` = #{handler,jdbcType=VARCHAR},
+      handlerpubkey = #{handlerpubkey,jdbcType=VARCHAR},
+      handlerserialno = #{handlerserialno,jdbcType=VARCHAR},
+      checker = #{checker,jdbcType=VARCHAR},
+      checkerpubkey = #{checkerpubkey,jdbcType=VARCHAR},
+      checkerserialno = #{checkerserialno,jdbcType=VARCHAR},
+      approver = #{approver,jdbcType=VARCHAR},
+      approverpubkey = #{approverpubkey,jdbcType=VARCHAR},
+      approverserialno = #{approverserialno,jdbcType=VARCHAR},
+      witness = #{witness,jdbcType=VARCHAR},
+      signature = #{signature,jdbcType=VARCHAR},
+      createdby = #{createdby,jdbcType=VARCHAR},
+      createdon = #{createdon,jdbcType=TIMESTAMP},
+      lastmodifiedby = #{lastmodifiedby,jdbcType=VARCHAR},
+      lastmodifiedon = #{lastmodifiedon,jdbcType=TIMESTAMP},
+      rowversion = #{rowversion,jdbcType=INTEGER},
+      description = #{description,jdbcType=VARCHAR},
+      identno = #{identno,jdbcType=VARCHAR},
+      keyinitversion = #{keyinitversion,jdbcType=INTEGER}
+    where urid = #{urid,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ceying.tools.dao.scyp.key.KeyPurchaseApplyMapper">
+  <resultMap id="BaseResultMap" type="com.ceying.tools.entity.scyp.key.KeyPurchaseApply">
+    <id column="urid" jdbcType="VARCHAR" property="urid" />
+    <result column="tenantid" jdbcType="DECIMAL" property="tenantid" />
+    <result column="numofkey" jdbcType="INTEGER" property="numofkey" />
+    <result column="applicant" jdbcType="VARCHAR" property="applicant" />
+    <result column="applydate" jdbcType="TIMESTAMP" property="applydate" />
+    <result column="approver" jdbcType="VARCHAR" property="approver" />
+    <result column="approvedate" jdbcType="TIMESTAMP" property="approvedate" />
+    <result column="packageid" jdbcType="VARCHAR" property="packageid" />
+    <result column="recipient" jdbcType="VARCHAR" property="recipient" />
+    <result column="receiptdate" jdbcType="TIMESTAMP" property="receiptdate" />
+    <result column="operateflag" jdbcType="VARCHAR" property="operateflag" />
+    <result column="recipientname" jdbcType="VARCHAR" property="recipientname" />
+    <result column="recipientphone" jdbcType="VARCHAR" property="recipientphone" />
+    <result column="recipientaddress" jdbcType="VARCHAR" property="recipientaddress" />
+    <result column="recipientzipcode" jdbcType="VARCHAR" property="recipientzipcode" />
+    <result column="createdby" jdbcType="VARCHAR" property="createdby" />
+    <result column="createdon" jdbcType="TIMESTAMP" property="createdon" />
+    <result column="lastmodifiedby" jdbcType="VARCHAR" property="lastmodifiedby" />
+    <result column="lastmodifiedon" jdbcType="TIMESTAMP" property="lastmodifiedon" />
+    <result column="rowversion" jdbcType="INTEGER" property="rowversion" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="startnum" jdbcType="VARCHAR" property="startnum" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    urid, tenantid, numofkey, applicant, applydate, approver, approvedate, packageid, 
+    recipient, receiptdate, operateflag, recipientname, recipientphone, recipientaddress, 
+    recipientzipcode, createdby, createdon, lastmodifiedby, lastmodifiedon, rowversion, 
+    description, startnum
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_key_keypurchaseapply
+    where urid = #{urid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from t_key_keypurchaseapply
+    where urid = #{urid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ceying.tools.entity.scyp.key.KeyPurchaseApply">
+    insert into t_key_keypurchaseapply (urid, tenantid, numofkey, 
+      applicant, applydate, approver, 
+      approvedate, packageid, recipient, 
+      receiptdate, operateflag, recipientname, 
+      recipientphone, recipientaddress, recipientzipcode, 
+      createdby, createdon, lastmodifiedby, 
+      lastmodifiedon, rowversion, description, 
+      startnum)
+    values (#{urid,jdbcType=VARCHAR}, #{tenantid,jdbcType=DECIMAL}, #{numofkey,jdbcType=INTEGER}, 
+      #{applicant,jdbcType=VARCHAR}, #{applydate,jdbcType=TIMESTAMP}, #{approver,jdbcType=VARCHAR}, 
+      #{approvedate,jdbcType=TIMESTAMP}, #{packageid,jdbcType=VARCHAR}, #{recipient,jdbcType=VARCHAR}, 
+      #{receiptdate,jdbcType=TIMESTAMP}, #{operateflag,jdbcType=VARCHAR}, #{recipientname,jdbcType=VARCHAR}, 
+      #{recipientphone,jdbcType=VARCHAR}, #{recipientaddress,jdbcType=VARCHAR}, #{recipientzipcode,jdbcType=VARCHAR}, 
+      #{createdby,jdbcType=VARCHAR}, #{createdon,jdbcType=TIMESTAMP}, #{lastmodifiedby,jdbcType=VARCHAR}, 
+      #{lastmodifiedon,jdbcType=TIMESTAMP}, #{rowversion,jdbcType=INTEGER}, #{description,jdbcType=VARCHAR}, 
+      #{startnum,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ceying.tools.entity.scyp.key.KeyPurchaseApply">
+    insert into t_key_keypurchaseapply
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="urid != null">
+        urid,
+      </if>
+      <if test="tenantid != null">
+        tenantid,
+      </if>
+      <if test="numofkey != null">
+        numofkey,
+      </if>
+      <if test="applicant != null">
+        applicant,
+      </if>
+      <if test="applydate != null">
+        applydate,
+      </if>
+      <if test="approver != null">
+        approver,
+      </if>
+      <if test="approvedate != null">
+        approvedate,
+      </if>
+      <if test="packageid != null">
+        packageid,
+      </if>
+      <if test="recipient != null">
+        recipient,
+      </if>
+      <if test="receiptdate != null">
+        receiptdate,
+      </if>
+      <if test="operateflag != null">
+        operateflag,
+      </if>
+      <if test="recipientname != null">
+        recipientname,
+      </if>
+      <if test="recipientphone != null">
+        recipientphone,
+      </if>
+      <if test="recipientaddress != null">
+        recipientaddress,
+      </if>
+      <if test="recipientzipcode != null">
+        recipientzipcode,
+      </if>
+      <if test="createdby != null">
+        createdby,
+      </if>
+      <if test="createdon != null">
+        createdon,
+      </if>
+      <if test="lastmodifiedby != null">
+        lastmodifiedby,
+      </if>
+      <if test="lastmodifiedon != null">
+        lastmodifiedon,
+      </if>
+      <if test="rowversion != null">
+        rowversion,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="startnum != null">
+        startnum,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="urid != null">
+        #{urid,jdbcType=VARCHAR},
+      </if>
+      <if test="tenantid != null">
+        #{tenantid,jdbcType=DECIMAL},
+      </if>
+      <if test="numofkey != null">
+        #{numofkey,jdbcType=INTEGER},
+      </if>
+      <if test="applicant != null">
+        #{applicant,jdbcType=VARCHAR},
+      </if>
+      <if test="applydate != null">
+        #{applydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="approver != null">
+        #{approver,jdbcType=VARCHAR},
+      </if>
+      <if test="approvedate != null">
+        #{approvedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="packageid != null">
+        #{packageid,jdbcType=VARCHAR},
+      </if>
+      <if test="recipient != null">
+        #{recipient,jdbcType=VARCHAR},
+      </if>
+      <if test="receiptdate != null">
+        #{receiptdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operateflag != null">
+        #{operateflag,jdbcType=VARCHAR},
+      </if>
+      <if test="recipientname != null">
+        #{recipientname,jdbcType=VARCHAR},
+      </if>
+      <if test="recipientphone != null">
+        #{recipientphone,jdbcType=VARCHAR},
+      </if>
+      <if test="recipientaddress != null">
+        #{recipientaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="recipientzipcode != null">
+        #{recipientzipcode,jdbcType=VARCHAR},
+      </if>
+      <if test="createdby != null">
+        #{createdby,jdbcType=VARCHAR},
+      </if>
+      <if test="createdon != null">
+        #{createdon,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastmodifiedby != null">
+        #{lastmodifiedby,jdbcType=VARCHAR},
+      </if>
+      <if test="lastmodifiedon != null">
+        #{lastmodifiedon,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rowversion != null">
+        #{rowversion,jdbcType=INTEGER},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="startnum != null">
+        #{startnum,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ceying.tools.entity.scyp.key.KeyPurchaseApply">
+    update t_key_keypurchaseapply
+    <set>
+      <if test="tenantid != null">
+        tenantid = #{tenantid,jdbcType=DECIMAL},
+      </if>
+      <if test="numofkey != null">
+        numofkey = #{numofkey,jdbcType=INTEGER},
+      </if>
+      <if test="applicant != null">
+        applicant = #{applicant,jdbcType=VARCHAR},
+      </if>
+      <if test="applydate != null">
+        applydate = #{applydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="approver != null">
+        approver = #{approver,jdbcType=VARCHAR},
+      </if>
+      <if test="approvedate != null">
+        approvedate = #{approvedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="packageid != null">
+        packageid = #{packageid,jdbcType=VARCHAR},
+      </if>
+      <if test="recipient != null">
+        recipient = #{recipient,jdbcType=VARCHAR},
+      </if>
+      <if test="receiptdate != null">
+        receiptdate = #{receiptdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operateflag != null">
+        operateflag = #{operateflag,jdbcType=VARCHAR},
+      </if>
+      <if test="recipientname != null">
+        recipientname = #{recipientname,jdbcType=VARCHAR},
+      </if>
+      <if test="recipientphone != null">
+        recipientphone = #{recipientphone,jdbcType=VARCHAR},
+      </if>
+      <if test="recipientaddress != null">
+        recipientaddress = #{recipientaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="recipientzipcode != null">
+        recipientzipcode = #{recipientzipcode,jdbcType=VARCHAR},
+      </if>
+      <if test="createdby != null">
+        createdby = #{createdby,jdbcType=VARCHAR},
+      </if>
+      <if test="createdon != null">
+        createdon = #{createdon,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastmodifiedby != null">
+        lastmodifiedby = #{lastmodifiedby,jdbcType=VARCHAR},
+      </if>
+      <if test="lastmodifiedon != null">
+        lastmodifiedon = #{lastmodifiedon,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rowversion != null">
+        rowversion = #{rowversion,jdbcType=INTEGER},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="startnum != null">
+        startnum = #{startnum,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where urid = #{urid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ceying.tools.entity.scyp.key.KeyPurchaseApply">
+    update t_key_keypurchaseapply
+    set tenantid = #{tenantid,jdbcType=DECIMAL},
+      numofkey = #{numofkey,jdbcType=INTEGER},
+      applicant = #{applicant,jdbcType=VARCHAR},
+      applydate = #{applydate,jdbcType=TIMESTAMP},
+      approver = #{approver,jdbcType=VARCHAR},
+      approvedate = #{approvedate,jdbcType=TIMESTAMP},
+      packageid = #{packageid,jdbcType=VARCHAR},
+      recipient = #{recipient,jdbcType=VARCHAR},
+      receiptdate = #{receiptdate,jdbcType=TIMESTAMP},
+      operateflag = #{operateflag,jdbcType=VARCHAR},
+      recipientname = #{recipientname,jdbcType=VARCHAR},
+      recipientphone = #{recipientphone,jdbcType=VARCHAR},
+      recipientaddress = #{recipientaddress,jdbcType=VARCHAR},
+      recipientzipcode = #{recipientzipcode,jdbcType=VARCHAR},
+      createdby = #{createdby,jdbcType=VARCHAR},
+      createdon = #{createdon,jdbcType=TIMESTAMP},
+      lastmodifiedby = #{lastmodifiedby,jdbcType=VARCHAR},
+      lastmodifiedon = #{lastmodifiedon,jdbcType=TIMESTAMP},
+      rowversion = #{rowversion,jdbcType=INTEGER},
+      description = #{description,jdbcType=VARCHAR},
+      startnum = #{startnum,jdbcType=VARCHAR}
+    where urid = #{urid,jdbcType=VARCHAR}
+  </update>
+</mapper>

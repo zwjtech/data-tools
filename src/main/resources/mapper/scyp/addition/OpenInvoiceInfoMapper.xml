@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ceying.tools.dao.scyp.addition.OpenInvoiceInfoMapper">
+  <resultMap id="BaseResultMap" type="com.ceying.tools.entity.scyp.addition.OpenInvoiceInfo">
+    <id column="urid" jdbcType="VARCHAR" property="urid" />
+    <result column="orgid" jdbcType="VARCHAR" property="orgid" />
+    <result column="companyname" jdbcType="VARCHAR" property="companyname" />
+    <result column="taxpayernumber" jdbcType="VARCHAR" property="taxpayernumber" />
+    <result column="companyaccount" jdbcType="VARCHAR" property="companyaccount" />
+    <result column="companybank" jdbcType="VARCHAR" property="companybank" />
+    <result column="telephone" jdbcType="VARCHAR" property="telephone" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="createdby" jdbcType="VARCHAR" property="createdby" />
+    <result column="createdon" jdbcType="DATE" property="createdon" />
+    <result column="lastmodifiedby" jdbcType="VARCHAR" property="lastmodifiedby" />
+    <result column="lastmodifiedon" jdbcType="DATE" property="lastmodifiedon" />
+    <result column="rowversion" jdbcType="INTEGER" property="rowversion" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    urid, orgid, companyname, taxpayernumber, companyaccount, companybank, telephone, 
+    address, createdby, createdon, lastmodifiedby, lastmodifiedon, rowversion, description
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_add_openinvoiceinfo
+    where urid = #{urid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from t_add_openinvoiceinfo
+    where urid = #{urid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ceying.tools.entity.scyp.addition.OpenInvoiceInfo">
+    insert into t_add_openinvoiceinfo (urid, orgid, companyname, 
+      taxpayernumber, companyaccount, companybank, 
+      telephone, address, createdby, 
+      createdon, lastmodifiedby, lastmodifiedon, 
+      rowversion, description)
+    values (#{urid,jdbcType=VARCHAR}, #{orgid,jdbcType=VARCHAR}, #{companyname,jdbcType=VARCHAR}, 
+      #{taxpayernumber,jdbcType=VARCHAR}, #{companyaccount,jdbcType=VARCHAR}, #{companybank,jdbcType=VARCHAR}, 
+      #{telephone,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{createdby,jdbcType=VARCHAR}, 
+      #{createdon,jdbcType=DATE}, #{lastmodifiedby,jdbcType=VARCHAR}, #{lastmodifiedon,jdbcType=DATE}, 
+      #{rowversion,jdbcType=INTEGER}, #{description,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ceying.tools.entity.scyp.addition.OpenInvoiceInfo">
+    insert into t_add_openinvoiceinfo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="urid != null">
+        urid,
+      </if>
+      <if test="orgid != null">
+        orgid,
+      </if>
+      <if test="companyname != null">
+        companyname,
+      </if>
+      <if test="taxpayernumber != null">
+        taxpayernumber,
+      </if>
+      <if test="companyaccount != null">
+        companyaccount,
+      </if>
+      <if test="companybank != null">
+        companybank,
+      </if>
+      <if test="telephone != null">
+        telephone,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="createdby != null">
+        createdby,
+      </if>
+      <if test="createdon != null">
+        createdon,
+      </if>
+      <if test="lastmodifiedby != null">
+        lastmodifiedby,
+      </if>
+      <if test="lastmodifiedon != null">
+        lastmodifiedon,
+      </if>
+      <if test="rowversion != null">
+        rowversion,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="urid != null">
+        #{urid,jdbcType=VARCHAR},
+      </if>
+      <if test="orgid != null">
+        #{orgid,jdbcType=VARCHAR},
+      </if>
+      <if test="companyname != null">
+        #{companyname,jdbcType=VARCHAR},
+      </if>
+      <if test="taxpayernumber != null">
+        #{taxpayernumber,jdbcType=VARCHAR},
+      </if>
+      <if test="companyaccount != null">
+        #{companyaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="companybank != null">
+        #{companybank,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null">
+        #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="createdby != null">
+        #{createdby,jdbcType=VARCHAR},
+      </if>
+      <if test="createdon != null">
+        #{createdon,jdbcType=DATE},
+      </if>
+      <if test="lastmodifiedby != null">
+        #{lastmodifiedby,jdbcType=VARCHAR},
+      </if>
+      <if test="lastmodifiedon != null">
+        #{lastmodifiedon,jdbcType=DATE},
+      </if>
+      <if test="rowversion != null">
+        #{rowversion,jdbcType=INTEGER},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ceying.tools.entity.scyp.addition.OpenInvoiceInfo">
+    update t_add_openinvoiceinfo
+    <set>
+      <if test="orgid != null">
+        orgid = #{orgid,jdbcType=VARCHAR},
+      </if>
+      <if test="companyname != null">
+        companyname = #{companyname,jdbcType=VARCHAR},
+      </if>
+      <if test="taxpayernumber != null">
+        taxpayernumber = #{taxpayernumber,jdbcType=VARCHAR},
+      </if>
+      <if test="companyaccount != null">
+        companyaccount = #{companyaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="companybank != null">
+        companybank = #{companybank,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null">
+        telephone = #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="createdby != null">
+        createdby = #{createdby,jdbcType=VARCHAR},
+      </if>
+      <if test="createdon != null">
+        createdon = #{createdon,jdbcType=DATE},
+      </if>
+      <if test="lastmodifiedby != null">
+        lastmodifiedby = #{lastmodifiedby,jdbcType=VARCHAR},
+      </if>
+      <if test="lastmodifiedon != null">
+        lastmodifiedon = #{lastmodifiedon,jdbcType=DATE},
+      </if>
+      <if test="rowversion != null">
+        rowversion = #{rowversion,jdbcType=INTEGER},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where urid = #{urid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ceying.tools.entity.scyp.addition.OpenInvoiceInfo">
+    update t_add_openinvoiceinfo
+    set orgid = #{orgid,jdbcType=VARCHAR},
+      companyname = #{companyname,jdbcType=VARCHAR},
+      taxpayernumber = #{taxpayernumber,jdbcType=VARCHAR},
+      companyaccount = #{companyaccount,jdbcType=VARCHAR},
+      companybank = #{companybank,jdbcType=VARCHAR},
+      telephone = #{telephone,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      createdby = #{createdby,jdbcType=VARCHAR},
+      createdon = #{createdon,jdbcType=DATE},
+      lastmodifiedby = #{lastmodifiedby,jdbcType=VARCHAR},
+      lastmodifiedon = #{lastmodifiedon,jdbcType=DATE},
+      rowversion = #{rowversion,jdbcType=INTEGER},
+      description = #{description,jdbcType=VARCHAR}
+    where urid = #{urid,jdbcType=VARCHAR}
+  </update>
+</mapper>

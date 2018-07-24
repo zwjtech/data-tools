@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ceying.tools.dao.scyp.addition.BlockChainNodeApplyOpsMapper">
+  <resultMap id="BaseResultMap" type="com.ceying.tools.entity.scyp.addition.BlockChainNodeApplyOps">
+    <id column="urid" jdbcType="VARCHAR" property="urid" />
+    <result column="blockchainnodeapplyid" jdbcType="VARCHAR" property="blockchainnodeapplyid" />
+    <result column="operator" jdbcType="VARCHAR" property="operator" />
+    <result column="operateorgid" jdbcType="VARCHAR" property="operateorgid" />
+    <result column="operatedate" jdbcType="DATE" property="operatedate" />
+    <result column="operateflag" jdbcType="VARCHAR" property="operateflag" />
+    <result column="signature" jdbcType="VARCHAR" property="signature" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    urid, blockchainnodeapplyid, `operator`, operateorgid, operatedate, operateflag, 
+    signature, description
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_add_blockchainnodeapplyops
+    where urid = #{urid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from t_add_blockchainnodeapplyops
+    where urid = #{urid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ceying.tools.entity.scyp.addition.BlockChainNodeApplyOps">
+    insert into t_add_blockchainnodeapplyops (urid, blockchainnodeapplyid, `operator`, 
+      operateorgid, operatedate, operateflag, 
+      signature, description)
+    values (#{urid,jdbcType=VARCHAR}, #{blockchainnodeapplyid,jdbcType=VARCHAR}, #{operator,jdbcType=VARCHAR}, 
+      #{operateorgid,jdbcType=VARCHAR}, #{operatedate,jdbcType=DATE}, #{operateflag,jdbcType=VARCHAR}, 
+      #{signature,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ceying.tools.entity.scyp.addition.BlockChainNodeApplyOps">
+    insert into t_add_blockchainnodeapplyops
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="urid != null">
+        urid,
+      </if>
+      <if test="blockchainnodeapplyid != null">
+        blockchainnodeapplyid,
+      </if>
+      <if test="operator != null">
+        `operator`,
+      </if>
+      <if test="operateorgid != null">
+        operateorgid,
+      </if>
+      <if test="operatedate != null">
+        operatedate,
+      </if>
+      <if test="operateflag != null">
+        operateflag,
+      </if>
+      <if test="signature != null">
+        signature,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="urid != null">
+        #{urid,jdbcType=VARCHAR},
+      </if>
+      <if test="blockchainnodeapplyid != null">
+        #{blockchainnodeapplyid,jdbcType=VARCHAR},
+      </if>
+      <if test="operator != null">
+        #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="operateorgid != null">
+        #{operateorgid,jdbcType=VARCHAR},
+      </if>
+      <if test="operatedate != null">
+        #{operatedate,jdbcType=DATE},
+      </if>
+      <if test="operateflag != null">
+        #{operateflag,jdbcType=VARCHAR},
+      </if>
+      <if test="signature != null">
+        #{signature,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ceying.tools.entity.scyp.addition.BlockChainNodeApplyOps">
+    update t_add_blockchainnodeapplyops
+    <set>
+      <if test="blockchainnodeapplyid != null">
+        blockchainnodeapplyid = #{blockchainnodeapplyid,jdbcType=VARCHAR},
+      </if>
+      <if test="operator != null">
+        `operator` = #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="operateorgid != null">
+        operateorgid = #{operateorgid,jdbcType=VARCHAR},
+      </if>
+      <if test="operatedate != null">
+        operatedate = #{operatedate,jdbcType=DATE},
+      </if>
+      <if test="operateflag != null">
+        operateflag = #{operateflag,jdbcType=VARCHAR},
+      </if>
+      <if test="signature != null">
+        signature = #{signature,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where urid = #{urid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ceying.tools.entity.scyp.addition.BlockChainNodeApplyOps">
+    update t_add_blockchainnodeapplyops
+    set blockchainnodeapplyid = #{blockchainnodeapplyid,jdbcType=VARCHAR},
+      `operator` = #{operator,jdbcType=VARCHAR},
+      operateorgid = #{operateorgid,jdbcType=VARCHAR},
+      operatedate = #{operatedate,jdbcType=DATE},
+      operateflag = #{operateflag,jdbcType=VARCHAR},
+      signature = #{signature,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR}
+    where urid = #{urid,jdbcType=VARCHAR}
+  </update>
+</mapper>

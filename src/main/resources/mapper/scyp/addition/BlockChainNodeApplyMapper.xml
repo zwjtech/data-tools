@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ceying.tools.dao.scyp.addition.BlockChainNodeApplyMapper">
+  <resultMap id="BaseResultMap" type="com.ceying.tools.entity.scyp.addition.BlockChainNodeApply">
+    <id column="urid" jdbcType="VARCHAR" property="urid" />
+    <result column="applyorgid" jdbcType="VARCHAR" property="applyorgid" />
+    <result column="lastoperateflag" jdbcType="VARCHAR" property="lastoperateflag" />
+    <result column="contactname" jdbcType="VARCHAR" property="contactname" />
+    <result column="cellphone" jdbcType="VARCHAR" property="cellphone" />
+    <result column="telephone" jdbcType="VARCHAR" property="telephone" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="isactive" jdbcType="VARCHAR" property="isactive" />
+    <result column="createdby" jdbcType="VARCHAR" property="createdby" />
+    <result column="createdon" jdbcType="DATE" property="createdon" />
+    <result column="lastmodifiedby" jdbcType="VARCHAR" property="lastmodifiedby" />
+    <result column="lastmodifiedon" jdbcType="DATE" property="lastmodifiedon" />
+    <result column="rowversion" jdbcType="INTEGER" property="rowversion" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ceying.tools.entity.scyp.addition.BlockChainNodeApply">
+    <result column="applycontent" jdbcType="LONGVARBINARY" property="applycontent" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    urid, applyorgid, lastoperateflag, contactname, cellphone, telephone, email, address, 
+    isactive, createdby, createdon, lastmodifiedby, lastmodifiedon, rowversion, description
+  </sql>
+  <sql id="Blob_Column_List">
+    applycontent
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_add_blockchainnodeapply
+    where urid = #{urid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from t_add_blockchainnodeapply
+    where urid = #{urid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ceying.tools.entity.scyp.addition.BlockChainNodeApply">
+    insert into t_add_blockchainnodeapply (urid, applyorgid, lastoperateflag, 
+      contactname, cellphone, telephone, 
+      email, address, isactive, 
+      createdby, createdon, lastmodifiedby, 
+      lastmodifiedon, rowversion, description, 
+      applycontent)
+    values (#{urid,jdbcType=VARCHAR}, #{applyorgid,jdbcType=VARCHAR}, #{lastoperateflag,jdbcType=VARCHAR}, 
+      #{contactname,jdbcType=VARCHAR}, #{cellphone,jdbcType=VARCHAR}, #{telephone,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{isactive,jdbcType=VARCHAR}, 
+      #{createdby,jdbcType=VARCHAR}, #{createdon,jdbcType=DATE}, #{lastmodifiedby,jdbcType=VARCHAR}, 
+      #{lastmodifiedon,jdbcType=DATE}, #{rowversion,jdbcType=INTEGER}, #{description,jdbcType=VARCHAR}, 
+      #{applycontent,jdbcType=LONGVARBINARY})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ceying.tools.entity.scyp.addition.BlockChainNodeApply">
+    insert into t_add_blockchainnodeapply
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="urid != null">
+        urid,
+      </if>
+      <if test="applyorgid != null">
+        applyorgid,
+      </if>
+      <if test="lastoperateflag != null">
+        lastoperateflag,
+      </if>
+      <if test="contactname != null">
+        contactname,
+      </if>
+      <if test="cellphone != null">
+        cellphone,
+      </if>
+      <if test="telephone != null">
+        telephone,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="isactive != null">
+        isactive,
+      </if>
+      <if test="createdby != null">
+        createdby,
+      </if>
+      <if test="createdon != null">
+        createdon,
+      </if>
+      <if test="lastmodifiedby != null">
+        lastmodifiedby,
+      </if>
+      <if test="lastmodifiedon != null">
+        lastmodifiedon,
+      </if>
+      <if test="rowversion != null">
+        rowversion,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="applycontent != null">
+        applycontent,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="urid != null">
+        #{urid,jdbcType=VARCHAR},
+      </if>
+      <if test="applyorgid != null">
+        #{applyorgid,jdbcType=VARCHAR},
+      </if>
+      <if test="lastoperateflag != null">
+        #{lastoperateflag,jdbcType=VARCHAR},
+      </if>
+      <if test="contactname != null">
+        #{contactname,jdbcType=VARCHAR},
+      </if>
+      <if test="cellphone != null">
+        #{cellphone,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null">
+        #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="isactive != null">
+        #{isactive,jdbcType=VARCHAR},
+      </if>
+      <if test="createdby != null">
+        #{createdby,jdbcType=VARCHAR},
+      </if>
+      <if test="createdon != null">
+        #{createdon,jdbcType=DATE},
+      </if>
+      <if test="lastmodifiedby != null">
+        #{lastmodifiedby,jdbcType=VARCHAR},
+      </if>
+      <if test="lastmodifiedon != null">
+        #{lastmodifiedon,jdbcType=DATE},
+      </if>
+      <if test="rowversion != null">
+        #{rowversion,jdbcType=INTEGER},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="applycontent != null">
+        #{applycontent,jdbcType=LONGVARBINARY},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ceying.tools.entity.scyp.addition.BlockChainNodeApply">
+    update t_add_blockchainnodeapply
+    <set>
+      <if test="applyorgid != null">
+        applyorgid = #{applyorgid,jdbcType=VARCHAR},
+      </if>
+      <if test="lastoperateflag != null">
+        lastoperateflag = #{lastoperateflag,jdbcType=VARCHAR},
+      </if>
+      <if test="contactname != null">
+        contactname = #{contactname,jdbcType=VARCHAR},
+      </if>
+      <if test="cellphone != null">
+        cellphone = #{cellphone,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null">
+        telephone = #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="isactive != null">
+        isactive = #{isactive,jdbcType=VARCHAR},
+      </if>
+      <if test="createdby != null">
+        createdby = #{createdby,jdbcType=VARCHAR},
+      </if>
+      <if test="createdon != null">
+        createdon = #{createdon,jdbcType=DATE},
+      </if>
+      <if test="lastmodifiedby != null">
+        lastmodifiedby = #{lastmodifiedby,jdbcType=VARCHAR},
+      </if>
+      <if test="lastmodifiedon != null">
+        lastmodifiedon = #{lastmodifiedon,jdbcType=DATE},
+      </if>
+      <if test="rowversion != null">
+        rowversion = #{rowversion,jdbcType=INTEGER},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="applycontent != null">
+        applycontent = #{applycontent,jdbcType=LONGVARBINARY},
+      </if>
+    </set>
+    where urid = #{urid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.ceying.tools.entity.scyp.addition.BlockChainNodeApply">
+    update t_add_blockchainnodeapply
+    set applyorgid = #{applyorgid,jdbcType=VARCHAR},
+      lastoperateflag = #{lastoperateflag,jdbcType=VARCHAR},
+      contactname = #{contactname,jdbcType=VARCHAR},
+      cellphone = #{cellphone,jdbcType=VARCHAR},
+      telephone = #{telephone,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      isactive = #{isactive,jdbcType=VARCHAR},
+      createdby = #{createdby,jdbcType=VARCHAR},
+      createdon = #{createdon,jdbcType=DATE},
+      lastmodifiedby = #{lastmodifiedby,jdbcType=VARCHAR},
+      lastmodifiedon = #{lastmodifiedon,jdbcType=DATE},
+      rowversion = #{rowversion,jdbcType=INTEGER},
+      description = #{description,jdbcType=VARCHAR},
+      applycontent = #{applycontent,jdbcType=LONGVARBINARY}
+    where urid = #{urid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ceying.tools.entity.scyp.addition.BlockChainNodeApply">
+    update t_add_blockchainnodeapply
+    set applyorgid = #{applyorgid,jdbcType=VARCHAR},
+      lastoperateflag = #{lastoperateflag,jdbcType=VARCHAR},
+      contactname = #{contactname,jdbcType=VARCHAR},
+      cellphone = #{cellphone,jdbcType=VARCHAR},
+      telephone = #{telephone,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      isactive = #{isactive,jdbcType=VARCHAR},
+      createdby = #{createdby,jdbcType=VARCHAR},
+      createdon = #{createdon,jdbcType=DATE},
+      lastmodifiedby = #{lastmodifiedby,jdbcType=VARCHAR},
+      lastmodifiedon = #{lastmodifiedon,jdbcType=DATE},
+      rowversion = #{rowversion,jdbcType=INTEGER},
+      description = #{description,jdbcType=VARCHAR}
+    where urid = #{urid,jdbcType=VARCHAR}
+  </update>
+</mapper>

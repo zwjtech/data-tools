@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ceying.tools.dao.scyp.system.SupplierBusinessTypeMapper">
+  <resultMap id="BaseResultMap" type="com.ceying.tools.entity.scyp.system.SupplierBusinessType">
+    <id column="urid" jdbcType="VARCHAR" property="urid" />
+    <result column="organizationrelationid" jdbcType="VARCHAR" property="organizationrelationid" />
+    <result column="businesstype" jdbcType="VARCHAR" property="businesstype" />
+    <result column="issupport" jdbcType="VARCHAR" property="issupport" />
+    <result column="corecompanysupplierrate" jdbcType="DECIMAL" property="corecompanysupplierrate" />
+    <result column="createdby" jdbcType="VARCHAR" property="createdby" />
+    <result column="createdon" jdbcType="TIMESTAMP" property="createdon" />
+    <result column="lastmodifiedby" jdbcType="VARCHAR" property="lastmodifiedby" />
+    <result column="lastmodifiedon" jdbcType="TIMESTAMP" property="lastmodifiedon" />
+    <result column="rowversion" jdbcType="INTEGER" property="rowversion" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    urid, organizationrelationid, businesstype, issupport, corecompanysupplierrate, createdby, 
+    createdon, lastmodifiedby, lastmodifiedon, rowversion, description
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_sys_supplierbusinesstype
+    where urid = #{urid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from t_sys_supplierbusinesstype
+    where urid = #{urid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ceying.tools.entity.scyp.system.SupplierBusinessType">
+    insert into t_sys_supplierbusinesstype (urid, organizationrelationid, businesstype, 
+      issupport, corecompanysupplierrate, createdby, 
+      createdon, lastmodifiedby, lastmodifiedon, 
+      rowversion, description)
+    values (#{urid,jdbcType=VARCHAR}, #{organizationrelationid,jdbcType=VARCHAR}, #{businesstype,jdbcType=VARCHAR}, 
+      #{issupport,jdbcType=VARCHAR}, #{corecompanysupplierrate,jdbcType=DECIMAL}, #{createdby,jdbcType=VARCHAR}, 
+      #{createdon,jdbcType=TIMESTAMP}, #{lastmodifiedby,jdbcType=VARCHAR}, #{lastmodifiedon,jdbcType=TIMESTAMP}, 
+      #{rowversion,jdbcType=INTEGER}, #{description,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ceying.tools.entity.scyp.system.SupplierBusinessType">
+    insert into t_sys_supplierbusinesstype
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="urid != null">
+        urid,
+      </if>
+      <if test="organizationrelationid != null">
+        organizationrelationid,
+      </if>
+      <if test="businesstype != null">
+        businesstype,
+      </if>
+      <if test="issupport != null">
+        issupport,
+      </if>
+      <if test="corecompanysupplierrate != null">
+        corecompanysupplierrate,
+      </if>
+      <if test="createdby != null">
+        createdby,
+      </if>
+      <if test="createdon != null">
+        createdon,
+      </if>
+      <if test="lastmodifiedby != null">
+        lastmodifiedby,
+      </if>
+      <if test="lastmodifiedon != null">
+        lastmodifiedon,
+      </if>
+      <if test="rowversion != null">
+        rowversion,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="urid != null">
+        #{urid,jdbcType=VARCHAR},
+      </if>
+      <if test="organizationrelationid != null">
+        #{organizationrelationid,jdbcType=VARCHAR},
+      </if>
+      <if test="businesstype != null">
+        #{businesstype,jdbcType=VARCHAR},
+      </if>
+      <if test="issupport != null">
+        #{issupport,jdbcType=VARCHAR},
+      </if>
+      <if test="corecompanysupplierrate != null">
+        #{corecompanysupplierrate,jdbcType=DECIMAL},
+      </if>
+      <if test="createdby != null">
+        #{createdby,jdbcType=VARCHAR},
+      </if>
+      <if test="createdon != null">
+        #{createdon,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastmodifiedby != null">
+        #{lastmodifiedby,jdbcType=VARCHAR},
+      </if>
+      <if test="lastmodifiedon != null">
+        #{lastmodifiedon,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rowversion != null">
+        #{rowversion,jdbcType=INTEGER},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ceying.tools.entity.scyp.system.SupplierBusinessType">
+    update t_sys_supplierbusinesstype
+    <set>
+      <if test="organizationrelationid != null">
+        organizationrelationid = #{organizationrelationid,jdbcType=VARCHAR},
+      </if>
+      <if test="businesstype != null">
+        businesstype = #{businesstype,jdbcType=VARCHAR},
+      </if>
+      <if test="issupport != null">
+        issupport = #{issupport,jdbcType=VARCHAR},
+      </if>
+      <if test="corecompanysupplierrate != null">
+        corecompanysupplierrate = #{corecompanysupplierrate,jdbcType=DECIMAL},
+      </if>
+      <if test="createdby != null">
+        createdby = #{createdby,jdbcType=VARCHAR},
+      </if>
+      <if test="createdon != null">
+        createdon = #{createdon,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastmodifiedby != null">
+        lastmodifiedby = #{lastmodifiedby,jdbcType=VARCHAR},
+      </if>
+      <if test="lastmodifiedon != null">
+        lastmodifiedon = #{lastmodifiedon,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rowversion != null">
+        rowversion = #{rowversion,jdbcType=INTEGER},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where urid = #{urid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ceying.tools.entity.scyp.system.SupplierBusinessType">
+    update t_sys_supplierbusinesstype
+    set organizationrelationid = #{organizationrelationid,jdbcType=VARCHAR},
+      businesstype = #{businesstype,jdbcType=VARCHAR},
+      issupport = #{issupport,jdbcType=VARCHAR},
+      corecompanysupplierrate = #{corecompanysupplierrate,jdbcType=DECIMAL},
+      createdby = #{createdby,jdbcType=VARCHAR},
+      createdon = #{createdon,jdbcType=TIMESTAMP},
+      lastmodifiedby = #{lastmodifiedby,jdbcType=VARCHAR},
+      lastmodifiedon = #{lastmodifiedon,jdbcType=TIMESTAMP},
+      rowversion = #{rowversion,jdbcType=INTEGER},
+      description = #{description,jdbcType=VARCHAR}
+    where urid = #{urid,jdbcType=VARCHAR}
+  </update>
+</mapper>

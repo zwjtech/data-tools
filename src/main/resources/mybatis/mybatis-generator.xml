@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+    <!-- 引入配置文件 -->
+    <properties resource="mybatis/mybatis-generator.properties" />
+    <!--<classPathEntry location="${jdbc.driverLocation}"/>-->
+    <!-- 一个数据库一个context -->
+    <context id="MysqlTables" targetRuntime="MyBatis3" defaultModelType="flat">
+        <!-- defaultModelType="hierarchical" -->
+        <property name="javaFileEncoding" value="UTF-8" />
+        <property name="autoDelimitKeywords" value="true" />
+        <property name="beginningDelimiter" value="`" />
+        <property name="endingDelimiter" value="`" />
+
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin" />
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin" />
+
+
+        <!--<plugin type="org.mybatis.generator.plugins.MapperConfigPlugin">-->
+            <!--<property name="fileName" value="${generator.mapperConfigFilename}" />-->
+            <!--<property name="targetPackage" value="${generator.mapperPackage}" />-->
+            <!--<property name="targetProject"-->
+                      <!--value="${generator.resources}" />-->
+        <!--</plugin>-->
+        <!--<plugin type="org.mybatis.generator.plugins.RenameExampleClassPlugin">-->
+            <!--<property name="searchString" value="Example$" />-->
+            <!--<property name="replaceString" value="Criteria" />-->
+        <!--</plugin>-->
+
+        <!-- 注释 -->
+        <commentGenerator>
+            <property name="suppressAllComments" value="true" /><!-- 是否取消注释 -->
+            <property name="suppressDate" value="true" /> <!-- 是否生成注释代时间戳 -->
+        </commentGenerator>
+
+        <!-- jdbc连接 -->
+        <jdbcConnection driverClass="${jdbc.driverClassName}" connectionURL="${jdbc.url}" userId="${jdbc.username}" password="${jdbc.password}" />
+
+        <!-- 类型转换 -->
+        <javaTypeResolver>
+            <!-- 是否使用bigDecimal， false可自动转化以下类型（Long, Integer, Short, etc.） -->
+            <property name="forceBigDecimals" value="true" />
+        </javaTypeResolver>
+
+        <!-- 生成实体类地址 -->
+        <javaModelGenerator targetPackage="${generator.domainPackage}"
+                            targetProject="${generator.project}">
+            <!-- 是否在当前路径下新加一层schema,eg：fase路径com.oop.eksp.user.model， true:com.oop.eksp.user.model.[schemaName] -->
+            <property name="enableSubPackages" value="true" />
+            <!-- 是否针对string类型的字段在set的时候进行trim调用 -->
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+
+        <!-- 生成mapxml文件 -->
+        <sqlMapGenerator targetPackage="${generator.mapperPackage}"
+                         targetProject="${generator.resources}">
+            <!-- 是否在当前路径下新加一层schema,eg：fase路径com.oop.eksp.user.model， true:com.oop.eksp.user.model.[schemaName] -->
+            <property name="enableSubPackages" value="true" />
+        </sqlMapGenerator>
+
+        <!-- 生成mapxml对应client，也就是接口dao -->
+        <javaClientGenerator targetPackage="${generator.daoPackage}" targetProject="${generator.project}" type="XMLMAPPER">
+            <!-- 是否在当前路径下新加一层schema,eg：fase路径com.oop.eksp.user.model， true:com.oop.eksp.user.model.[schemaName] -->
+            <property name="enableSubPackages" value="true" />
+        </javaClientGenerator>
+
+        <!-- 配置表信息 -->
+        <!--<table schema="CYP" tableName="T_ACCOUNTSPAYABLE" domainObjectName="CypAccountsPayable" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false"> </table>-->
+        <!--<table schema="CYP" tableName="T_ACCOUNTSPAYABLEQUOTE" domainObjectName="CypAccountsPayableQuote" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false" > </table>-->
+        <!--<table schema="CYP" tableName="TSYS_USER_LOGIN" domainObjectName="CypUserLogin" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false" > </table>-->
+        <!--<table schema="CYP" tableName="TSYS_USER" domainObjectName="CypUser" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false" > </table>-->
+        <!--<table schema="CYP" tableName="TSYS_ROLE_USER" domainObjectName="CypRoleUser" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false" > </table>-->
+        <!--<table schema="CYP" tableName="T_KEYINITRECORD" domainObjectName="CypKeyInitRecord" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false" > </table>-->
+        <!--<table schema="CYP" tableName="T_KEYINVENTORY" domainObjectName="CypKeyInventory" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false" > </table>-->
+        <!--<table schema="CYP" tableName="T_KEYINVENTORYOPS" domainObjectName="CypKeyInventoryOps" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false" > </table>-->
+        <!--<table schema="CYP" tableName="T_KEYPURCHASEAPPLY" domainObjectName="CypKeyPurchaseApply" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false" > </table>-->
+        <!--<table schema="CYP" tableName="T_TRADEACCOUNTS" domainObjectName="CypTradeAccounts" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false" > </table>-->
+        <!--<table schema="CYP" tableName="T_TRADEBALANCES" domainObjectName="CypTradeBalances" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false" > </table>-->
+        <!--<table schema="CYP" tableName="T_TRADETRANSACTIONS" domainObjectName="CypTradeTransActions" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false" > </table>-->
+        <!--<table schema="CYP" tableName="T_TRIPARTITEAGREEMENT" domainObjectName="CypTripartiteAgreement" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false" > </table>-->
+        <!--<table schema="CYP" tableName="T_TRIPARTITEAGREEMENTTEMPLATE" domainObjectName="CypTripartiteAgreementTemplate" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false" > </table>-->
+        <!--<table schema="CYP" tableName="T_TAOPERATIONS" domainObjectName="CypTaoperations" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false" > </table>-->
+        <!--<table schema="CYP" tableName="T_SUPPLIERACCOUNTS" domainObjectName="CypSupplierAccounts" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false" > </table>-->
+        <!--<table schema="CYP" tableName="T_SUPPLIERBUSINESSTYPE" domainObjectName="CypSupplierBusinessType" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false" > </table>-->
+        <!--<table schema="CYP" tableName="T_GASACCOUNT" domainObjectName="CypGasAccount" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false" > </table>-->
+        <!--<table schema="CYP" tableName="T_GASTRANSACTIONS" domainObjectName="CypGasTransActions" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false" > </table>-->
+        <!--<table schema="CYP" tableName="T_CORECOMPANYQUOTA" domainObjectName="CypCoreCompanyQuota" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false" > </table>-->
+        <!--<table schema="CYP" tableName="T_CORECOMPANYQUOTAOPS" domainObjectName="CypCoreCompanyQuotaOps" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false" > </table>-->
+        <!--<table schema="CYP" tableName="TSYS_ORGANIZATION" domainObjectName="CypOrganization" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false" > </table>-->
+        <!--<table schema="CYP" tableName="T_ORGANIZATIONRELATION" domainObjectName="CypOrganizationRelation" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false" > </table>-->
+        <!--<table schema="CYP" tableName="t_bankindividuation" domainObjectName="CypBankIndividuation" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false" > </table>-->
+        <!--<table schema="CYP" tableName="t_corecompanyindividuation" domainObjectName="CypCorecompanyIndividuation" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false" > </table>-->
+        <!--<table schema="CYP" tableName="t_uniquecodes" domainObjectName="CypUniqueCodes" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false" > </table>-->
+        <!--<table schema="CYP" tableName="t_organizationcontacts" domainObjectName="CypOrganizationContacts" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false" > </table>-->
+        <!--<table schema="CYP" tableName="t_tatemplateoperations" domainObjectName="CypTaTemplateOperations" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false" > </table>-->
+        <!--<table schema="CYP" tableName="T_BLOCKCHAINNODEAPPLYOPS" domainObjectName="CypBlockChainNodeApplyOps" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false" > </table>-->
+        <!--<table schema="CYP" tableName="T_BLOCKCHAINNODEAPPLY" domainObjectName="CypBlockChainNodeApply" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false" > </table>-->
+        <!--<table schema="CYP" tableName="T_OPENINVOICEAPPLY" domainObjectName="CypOpenInvoiceApply" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false" > </table>-->
+        <!--<table schema="CYP" tableName="T_OPENINVOICEINFO" domainObjectName="CypOpenInvoiceInfo" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false" > </table>-->
+        <!--<table schema="CYP" tableName="T_OPENINVOICEQUOTA" domainObjectName="CypOpenInvoiceQuota" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false" > </table>-->
+        <!--<table schema="CYP" tableName="t_customertemplate" domainObjectName="CypCustomerTemplate" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false" > </table>-->
+        <!--<table schema="CYP" tableName="TBLOBSTORAGE" domainObjectName="CypBlobStorage" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false" > </table>-->
+        <!--<table schema="CYP" tableName="TSYS_LOG" domainObjectName="CypLog" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false" > </table>-->
+
+
+        <!--<table tableName="t_biz_accountspayable" domainObjectName="AccountsPayable" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false" > </table>-->
+        <!--<table tableName="t_biz_accountspayablequote" domainObjectName="AccountsPayableQuote" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false" > </table>-->
+        <!--<table tableName="t_biz_tradeaccounts" domainObjectName="TradeAccounts" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false" > </table>-->
+        <!--<table tableName="t_biz_tradebalances" domainObjectName="TradeBalances" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false" > </table>-->
+        <!--<table tableName="t_biz_tradetransactions" domainObjectName="TradeTransActions" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false" > </table>-->
+        <!--<table tableName="t_biz_tripartiteagreement" domainObjectName="TripartiteAgreement" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false" > </table>-->
+        <!--<table tableName="t_biz_tripartiteagreementtemplate" domainObjectName="TripartiteAgreementTemplate" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false" > </table>-->
+        <!--<table tableName="t_biz_taoperations" domainObjectName="Taoperations" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false" > </table>-->
+        <!--<table tableName="t_biz_supplieraccounts" domainObjectName="SupplierAccounts" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false" > </table>-->
+        <!--<table tableName="t_biz_corecompanyquota" domainObjectName="CoreCompanyQuota" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false" > </table>-->
+        <!--<table tableName="t_biz_corecompanyquotaops" domainObjectName="CoreCompanyQuotaOps" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false" > </table>-->
+        <!--<table tableName="t_biz_uniquecodes" domainObjectName="UniqueCodes" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false" > </table>-->
+        <!--<table schema="CYP" tableName="t_biz_customertemplate" domainObjectName="CustomerTemplate" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false" > </table>-->
+
+        <!--<table tableName="t_sys_user_login" domainObjectName="UserLogin" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+    <!--enableSelectByExample="false" selectByExampleQueryId="false" > </table>-->
+        <!--<table tableName="t_sys_user" domainObjectName="User" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+    <!--enableSelectByExample="false" selectByExampleQueryId="false" > </table>-->
+        <!--<table tableName="t_sys_role_user" domainObjectName="RoleUser" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+    <!--enableSelectByExample="false" selectByExampleQueryId="false" > </table>-->
+        <!--<table tableName="t_sys_organization" domainObjectName="Organization" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+    <!--enableSelectByExample="false" selectByExampleQueryId="false" > </table>-->
+        <!--<table tableName="t_sys_organizationrelation" domainObjectName="OrganizationRelation" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+    <!--enableSelectByExample="false" selectByExampleQueryId="false" > </table>-->
+        <!--<table tableName="t_sys_supplierbusinesstype" domainObjectName="SupplierBusinessType" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+    <!--enableSelectByExample="false" selectByExampleQueryId="false" > </table>-->
+        <!--<table tableName="t_sys_organizationcontacts" domainObjectName="OrganizationContacts" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false" > </table>-->
+        <!--<table tableName="t_sys_blobstorage" domainObjectName="BlobStorage" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false" > </table>-->
+        <!--<table tableName="t_sys_log" domainObjectName="SysLog" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false" > </table>-->
+
+        <!--<table tableName="t_add_gasaccount" domainObjectName="GasAccount" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+    <!--enableSelectByExample="false" selectByExampleQueryId="false" > </table>-->
+        <!--<table tableName="t_add_gastransactions" domainObjectName="GasTransActions" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+    <!--enableSelectByExample="false" selectByExampleQueryId="false" > </table>-->
+        <!--<table tableName="t_add_blockchainnodeapplyops" domainObjectName="BlockChainNodeApplyOps" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false" > </table>-->
+        <!--<table tableName="t_add_blockchainnodeapply" domainObjectName="BlockChainNodeApply" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false" > </table>-->
+        <!--<table tableName="t_add_openinvoiceapply" domainObjectName="OpenInvoiceApply" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false" > </table>-->
+        <!--<table tableName="t_add_openinvoiceinfo" domainObjectName="OpenInvoiceInfo" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false" > </table>-->
+        <!--<table tableName="t_add_openinvoicequota" domainObjectName="OpenInvoiceQuota" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false" > </table>-->
+
+        <!--<table tableName="t_key_keyinitrecord" domainObjectName="KeyInitRecord" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+    <!--enableSelectByExample="false" selectByExampleQueryId="false" > </table>-->
+        <!--<table tableName="t_key_keyinventory" domainObjectName="KeyInventory" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+    <!--enableSelectByExample="false" selectByExampleQueryId="false" > </table>-->
+        <!--<table tableName="t_key_keyinventoryops" domainObjectName="KeyInventoryOps" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"-->
+    <!--enableSelectByExample="false" selectByExampleQueryId="false" > </table>-->
+        <table tableName="t_key_keypurchaseapply" domainObjectName="KeyPurchaseApply" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+    enableSelectByExample="false" selectByExampleQueryId="false" > </table>
+    </context>
+</generatorConfiguration>
+

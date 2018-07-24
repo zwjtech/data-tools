@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ceying.tools.dao.scyp.system.RoleUserMapper">
+  <resultMap id="BaseResultMap" type="com.ceying.tools.entity.scyp.system.RoleUser">
+    <id column="user_code" jdbcType="VARCHAR" property="userCode" />
+    <id column="role_code" jdbcType="VARCHAR" property="roleCode" />
+    <id column="right_flag" jdbcType="VARCHAR" property="rightFlag" />
+    <result column="tenant_id" jdbcType="VARCHAR" property="tenantId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    user_code, role_code, right_flag, tenant_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_sys_role_user
+    where user_code = #{userCode,jdbcType=VARCHAR}
+      and role_code = #{roleCode,jdbcType=VARCHAR}
+      and right_flag = #{rightFlag,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    delete from t_sys_role_user
+    where user_code = #{userCode,jdbcType=VARCHAR}
+      and role_code = #{roleCode,jdbcType=VARCHAR}
+      and right_flag = #{rightFlag,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ceying.tools.entity.scyp.system.RoleUser">
+    insert into t_sys_role_user (user_code, role_code, right_flag, 
+      tenant_id)
+    values (#{userCode,jdbcType=VARCHAR}, #{roleCode,jdbcType=VARCHAR}, #{rightFlag,jdbcType=VARCHAR}, 
+      #{tenantId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ceying.tools.entity.scyp.system.RoleUser">
+    insert into t_sys_role_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userCode != null">
+        user_code,
+      </if>
+      <if test="roleCode != null">
+        role_code,
+      </if>
+      <if test="rightFlag != null">
+        right_flag,
+      </if>
+      <if test="tenantId != null">
+        tenant_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userCode != null">
+        #{userCode,jdbcType=VARCHAR},
+      </if>
+      <if test="roleCode != null">
+        #{roleCode,jdbcType=VARCHAR},
+      </if>
+      <if test="rightFlag != null">
+        #{rightFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="tenantId != null">
+        #{tenantId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ceying.tools.entity.scyp.system.RoleUser">
+    update t_sys_role_user
+    <set>
+      <if test="tenantId != null">
+        tenant_id = #{tenantId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where user_code = #{userCode,jdbcType=VARCHAR}
+      and role_code = #{roleCode,jdbcType=VARCHAR}
+      and right_flag = #{rightFlag,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ceying.tools.entity.scyp.system.RoleUser">
+    update t_sys_role_user
+    set tenant_id = #{tenantId,jdbcType=VARCHAR}
+    where user_code = #{userCode,jdbcType=VARCHAR}
+      and role_code = #{roleCode,jdbcType=VARCHAR}
+      and right_flag = #{rightFlag,jdbcType=VARCHAR}
+  </update>
+</mapper>

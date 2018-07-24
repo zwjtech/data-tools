@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ceying.tools.dao.scyp.biz.CoreCompanyQuotaMapper">
+  <resultMap id="BaseResultMap" type="com.ceying.tools.entity.scyp.biz.CoreCompanyQuota">
+    <id column="urid" jdbcType="VARCHAR" property="urid" />
+    <result column="corecompanyid" jdbcType="VARCHAR" property="corecompanyid" />
+    <result column="amountlimits" jdbcType="DECIMAL" property="amountlimits" />
+    <result column="freezeamount" jdbcType="DECIMAL" property="freezeamount" />
+    <result column="availableamount" jdbcType="DECIMAL" property="availableamount" />
+    <result column="createdby" jdbcType="VARCHAR" property="createdby" />
+    <result column="createdon" jdbcType="TIMESTAMP" property="createdon" />
+    <result column="lastmodifiedby" jdbcType="VARCHAR" property="lastmodifiedby" />
+    <result column="lastmodifiedon" jdbcType="TIMESTAMP" property="lastmodifiedon" />
+    <result column="rowversion" jdbcType="INTEGER" property="rowversion" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    urid, corecompanyid, amountlimits, freezeamount, availableamount, createdby, createdon, 
+    lastmodifiedby, lastmodifiedon, rowversion, description
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_biz_corecompanyquota
+    where urid = #{urid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from t_biz_corecompanyquota
+    where urid = #{urid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ceying.tools.entity.scyp.biz.CoreCompanyQuota">
+    insert into t_biz_corecompanyquota (urid, corecompanyid, amountlimits, 
+      freezeamount, availableamount, createdby, 
+      createdon, lastmodifiedby, lastmodifiedon, 
+      rowversion, description)
+    values (#{urid,jdbcType=VARCHAR}, #{corecompanyid,jdbcType=VARCHAR}, #{amountlimits,jdbcType=DECIMAL}, 
+      #{freezeamount,jdbcType=DECIMAL}, #{availableamount,jdbcType=DECIMAL}, #{createdby,jdbcType=VARCHAR}, 
+      #{createdon,jdbcType=TIMESTAMP}, #{lastmodifiedby,jdbcType=VARCHAR}, #{lastmodifiedon,jdbcType=TIMESTAMP}, 
+      #{rowversion,jdbcType=INTEGER}, #{description,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ceying.tools.entity.scyp.biz.CoreCompanyQuota">
+    insert into t_biz_corecompanyquota
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="urid != null">
+        urid,
+      </if>
+      <if test="corecompanyid != null">
+        corecompanyid,
+      </if>
+      <if test="amountlimits != null">
+        amountlimits,
+      </if>
+      <if test="freezeamount != null">
+        freezeamount,
+      </if>
+      <if test="availableamount != null">
+        availableamount,
+      </if>
+      <if test="createdby != null">
+        createdby,
+      </if>
+      <if test="createdon != null">
+        createdon,
+      </if>
+      <if test="lastmodifiedby != null">
+        lastmodifiedby,
+      </if>
+      <if test="lastmodifiedon != null">
+        lastmodifiedon,
+      </if>
+      <if test="rowversion != null">
+        rowversion,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="urid != null">
+        #{urid,jdbcType=VARCHAR},
+      </if>
+      <if test="corecompanyid != null">
+        #{corecompanyid,jdbcType=VARCHAR},
+      </if>
+      <if test="amountlimits != null">
+        #{amountlimits,jdbcType=DECIMAL},
+      </if>
+      <if test="freezeamount != null">
+        #{freezeamount,jdbcType=DECIMAL},
+      </if>
+      <if test="availableamount != null">
+        #{availableamount,jdbcType=DECIMAL},
+      </if>
+      <if test="createdby != null">
+        #{createdby,jdbcType=VARCHAR},
+      </if>
+      <if test="createdon != null">
+        #{createdon,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastmodifiedby != null">
+        #{lastmodifiedby,jdbcType=VARCHAR},
+      </if>
+      <if test="lastmodifiedon != null">
+        #{lastmodifiedon,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rowversion != null">
+        #{rowversion,jdbcType=INTEGER},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ceying.tools.entity.scyp.biz.CoreCompanyQuota">
+    update t_biz_corecompanyquota
+    <set>
+      <if test="corecompanyid != null">
+        corecompanyid = #{corecompanyid,jdbcType=VARCHAR},
+      </if>
+      <if test="amountlimits != null">
+        amountlimits = #{amountlimits,jdbcType=DECIMAL},
+      </if>
+      <if test="freezeamount != null">
+        freezeamount = #{freezeamount,jdbcType=DECIMAL},
+      </if>
+      <if test="availableamount != null">
+        availableamount = #{availableamount,jdbcType=DECIMAL},
+      </if>
+      <if test="createdby != null">
+        createdby = #{createdby,jdbcType=VARCHAR},
+      </if>
+      <if test="createdon != null">
+        createdon = #{createdon,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastmodifiedby != null">
+        lastmodifiedby = #{lastmodifiedby,jdbcType=VARCHAR},
+      </if>
+      <if test="lastmodifiedon != null">
+        lastmodifiedon = #{lastmodifiedon,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rowversion != null">
+        rowversion = #{rowversion,jdbcType=INTEGER},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where urid = #{urid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ceying.tools.entity.scyp.biz.CoreCompanyQuota">
+    update t_biz_corecompanyquota
+    set corecompanyid = #{corecompanyid,jdbcType=VARCHAR},
+      amountlimits = #{amountlimits,jdbcType=DECIMAL},
+      freezeamount = #{freezeamount,jdbcType=DECIMAL},
+      availableamount = #{availableamount,jdbcType=DECIMAL},
+      createdby = #{createdby,jdbcType=VARCHAR},
+      createdon = #{createdon,jdbcType=TIMESTAMP},
+      lastmodifiedby = #{lastmodifiedby,jdbcType=VARCHAR},
+      lastmodifiedon = #{lastmodifiedon,jdbcType=TIMESTAMP},
+      rowversion = #{rowversion,jdbcType=INTEGER},
+      description = #{description,jdbcType=VARCHAR}
+    where urid = #{urid,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,59 @@
+server:
+  port: 8086
+
+# 默认的profile为dev，其他环境通过指定启动参数使用不同的profile，比如：
+#   测试环境：java -jar xxx.jar --spring.profiles.active=test
+#   生产环境：java -jar xxx.jar --spring.profiles.active=prod
+spring:
+  application:
+      name: scyp-tools
+
+#flyway数据库脚本同步工具配置
+#flyway:
+#  locations:
+#    classpath:
+  datasource:
+    cyp:
+      driverClassName: oracle.jdbc.driver.OracleDriver
+      url: jdbc:oracle:thin:@192.168.6.245:1521:orcl
+      username: cyp
+      password: cyp
+    system:
+      driverClassName: com.mysql.jdbc.Driver
+      url: jdbc:mysql://192.168.6.253:3306/scyp-system?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+      username: root
+      password: manage
+    tools:
+      driverClassName: com.mysql.jdbc.Driver
+      url: jdbc:mysql://192.168.6.253:3306/scyp-tools?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+      username: root
+      password: manage
+    biz:
+      driverClassName: com.mysql.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/scyp-biz?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+      username: root
+      password: yuanwei6622
+    key:
+      driverClassName: com.mysql.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/scyp-key?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+      username: root
+      password: yuanwei6622
+    addition:
+      driverClassName: com.mysql.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/scyp-addition?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+      username: root
+      password: yuanwei6622
+mybatis:
+  mapperLocations: classpath:mapper/*.xml
+  typeAliasesPackage: com.ceying.tools.entity
+  ##配置logback日志
+logging:
+  config: classpath:mybatis/logback-spring.xml
+  level:
+    com.ceying.tools: debug
+
+svn:
+  user: wei.yuan
+  password: Cy.yw1121
+  rootDirectory: http://192.168.6.24/svn/CY/trunk
+  databaseDirectory: /trunk/scyp/database/

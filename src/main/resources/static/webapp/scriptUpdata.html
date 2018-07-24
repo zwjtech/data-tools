@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>脚本升级</title>
+    <link rel="stylesheet" href="css/scriptUpdate.css">
+    <script src="js/jquery-2.1.1.min.js"></script>
+    <script src="js/scriptUpdate.js"></script>
+</head>
+<body>
+<header>
+    <div class="title">脚本升级</div>
+</header>
+<main>
+    <button class="btn serverListBtn" onclick="$('.servers').show();">服务器列表</button>
+    <form class="script">
+        <div class="titleU">脚本</div>
+        <div class="valueWrap">
+            <label for="projects">选择项目</label>
+            <select id="projects" class="value">
+                <option value="0">策赢平台</option>
+                <option value="1">策赢平台1</option>
+                <option value="2">策赢平台2</option>
+            </select>
+        </div>
+        <!--<div class="valueWrap">-->
+            <!--<label for="versionNumber">版本号</label>-->
+            <!--<input type="text" id="versionNumber" class="value">-->
+        <!--</div>-->
+        <!--<div class="valueWrap">-->
+            <!--<label for="promulgator">发布人</label>-->
+            <!--<input type="text" id="promulgator" class="value">-->
+        <!--</div>-->
+        <!--<div class="valueWrap">-->
+            <!--<label for="releaseDate">发布人</label>-->
+            <!--<input type="date" id="releaseDate" class="value">-->
+        <!--</div>-->
+        <!--<div class="valueWrap">-->
+            <!--<label for="mainVersion">主线版本</label>-->
+            <!--<input type="text" id="mainVersion" class="value">-->
+        <!--</div>-->
+        <!--<div class="valueWrap">-->
+            <!--<label for="packeType">更新包类型</label>-->
+            <!--<select id="packeType" class="value">-->
+                <!--<option value="0">java</option>-->
+                <!--<option value="1">js</option>-->
+                <!--<option value="2">html</option>-->
+            <!--</select>-->
+        <!--</div>-->
+        <!--<div class="valueWrap">-->
+            <!--<label for="jiraCode">JIRA编号</label>-->
+            <!--<input type="text" id="jiraCode" class="value">-->
+        <!--</div>-->
+        <div class="valueWrap">
+            <label for="startVersion">起始版本</label>
+            <input type="text" id="startVersion" class="value">
+        </div>
+        <div class="valueWrap">
+            <label for="endVersion">结束版本</label>
+            <input type="text" id="endVersion" class="value">
+        </div>
+        <br>
+        <hr>
+        <br>
+        <input class="btn" type="button" id="execute" value="提交"/>
+    </form>
+    <!--<div class="servers">-->
+        <!--<div class="titleU">服务器列表</div>-->
+        <!--<div class="serverList scrollbar">-->
+            <!--<div class="server">-->
+                <!--<p><span>服务器名:</span><span class="serverName">123</span><span><input type="text" class="serverNameHide hideInput"></span></p>-->
+                <!--<p><span>url:</span><span class="url">http://localhost:63342/SAAS%E5%89%8D%E7%AB%AF%E9%87%8D%E6%9E%84/scriptUpdate/scriptUpdata.html?_ijt=vlkiui4rkh7eg9aesskqv1ci96</span><span><input type="text" class="urlHide hideInput"></span></p>-->
+                <!--<p><span>username:</span><span class="username">root</span><span><input type="text" class="usernameHide hideInput"></span></p>-->
+                <!--<p><span>password:</span><span class="password">manage</span><span><input type="text" class="passwordHide hideInput"></span></p>-->
+                <!--<button class="btn serverSet">编辑</button>-->
+                <!--<button class="btn serverDel" onclick="$(this).parent().remove()">删除</button>-->
+            <!--</div>-->
+            <!--<div class="server">-->
+                <!--<p><span>服务器名:</span><span class="serverName">123</span><span><input type="text" class="serverNameHide hideInput"></span></p>-->
+                <!--<p><span>url:</span><span class="url">http://localhost:63342/SAAS%E5%89%8D%E7%AB%AF%E9%87%8D%E6%9E%84/scriptUpdate/scriptUpdata.html?_ijt=vlkiui4rkh7eg9aesskqv1ci96</span><span><input type="text" class="urlHide hideInput"></span></p>-->
+                <!--<p><span>username:</span><span class="username">root</span><span><input type="text" class="usernameHide hideInput"></span></p>-->
+                <!--<p><span>password:</span><span class="password">manage</span><span><input type="text" class="passwordHide hideInput"></span></p>-->
+                <!--<button class="btn serverSet">编辑</button>-->
+                <!--<button class="btn serverDel" onclick="$(this).parent().remove()">删除</button>-->
+            <!--</div>-->
+            <!--<div class="server">-->
+                <!--<p><span>服务器名:</span><span class="serverName">123</span><span><input type="text" class="serverNameHide hideInput"></span></p>-->
+                <!--<p><span>url:</span><span class="url">http://localhost:63342/SAAS%E5%89%8D%E7%AB%AF%E9%87%8D%E6%9E%84/scriptUpdate/scriptUpdata.html?_ijt=vlkiui4rkh7eg9aesskqv1ci96</span><span><input type="text" class="urlHide hideInput"></span></p>-->
+                <!--<p><span>username:</span><span class="username">root</span><span><input type="text" class="usernameHide hideInput"></span></p>-->
+                <!--<p><span>password:</span><span class="password">manage</span><span><input type="text" class="passwordHide hideInput"></span></p>-->
+                <!--<button class="btn serverSet">编辑</button>-->
+                <!--<button class="btn serverDel" onclick="$(this).parent().remove()">删除</button>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<button class="btn moreSever">添加服务器信息</button>-->
+        <!--<button class="btn saveClose" onclick="$('.servers').hide();">保存并关闭</button>-->
+        <!--<div class="scroll"></div>-->
+    <!--</div>-->
+    <div class="console">
+        <div class="titleU">控制台</div>
+        <div class="scrollbar">
+            <div class="consoleMsg">
+            </div>
+            <div class="scroll"></div>
+        </div>
+    </div>
+</main>
+</body>
+</html>

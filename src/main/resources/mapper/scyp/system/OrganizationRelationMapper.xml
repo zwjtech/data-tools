@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ceying.tools.dao.scyp.system.OrganizationRelationMapper">
+  <resultMap id="BaseResultMap" type="com.ceying.tools.entity.scyp.system.OrganizationRelation">
+    <id column="urid" jdbcType="VARCHAR" property="urid" />
+    <result column="ourorgid" jdbcType="VARCHAR" property="ourorgid" />
+    <result column="opporgid" jdbcType="VARCHAR" property="opporgid" />
+    <result column="priority" jdbcType="VARCHAR" property="priority" />
+    <result column="category" jdbcType="VARCHAR" property="category" />
+    <result column="corecompanysupplierrate" jdbcType="DECIMAL" property="corecompanysupplierrate" />
+    <result column="createdby" jdbcType="VARCHAR" property="createdby" />
+    <result column="createdon" jdbcType="TIMESTAMP" property="createdon" />
+    <result column="lastmodifiedby" jdbcType="VARCHAR" property="lastmodifiedby" />
+    <result column="lastmodifiedon" jdbcType="TIMESTAMP" property="lastmodifiedon" />
+    <result column="rowversion" jdbcType="INTEGER" property="rowversion" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="isblack" jdbcType="VARCHAR" property="isblack" />
+    <result column="extensiondate" jdbcType="DECIMAL" property="extensiondate" />
+    <result column="organizationrelationid" jdbcType="VARCHAR" property="organizationrelationid" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    urid, ourorgid, opporgid, priority, category, corecompanysupplierrate, createdby, 
+    createdon, lastmodifiedby, lastmodifiedon, rowversion, description, isblack, extensiondate, 
+    organizationrelationid
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_sys_organizationrelation
+    where urid = #{urid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from t_sys_organizationrelation
+    where urid = #{urid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ceying.tools.entity.scyp.system.OrganizationRelation">
+    insert into t_sys_organizationrelation (urid, ourorgid, opporgid, 
+      priority, category, corecompanysupplierrate, 
+      createdby, createdon, lastmodifiedby, 
+      lastmodifiedon, rowversion, description, 
+      isblack, extensiondate, organizationrelationid
+      )
+    values (#{urid,jdbcType=VARCHAR}, #{ourorgid,jdbcType=VARCHAR}, #{opporgid,jdbcType=VARCHAR}, 
+      #{priority,jdbcType=VARCHAR}, #{category,jdbcType=VARCHAR}, #{corecompanysupplierrate,jdbcType=DECIMAL}, 
+      #{createdby,jdbcType=VARCHAR}, #{createdon,jdbcType=TIMESTAMP}, #{lastmodifiedby,jdbcType=VARCHAR}, 
+      #{lastmodifiedon,jdbcType=TIMESTAMP}, #{rowversion,jdbcType=INTEGER}, #{description,jdbcType=VARCHAR}, 
+      #{isblack,jdbcType=VARCHAR}, #{extensiondate,jdbcType=DECIMAL}, #{organizationrelationid,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ceying.tools.entity.scyp.system.OrganizationRelation">
+    insert into t_sys_organizationrelation
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="urid != null">
+        urid,
+      </if>
+      <if test="ourorgid != null">
+        ourorgid,
+      </if>
+      <if test="opporgid != null">
+        opporgid,
+      </if>
+      <if test="priority != null">
+        priority,
+      </if>
+      <if test="category != null">
+        category,
+      </if>
+      <if test="corecompanysupplierrate != null">
+        corecompanysupplierrate,
+      </if>
+      <if test="createdby != null">
+        createdby,
+      </if>
+      <if test="createdon != null">
+        createdon,
+      </if>
+      <if test="lastmodifiedby != null">
+        lastmodifiedby,
+      </if>
+      <if test="lastmodifiedon != null">
+        lastmodifiedon,
+      </if>
+      <if test="rowversion != null">
+        rowversion,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="isblack != null">
+        isblack,
+      </if>
+      <if test="extensiondate != null">
+        extensiondate,
+      </if>
+      <if test="organizationrelationid != null">
+        organizationrelationid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="urid != null">
+        #{urid,jdbcType=VARCHAR},
+      </if>
+      <if test="ourorgid != null">
+        #{ourorgid,jdbcType=VARCHAR},
+      </if>
+      <if test="opporgid != null">
+        #{opporgid,jdbcType=VARCHAR},
+      </if>
+      <if test="priority != null">
+        #{priority,jdbcType=VARCHAR},
+      </if>
+      <if test="category != null">
+        #{category,jdbcType=VARCHAR},
+      </if>
+      <if test="corecompanysupplierrate != null">
+        #{corecompanysupplierrate,jdbcType=DECIMAL},
+      </if>
+      <if test="createdby != null">
+        #{createdby,jdbcType=VARCHAR},
+      </if>
+      <if test="createdon != null">
+        #{createdon,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastmodifiedby != null">
+        #{lastmodifiedby,jdbcType=VARCHAR},
+      </if>
+      <if test="lastmodifiedon != null">
+        #{lastmodifiedon,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rowversion != null">
+        #{rowversion,jdbcType=INTEGER},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="isblack != null">
+        #{isblack,jdbcType=VARCHAR},
+      </if>
+      <if test="extensiondate != null">
+        #{extensiondate,jdbcType=DECIMAL},
+      </if>
+      <if test="organizationrelationid != null">
+        #{organizationrelationid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ceying.tools.entity.scyp.system.OrganizationRelation">
+    update t_sys_organizationrelation
+    <set>
+      <if test="ourorgid != null">
+        ourorgid = #{ourorgid,jdbcType=VARCHAR},
+      </if>
+      <if test="opporgid != null">
+        opporgid = #{opporgid,jdbcType=VARCHAR},
+      </if>
+      <if test="priority != null">
+        priority = #{priority,jdbcType=VARCHAR},
+      </if>
+      <if test="category != null">
+        category = #{category,jdbcType=VARCHAR},
+      </if>
+      <if test="corecompanysupplierrate != null">
+        corecompanysupplierrate = #{corecompanysupplierrate,jdbcType=DECIMAL},
+      </if>
+      <if test="createdby != null">
+        createdby = #{createdby,jdbcType=VARCHAR},
+      </if>
+      <if test="createdon != null">
+        createdon = #{createdon,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastmodifiedby != null">
+        lastmodifiedby = #{lastmodifiedby,jdbcType=VARCHAR},
+      </if>
+      <if test="lastmodifiedon != null">
+        lastmodifiedon = #{lastmodifiedon,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rowversion != null">
+        rowversion = #{rowversion,jdbcType=INTEGER},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="isblack != null">
+        isblack = #{isblack,jdbcType=VARCHAR},
+      </if>
+      <if test="extensiondate != null">
+        extensiondate = #{extensiondate,jdbcType=DECIMAL},
+      </if>
+      <if test="organizationrelationid != null">
+        organizationrelationid = #{organizationrelationid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where urid = #{urid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ceying.tools.entity.scyp.system.OrganizationRelation">
+    update t_sys_organizationrelation
+    set ourorgid = #{ourorgid,jdbcType=VARCHAR},
+      opporgid = #{opporgid,jdbcType=VARCHAR},
+      priority = #{priority,jdbcType=VARCHAR},
+      category = #{category,jdbcType=VARCHAR},
+      corecompanysupplierrate = #{corecompanysupplierrate,jdbcType=DECIMAL},
+      createdby = #{createdby,jdbcType=VARCHAR},
+      createdon = #{createdon,jdbcType=TIMESTAMP},
+      lastmodifiedby = #{lastmodifiedby,jdbcType=VARCHAR},
+      lastmodifiedon = #{lastmodifiedon,jdbcType=TIMESTAMP},
+      rowversion = #{rowversion,jdbcType=INTEGER},
+      description = #{description,jdbcType=VARCHAR},
+      isblack = #{isblack,jdbcType=VARCHAR},
+      extensiondate = #{extensiondate,jdbcType=DECIMAL},
+      organizationrelationid = #{organizationrelationid,jdbcType=VARCHAR}
+    where urid = #{urid,jdbcType=VARCHAR}
+  </update>
+</mapper>

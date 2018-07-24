@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ceying.tools.dao.scyp.system.BlobStorageMapper">
+  <resultMap id="BaseResultMap" type="com.ceying.tools.entity.scyp.system.BlobStorage">
+    <result column="l_storageid" jdbcType="VARCHAR" property="lStorageid" />
+    <result column="c_catalog" jdbcType="VARCHAR" property="cCatalog" />
+    <result column="c_subkeyid" jdbcType="VARCHAR" property="cSubkeyid" />
+    <result column="c_filename" jdbcType="VARCHAR" property="cFilename" />
+    <result column="l_filesize" jdbcType="BIGINT" property="lFilesize" />
+    <result column="c_creator" jdbcType="VARCHAR" property="cCreator" />
+    <result column="d_createdate" jdbcType="TIMESTAMP" property="dCreatedate" />
+    <result column="c_securitylevel" jdbcType="VARCHAR" property="cSecuritylevel" />
+    <result column="c_isuse" jdbcType="VARCHAR" property="cIsuse" />
+    <result column="c_type" jdbcType="VARCHAR" property="cType" />
+    <result column="c_memo" jdbcType="VARCHAR" property="cMemo" />
+    <result column="c_fileid" jdbcType="VARCHAR" property="cFileid" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ceying.tools.entity.scyp.system.BlobStorage">
+    <result column="b_accessory" jdbcType="LONGVARBINARY" property="bAccessory" />
+  </resultMap>
+  <sql id="Blob_Column_List">
+    b_accessory
+  </sql>
+  <insert id="insert" parameterType="com.ceying.tools.entity.scyp.system.BlobStorage">
+    insert into t_sys_blobstorage (l_storageid, c_catalog, c_subkeyid, 
+      c_filename, l_filesize, c_creator, 
+      d_createdate, c_securitylevel, c_isuse, 
+      c_type, c_memo, c_fileid, 
+      b_accessory)
+    values (#{lStorageid,jdbcType=VARCHAR}, #{cCatalog,jdbcType=VARCHAR}, #{cSubkeyid,jdbcType=VARCHAR}, 
+      #{cFilename,jdbcType=VARCHAR}, #{lFilesize,jdbcType=BIGINT}, #{cCreator,jdbcType=VARCHAR}, 
+      #{dCreatedate,jdbcType=TIMESTAMP}, #{cSecuritylevel,jdbcType=VARCHAR}, #{cIsuse,jdbcType=VARCHAR}, 
+      #{cType,jdbcType=VARCHAR}, #{cMemo,jdbcType=VARCHAR}, #{cFileid,jdbcType=VARCHAR}, 
+      #{bAccessory,jdbcType=LONGVARBINARY})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ceying.tools.entity.scyp.system.BlobStorage">
+    insert into t_sys_blobstorage
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="lStorageid != null">
+        l_storageid,
+      </if>
+      <if test="cCatalog != null">
+        c_catalog,
+      </if>
+      <if test="cSubkeyid != null">
+        c_subkeyid,
+      </if>
+      <if test="cFilename != null">
+        c_filename,
+      </if>
+      <if test="lFilesize != null">
+        l_filesize,
+      </if>
+      <if test="cCreator != null">
+        c_creator,
+      </if>
+      <if test="dCreatedate != null">
+        d_createdate,
+      </if>
+      <if test="cSecuritylevel != null">
+        c_securitylevel,
+      </if>
+      <if test="cIsuse != null">
+        c_isuse,
+      </if>
+      <if test="cType != null">
+        c_type,
+      </if>
+      <if test="cMemo != null">
+        c_memo,
+      </if>
+      <if test="cFileid != null">
+        c_fileid,
+      </if>
+      <if test="bAccessory != null">
+        b_accessory,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="lStorageid != null">
+        #{lStorageid,jdbcType=VARCHAR},
+      </if>
+      <if test="cCatalog != null">
+        #{cCatalog,jdbcType=VARCHAR},
+      </if>
+      <if test="cSubkeyid != null">
+        #{cSubkeyid,jdbcType=VARCHAR},
+      </if>
+      <if test="cFilename != null">
+        #{cFilename,jdbcType=VARCHAR},
+      </if>
+      <if test="lFilesize != null">
+        #{lFilesize,jdbcType=BIGINT},
+      </if>
+      <if test="cCreator != null">
+        #{cCreator,jdbcType=VARCHAR},
+      </if>
+      <if test="dCreatedate != null">
+        #{dCreatedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cSecuritylevel != null">
+        #{cSecuritylevel,jdbcType=VARCHAR},
+      </if>
+      <if test="cIsuse != null">
+        #{cIsuse,jdbcType=VARCHAR},
+      </if>
+      <if test="cType != null">
+        #{cType,jdbcType=VARCHAR},
+      </if>
+      <if test="cMemo != null">
+        #{cMemo,jdbcType=VARCHAR},
+      </if>
+      <if test="cFileid != null">
+        #{cFileid,jdbcType=VARCHAR},
+      </if>
+      <if test="bAccessory != null">
+        #{bAccessory,jdbcType=LONGVARBINARY},
+      </if>
+    </trim>
+  </insert>
+</mapper>

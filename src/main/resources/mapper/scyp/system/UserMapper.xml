@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ceying.tools.dao.scyp.system.UserMapper">
+  <resultMap id="BaseResultMap" type="com.ceying.tools.entity.scyp.system.User">
+    <id column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="user_pwd" jdbcType="VARCHAR" property="userPwd" />
+    <result column="org_id" jdbcType="VARCHAR" property="orgId" />
+    <result column="user_type" jdbcType="VARCHAR" property="userType" />
+    <result column="user_status" jdbcType="VARCHAR" property="userStatus" />
+    <result column="lock_status" jdbcType="VARCHAR" property="lockStatus" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="modify_date" jdbcType="TIMESTAMP" property="modifyDate" />
+    <result column="pass_modify_date" jdbcType="TIMESTAMP" property="passModifyDate" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="ext_flag" jdbcType="VARCHAR" property="extFlag" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="ext_field_1" jdbcType="VARCHAR" property="extField_1" />
+    <result column="ext_field_2" jdbcType="VARCHAR" property="extField_2" />
+    <result column="ext_field_3" jdbcType="VARCHAR" property="extField_3" />
+    <result column="ext_field_4" jdbcType="VARCHAR" property="extField_4" />
+    <result column="ext_field_5" jdbcType="VARCHAR" property="extField_5" />
+    <result column="user_order" jdbcType="INTEGER" property="userOrder" />
+    <result column="c_identitytype" jdbcType="CHAR" property="cIdentitytype" />
+    <result column="c_identityno" jdbcType="VARCHAR" property="cIdentityno" />
+    <result column="c_credentials" jdbcType="VARCHAR" property="cCredentials" />
+    <result column="tenant_id" jdbcType="VARCHAR" property="tenantId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    user_id, user_name, user_pwd, org_id, user_type, user_status, lock_status, create_date, 
+    modify_date, pass_modify_date, mobile, email, ext_flag, remark, ext_field_1, ext_field_2, 
+    ext_field_3, ext_field_4, ext_field_5, user_order, c_identitytype, c_identityno, 
+    c_credentials, tenant_id
+  </sql>
+
+  <insert id="insertSelective" parameterType="com.ceying.tools.entity.scyp.system.User">
+    insert into t_sys_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="userPwd != null">
+        user_pwd,
+      </if>
+      <if test="orgId != null">
+        org_id,
+      </if>
+      <if test="userType != null">
+        user_type,
+      </if>
+      <if test="userStatus != null">
+        user_status,
+      </if>
+      <if test="lockStatus != null">
+        lock_status,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+      <if test="modifyDate != null">
+        modify_date,
+      </if>
+      <if test="passModifyDate != null">
+        pass_modify_date,
+      </if>
+      <if test="mobile != null">
+        mobile,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="extFlag != null">
+        ext_flag,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="extField_1 != null">
+        ext_field_1,
+      </if>
+      <if test="extField_2 != null">
+        ext_field_2,
+      </if>
+      <if test="extField_3 != null">
+        ext_field_3,
+      </if>
+      <if test="extField_4 != null">
+        ext_field_4,
+      </if>
+      <if test="extField_5 != null">
+        ext_field_5,
+      </if>
+      <if test="userOrder != null">
+        user_order,
+      </if>
+      <if test="cIdentitytype != null">
+        c_identitytype,
+      </if>
+      <if test="cIdentityno != null">
+        c_identityno,
+      </if>
+      <if test="cCredentials != null">
+        c_credentials,
+      </if>
+      <if test="tenantId != null">
+        tenant_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="userPwd != null">
+        #{userPwd,jdbcType=VARCHAR},
+      </if>
+      <if test="orgId != null">
+        #{orgId,jdbcType=VARCHAR},
+      </if>
+      <if test="userType != null">
+        #{userType,jdbcType=VARCHAR},
+      </if>
+      <if test="userStatus != null">
+        #{userStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="lockStatus != null">
+        #{lockStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyDate != null">
+        #{modifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="passModifyDate != null">
+        #{passModifyDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="mobile != null">
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="extFlag != null">
+        #{extFlag,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="extField_1 != null">
+        #{extField_1,jdbcType=VARCHAR},
+      </if>
+      <if test="extField_2 != null">
+        #{extField_2,jdbcType=VARCHAR},
+      </if>
+      <if test="extField_3 != null">
+        #{extField_3,jdbcType=VARCHAR},
+      </if>
+      <if test="extField_4 != null">
+        #{extField_4,jdbcType=VARCHAR},
+      </if>
+      <if test="extField_5 != null">
+        #{extField_5,jdbcType=VARCHAR},
+      </if>
+      <if test="userOrder != null">
+        #{userOrder,jdbcType=INTEGER},
+      </if>
+      <if test="cIdentitytype != null">
+        #{cIdentitytype,jdbcType=CHAR},
+      </if>
+      <if test="cIdentityno != null">
+        #{cIdentityno,jdbcType=VARCHAR},
+      </if>
+      <if test="cCredentials != null">
+        #{cCredentials,jdbcType=VARCHAR},
+      </if>
+      <if test="tenantId != null">
+        #{tenantId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+
+</mapper>

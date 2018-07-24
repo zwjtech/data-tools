@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ceying.tools.dao.scyp.addition.OpenInvoiceApplyMapper">
+  <resultMap id="BaseResultMap" type="com.ceying.tools.entity.scyp.addition.OpenInvoiceApply">
+    <id column="urid" jdbcType="VARCHAR" property="urid" />
+    <result column="openinvoiceinfoid" jdbcType="VARCHAR" property="openinvoiceinfoid" />
+    <result column="applyamount" jdbcType="DECIMAL" property="applyamount" />
+    <result column="applydate" jdbcType="DATE" property="applydate" />
+    <result column="contactsname" jdbcType="VARCHAR" property="contactsname" />
+    <result column="cellphone" jdbcType="VARCHAR" property="cellphone" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="openstate" jdbcType="VARCHAR" property="openstate" />
+    <result column="createdby" jdbcType="VARCHAR" property="createdby" />
+    <result column="createdon" jdbcType="DATE" property="createdon" />
+    <result column="lastmodifiedby" jdbcType="VARCHAR" property="lastmodifiedby" />
+    <result column="lastmodifiedon" jdbcType="DATE" property="lastmodifiedon" />
+    <result column="rowversion" jdbcType="INTEGER" property="rowversion" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="openorgid" jdbcType="VARCHAR" property="openorgid" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    urid, openinvoiceinfoid, applyamount, applydate, contactsname, cellphone, address, 
+    openstate, createdby, createdon, lastmodifiedby, lastmodifiedon, rowversion, description, 
+    openorgid
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_add_openinvoiceapply
+    where urid = #{urid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from t_add_openinvoiceapply
+    where urid = #{urid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ceying.tools.entity.scyp.addition.OpenInvoiceApply">
+    insert into t_add_openinvoiceapply (urid, openinvoiceinfoid, applyamount, 
+      applydate, contactsname, cellphone, 
+      address, openstate, createdby, 
+      createdon, lastmodifiedby, lastmodifiedon, 
+      rowversion, description, openorgid
+      )
+    values (#{urid,jdbcType=VARCHAR}, #{openinvoiceinfoid,jdbcType=VARCHAR}, #{applyamount,jdbcType=DECIMAL}, 
+      #{applydate,jdbcType=DATE}, #{contactsname,jdbcType=VARCHAR}, #{cellphone,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{openstate,jdbcType=VARCHAR}, #{createdby,jdbcType=VARCHAR}, 
+      #{createdon,jdbcType=DATE}, #{lastmodifiedby,jdbcType=VARCHAR}, #{lastmodifiedon,jdbcType=DATE}, 
+      #{rowversion,jdbcType=INTEGER}, #{description,jdbcType=VARCHAR}, #{openorgid,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ceying.tools.entity.scyp.addition.OpenInvoiceApply">
+    insert into t_add_openinvoiceapply
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="urid != null">
+        urid,
+      </if>
+      <if test="openinvoiceinfoid != null">
+        openinvoiceinfoid,
+      </if>
+      <if test="applyamount != null">
+        applyamount,
+      </if>
+      <if test="applydate != null">
+        applydate,
+      </if>
+      <if test="contactsname != null">
+        contactsname,
+      </if>
+      <if test="cellphone != null">
+        cellphone,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="openstate != null">
+        openstate,
+      </if>
+      <if test="createdby != null">
+        createdby,
+      </if>
+      <if test="createdon != null">
+        createdon,
+      </if>
+      <if test="lastmodifiedby != null">
+        lastmodifiedby,
+      </if>
+      <if test="lastmodifiedon != null">
+        lastmodifiedon,
+      </if>
+      <if test="rowversion != null">
+        rowversion,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="openorgid != null">
+        openorgid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="urid != null">
+        #{urid,jdbcType=VARCHAR},
+      </if>
+      <if test="openinvoiceinfoid != null">
+        #{openinvoiceinfoid,jdbcType=VARCHAR},
+      </if>
+      <if test="applyamount != null">
+        #{applyamount,jdbcType=DECIMAL},
+      </if>
+      <if test="applydate != null">
+        #{applydate,jdbcType=DATE},
+      </if>
+      <if test="contactsname != null">
+        #{contactsname,jdbcType=VARCHAR},
+      </if>
+      <if test="cellphone != null">
+        #{cellphone,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="openstate != null">
+        #{openstate,jdbcType=VARCHAR},
+      </if>
+      <if test="createdby != null">
+        #{createdby,jdbcType=VARCHAR},
+      </if>
+      <if test="createdon != null">
+        #{createdon,jdbcType=DATE},
+      </if>
+      <if test="lastmodifiedby != null">
+        #{lastmodifiedby,jdbcType=VARCHAR},
+      </if>
+      <if test="lastmodifiedon != null">
+        #{lastmodifiedon,jdbcType=DATE},
+      </if>
+      <if test="rowversion != null">
+        #{rowversion,jdbcType=INTEGER},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="openorgid != null">
+        #{openorgid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ceying.tools.entity.scyp.addition.OpenInvoiceApply">
+    update t_add_openinvoiceapply
+    <set>
+      <if test="openinvoiceinfoid != null">
+        openinvoiceinfoid = #{openinvoiceinfoid,jdbcType=VARCHAR},
+      </if>
+      <if test="applyamount != null">
+        applyamount = #{applyamount,jdbcType=DECIMAL},
+      </if>
+      <if test="applydate != null">
+        applydate = #{applydate,jdbcType=DATE},
+      </if>
+      <if test="contactsname != null">
+        contactsname = #{contactsname,jdbcType=VARCHAR},
+      </if>
+      <if test="cellphone != null">
+        cellphone = #{cellphone,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="openstate != null">
+        openstate = #{openstate,jdbcType=VARCHAR},
+      </if>
+      <if test="createdby != null">
+        createdby = #{createdby,jdbcType=VARCHAR},
+      </if>
+      <if test="createdon != null">
+        createdon = #{createdon,jdbcType=DATE},
+      </if>
+      <if test="lastmodifiedby != null">
+        lastmodifiedby = #{lastmodifiedby,jdbcType=VARCHAR},
+      </if>
+      <if test="lastmodifiedon != null">
+        lastmodifiedon = #{lastmodifiedon,jdbcType=DATE},
+      </if>
+      <if test="rowversion != null">
+        rowversion = #{rowversion,jdbcType=INTEGER},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="openorgid != null">
+        openorgid = #{openorgid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where urid = #{urid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ceying.tools.entity.scyp.addition.OpenInvoiceApply">
+    update t_add_openinvoiceapply
+    set openinvoiceinfoid = #{openinvoiceinfoid,jdbcType=VARCHAR},
+      applyamount = #{applyamount,jdbcType=DECIMAL},
+      applydate = #{applydate,jdbcType=DATE},
+      contactsname = #{contactsname,jdbcType=VARCHAR},
+      cellphone = #{cellphone,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      openstate = #{openstate,jdbcType=VARCHAR},
+      createdby = #{createdby,jdbcType=VARCHAR},
+      createdon = #{createdon,jdbcType=DATE},
+      lastmodifiedby = #{lastmodifiedby,jdbcType=VARCHAR},
+      lastmodifiedon = #{lastmodifiedon,jdbcType=DATE},
+      rowversion = #{rowversion,jdbcType=INTEGER},
+      description = #{description,jdbcType=VARCHAR},
+      openorgid = #{openorgid,jdbcType=VARCHAR}
+    where urid = #{urid,jdbcType=VARCHAR}
+  </update>
+</mapper>

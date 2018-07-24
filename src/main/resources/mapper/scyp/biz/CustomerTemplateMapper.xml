@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ceying.tools.dao.scyp.biz.CustomerTemplateMapper">
+  <resultMap id="BaseResultMap" type="com.ceying.tools.entity.scyp.biz.CustomerTemplate">
+    <id column="urid" jdbcType="VARCHAR" property="urid" />
+    <result column="orgid" jdbcType="VARCHAR" property="orgid" />
+    <result column="templatecode" jdbcType="VARCHAR" property="templatecode" />
+    <result column="templatename" jdbcType="VARCHAR" property="templatename" />
+    <result column="templatetype" jdbcType="VARCHAR" property="templatetype" />
+    <result column="isactive" jdbcType="CHAR" property="isactive" />
+    <result column="createdby" jdbcType="VARCHAR" property="createdby" />
+    <result column="createdon" jdbcType="TIMESTAMP" property="createdon" />
+    <result column="lastmodifiedby" jdbcType="VARCHAR" property="lastmodifiedby" />
+    <result column="lastmodifiedon" jdbcType="TIMESTAMP" property="lastmodifiedon" />
+    <result column="rowversion" jdbcType="INTEGER" property="rowversion" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ceying.tools.entity.scyp.biz.CustomerTemplate">
+    <result column="templatecontent" jdbcType="LONGVARBINARY" property="templatecontent" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    urid, orgid, templatecode, templatename, templatetype, isactive, createdby, createdon, 
+    lastmodifiedby, lastmodifiedon, rowversion, description
+  </sql>
+  <sql id="Blob_Column_List">
+    templatecontent
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_biz_customertemplate
+    where urid = #{urid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from t_biz_customertemplate
+    where urid = #{urid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ceying.tools.entity.scyp.biz.CustomerTemplate">
+    insert into t_biz_customertemplate (urid, orgid, templatecode, 
+      templatename, templatetype, isactive, 
+      createdby, createdon, lastmodifiedby, 
+      lastmodifiedon, rowversion, description, 
+      templatecontent)
+    values (#{urid,jdbcType=VARCHAR}, #{orgid,jdbcType=VARCHAR}, #{templatecode,jdbcType=VARCHAR}, 
+      #{templatename,jdbcType=VARCHAR}, #{templatetype,jdbcType=VARCHAR}, #{isactive,jdbcType=CHAR}, 
+      #{createdby,jdbcType=VARCHAR}, #{createdon,jdbcType=TIMESTAMP}, #{lastmodifiedby,jdbcType=VARCHAR}, 
+      #{lastmodifiedon,jdbcType=TIMESTAMP}, #{rowversion,jdbcType=INTEGER}, #{description,jdbcType=VARCHAR}, 
+      #{templatecontent,jdbcType=LONGVARBINARY})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ceying.tools.entity.scyp.biz.CustomerTemplate">
+    insert into t_biz_customertemplate
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="urid != null">
+        urid,
+      </if>
+      <if test="orgid != null">
+        orgid,
+      </if>
+      <if test="templatecode != null">
+        templatecode,
+      </if>
+      <if test="templatename != null">
+        templatename,
+      </if>
+      <if test="templatetype != null">
+        templatetype,
+      </if>
+      <if test="isactive != null">
+        isactive,
+      </if>
+      <if test="createdby != null">
+        createdby,
+      </if>
+      <if test="createdon != null">
+        createdon,
+      </if>
+      <if test="lastmodifiedby != null">
+        lastmodifiedby,
+      </if>
+      <if test="lastmodifiedon != null">
+        lastmodifiedon,
+      </if>
+      <if test="rowversion != null">
+        rowversion,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="templatecontent != null">
+        templatecontent,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="urid != null">
+        #{urid,jdbcType=VARCHAR},
+      </if>
+      <if test="orgid != null">
+        #{orgid,jdbcType=VARCHAR},
+      </if>
+      <if test="templatecode != null">
+        #{templatecode,jdbcType=VARCHAR},
+      </if>
+      <if test="templatename != null">
+        #{templatename,jdbcType=VARCHAR},
+      </if>
+      <if test="templatetype != null">
+        #{templatetype,jdbcType=VARCHAR},
+      </if>
+      <if test="isactive != null">
+        #{isactive,jdbcType=CHAR},
+      </if>
+      <if test="createdby != null">
+        #{createdby,jdbcType=VARCHAR},
+      </if>
+      <if test="createdon != null">
+        #{createdon,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastmodifiedby != null">
+        #{lastmodifiedby,jdbcType=VARCHAR},
+      </if>
+      <if test="lastmodifiedon != null">
+        #{lastmodifiedon,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rowversion != null">
+        #{rowversion,jdbcType=INTEGER},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="templatecontent != null">
+        #{templatecontent,jdbcType=LONGVARBINARY},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ceying.tools.entity.scyp.biz.CustomerTemplate">
+    update t_biz_customertemplate
+    <set>
+      <if test="orgid != null">
+        orgid = #{orgid,jdbcType=VARCHAR},
+      </if>
+      <if test="templatecode != null">
+        templatecode = #{templatecode,jdbcType=VARCHAR},
+      </if>
+      <if test="templatename != null">
+        templatename = #{templatename,jdbcType=VARCHAR},
+      </if>
+      <if test="templatetype != null">
+        templatetype = #{templatetype,jdbcType=VARCHAR},
+      </if>
+      <if test="isactive != null">
+        isactive = #{isactive,jdbcType=CHAR},
+      </if>
+      <if test="createdby != null">
+        createdby = #{createdby,jdbcType=VARCHAR},
+      </if>
+      <if test="createdon != null">
+        createdon = #{createdon,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastmodifiedby != null">
+        lastmodifiedby = #{lastmodifiedby,jdbcType=VARCHAR},
+      </if>
+      <if test="lastmodifiedon != null">
+        lastmodifiedon = #{lastmodifiedon,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rowversion != null">
+        rowversion = #{rowversion,jdbcType=INTEGER},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="templatecontent != null">
+        templatecontent = #{templatecontent,jdbcType=LONGVARBINARY},
+      </if>
+    </set>
+    where urid = #{urid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.ceying.tools.entity.scyp.biz.CustomerTemplate">
+    update t_biz_customertemplate
+    set orgid = #{orgid,jdbcType=VARCHAR},
+      templatecode = #{templatecode,jdbcType=VARCHAR},
+      templatename = #{templatename,jdbcType=VARCHAR},
+      templatetype = #{templatetype,jdbcType=VARCHAR},
+      isactive = #{isactive,jdbcType=CHAR},
+      createdby = #{createdby,jdbcType=VARCHAR},
+      createdon = #{createdon,jdbcType=TIMESTAMP},
+      lastmodifiedby = #{lastmodifiedby,jdbcType=VARCHAR},
+      lastmodifiedon = #{lastmodifiedon,jdbcType=TIMESTAMP},
+      rowversion = #{rowversion,jdbcType=INTEGER},
+      description = #{description,jdbcType=VARCHAR},
+      templatecontent = #{templatecontent,jdbcType=LONGVARBINARY}
+    where urid = #{urid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ceying.tools.entity.scyp.biz.CustomerTemplate">
+    update t_biz_customertemplate
+    set orgid = #{orgid,jdbcType=VARCHAR},
+      templatecode = #{templatecode,jdbcType=VARCHAR},
+      templatename = #{templatename,jdbcType=VARCHAR},
+      templatetype = #{templatetype,jdbcType=VARCHAR},
+      isactive = #{isactive,jdbcType=CHAR},
+      createdby = #{createdby,jdbcType=VARCHAR},
+      createdon = #{createdon,jdbcType=TIMESTAMP},
+      lastmodifiedby = #{lastmodifiedby,jdbcType=VARCHAR},
+      lastmodifiedon = #{lastmodifiedon,jdbcType=TIMESTAMP},
+      rowversion = #{rowversion,jdbcType=INTEGER},
+      description = #{description,jdbcType=VARCHAR}
+    where urid = #{urid,jdbcType=VARCHAR}
+  </update>
+</mapper>

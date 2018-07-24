@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            text-decoration: none;
+            box-sizing: border-box;
+        }
+
+        body {
+            text-align: center;
+        }
+
+        select {
+            margin-left: 10px;
+        }
+
+        input {
+            margin-left: 15px;
+        }
+
+        .unit {
+            display: inline-block;
+            border: 1px black solid;
+            border-radius: 10px;
+            margin: 15% 5%;
+            padding: 66px;
+        }
+
+        .btn {
+            padding: 2px 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="unit">
+    <form action="http://localhost:8088/export/tableStructure/excel" method="get">
+        导出数据库表结构:
+        <select name="tableSchema">
+            <option value="scyp-system">scyp-system</option>
+            <option value="scyp-key">scyp-key</option>
+            <option value="scyp-biz">scyp-biz</option>
+            <option value="scyp-addition">scyp-addition</option>
+            <option value="scyp-workflow">scyp-workflow</option>
+        </select>
+        <input class="btn" type="submit" value="提交"/>
+    </form>
+</div>
+<div class="unit">
+    <form action="databaseTool.html" id="form2" method="get">
+        迁移数据库数据:
+        <select name="database">
+            <option value="scyp-system">scyp-system</option>
+            <option value="scyp-key">scyp-key</option>
+            <option value="scyp-biz">scyp-biz</option>
+            <option value="scyp-addition">scyp-addition</option>
+            <option value="all">所有</option>
+        </select>
+        <input class="btn" type="button" id="submit" value="提交"/>
+    </form>
+</div>
+<script src="js/jquery-2.1.1.min.js"></script>
+<script>
+    $(function () {
+        $("#submit").click(function () {
+            var data = $('#form2').serialize();
+            $.ajax({
+                type: "get",
+                dataType: "jsonp",
+                url: "http://localhost:8088/transferData/toMysql",
+                data: data,
+                success: function (result) {
+                    if(result.result == "success"){
+                        alert("操作成功");
+                    }else {
+                        alert("操作失败");
+                    }
+                },
+                error: function () {
+                    alert("操作失败");
+                }
+            })
+        })
+    });
+
+</script>
+</body>
+</html>

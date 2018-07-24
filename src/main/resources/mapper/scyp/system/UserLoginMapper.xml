@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ceying.tools.dao.scyp.system.UserLoginMapper">
+  <resultMap id="BaseResultMap" type="com.ceying.tools.entity.scyp.system.UserLogin">
+    <id column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="last_login_date" jdbcType="TIMESTAMP" property="lastLoginDate" />
+    <result column="last_login_ip" jdbcType="VARCHAR" property="lastLoginIp" />
+    <result column="login_fail_times" jdbcType="INTEGER" property="loginFailTimes" />
+    <result column="last_fail_date" jdbcType="TIMESTAMP" property="lastFailDate" />
+    <result column="ext_field" jdbcType="VARCHAR" property="extField" />
+    <result column="tenant_id" jdbcType="VARCHAR" property="tenantId" />
+    <result column="org_id" jdbcType="VARCHAR" property="orgId" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="tenant_cnshortname" jdbcType="VARCHAR" property="tenantCnshortname" />
+    <result column="tenant_shortname" jdbcType="VARCHAR" property="tenantShortname" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="c_credentials" jdbcType="VARCHAR" property="cCredentials" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    user_id, last_login_date, last_login_ip, login_fail_times, last_fail_date, ext_field, 
+    tenant_id, org_id, user_name, tenant_cnshortname, tenant_shortname, mobile, c_credentials
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_sys_user_login
+    where user_id = #{userId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from t_sys_user_login
+    where user_id = #{userId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ceying.tools.entity.scyp.system.UserLogin">
+    insert into t_sys_user_login (user_id, last_login_date, last_login_ip, 
+      login_fail_times, last_fail_date, ext_field, 
+      tenant_id, org_id, user_name, 
+      tenant_cnshortname, tenant_shortname, mobile, 
+      c_credentials)
+    values (#{userId,jdbcType=VARCHAR}, #{lastLoginDate,jdbcType=TIMESTAMP}, #{lastLoginIp,jdbcType=VARCHAR}, 
+      #{loginFailTimes,jdbcType=INTEGER}, #{lastFailDate,jdbcType=TIMESTAMP}, #{extField,jdbcType=VARCHAR}, 
+      #{tenantId,jdbcType=VARCHAR}, #{orgId,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, 
+      #{tenantCnshortname,jdbcType=VARCHAR}, #{tenantShortname,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, 
+      #{cCredentials,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ceying.tools.entity.scyp.system.UserLogin">
+    insert into t_sys_user_login
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="lastLoginDate != null">
+        last_login_date,
+      </if>
+      <if test="lastLoginIp != null">
+        last_login_ip,
+      </if>
+      <if test="loginFailTimes != null">
+        login_fail_times,
+      </if>
+      <if test="lastFailDate != null">
+        last_fail_date,
+      </if>
+      <if test="extField != null">
+        ext_field,
+      </if>
+      <if test="tenantId != null">
+        tenant_id,
+      </if>
+      <if test="orgId != null">
+        org_id,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="tenantCnshortname != null">
+        tenant_cnshortname,
+      </if>
+      <if test="tenantShortname != null">
+        tenant_shortname,
+      </if>
+      <if test="mobile != null">
+        mobile,
+      </if>
+      <if test="cCredentials != null">
+        c_credentials,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="lastLoginDate != null">
+        #{lastLoginDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastLoginIp != null">
+        #{lastLoginIp,jdbcType=VARCHAR},
+      </if>
+      <if test="loginFailTimes != null">
+        #{loginFailTimes,jdbcType=INTEGER},
+      </if>
+      <if test="lastFailDate != null">
+        #{lastFailDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="extField != null">
+        #{extField,jdbcType=VARCHAR},
+      </if>
+      <if test="tenantId != null">
+        #{tenantId,jdbcType=VARCHAR},
+      </if>
+      <if test="orgId != null">
+        #{orgId,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="tenantCnshortname != null">
+        #{tenantCnshortname,jdbcType=VARCHAR},
+      </if>
+      <if test="tenantShortname != null">
+        #{tenantShortname,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="cCredentials != null">
+        #{cCredentials,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ceying.tools.entity.scyp.system.UserLogin">
+    update t_sys_user_login
+    <set>
+      <if test="lastLoginDate != null">
+        last_login_date = #{lastLoginDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastLoginIp != null">
+        last_login_ip = #{lastLoginIp,jdbcType=VARCHAR},
+      </if>
+      <if test="loginFailTimes != null">
+        login_fail_times = #{loginFailTimes,jdbcType=INTEGER},
+      </if>
+      <if test="lastFailDate != null">
+        last_fail_date = #{lastFailDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="extField != null">
+        ext_field = #{extField,jdbcType=VARCHAR},
+      </if>
+      <if test="tenantId != null">
+        tenant_id = #{tenantId,jdbcType=VARCHAR},
+      </if>
+      <if test="orgId != null">
+        org_id = #{orgId,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="tenantCnshortname != null">
+        tenant_cnshortname = #{tenantCnshortname,jdbcType=VARCHAR},
+      </if>
+      <if test="tenantShortname != null">
+        tenant_shortname = #{tenantShortname,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="cCredentials != null">
+        c_credentials = #{cCredentials,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where user_id = #{userId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ceying.tools.entity.scyp.system.UserLogin">
+    update t_sys_user_login
+    set last_login_date = #{lastLoginDate,jdbcType=TIMESTAMP},
+      last_login_ip = #{lastLoginIp,jdbcType=VARCHAR},
+      login_fail_times = #{loginFailTimes,jdbcType=INTEGER},
+      last_fail_date = #{lastFailDate,jdbcType=TIMESTAMP},
+      ext_field = #{extField,jdbcType=VARCHAR},
+      tenant_id = #{tenantId,jdbcType=VARCHAR},
+      org_id = #{orgId,jdbcType=VARCHAR},
+      user_name = #{userName,jdbcType=VARCHAR},
+      tenant_cnshortname = #{tenantCnshortname,jdbcType=VARCHAR},
+      tenant_shortname = #{tenantShortname,jdbcType=VARCHAR},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      c_credentials = #{cCredentials,jdbcType=VARCHAR}
+    where user_id = #{userId,jdbcType=VARCHAR}
+  </update>
+</mapper>

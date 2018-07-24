@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ceying.tools.dao.scyp.biz.CoreCompanyQuotaOpsMapper">
+  <resultMap id="BaseResultMap" type="com.ceying.tools.entity.scyp.biz.CoreCompanyQuotaOps">
+    <id column="urid" jdbcType="VARCHAR" property="urid" />
+    <result column="corequotaid" jdbcType="VARCHAR" property="corequotaid" />
+    <result column="operateamount" jdbcType="DECIMAL" property="operateamount" />
+    <result column="operator" jdbcType="VARCHAR" property="operator" />
+    <result column="operateorgid" jdbcType="VARCHAR" property="operateorgid" />
+    <result column="operatedate" jdbcType="TIMESTAMP" property="operatedate" />
+    <result column="operateflag" jdbcType="VARCHAR" property="operateflag" />
+    <result column="signature" jdbcType="VARCHAR" property="signature" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    urid, corequotaid, operateamount, `operator`, operateorgid, operatedate, operateflag, 
+    signature, description
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_biz_corecompanyquotaops
+    where urid = #{urid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from t_biz_corecompanyquotaops
+    where urid = #{urid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ceying.tools.entity.scyp.biz.CoreCompanyQuotaOps">
+    insert into t_biz_corecompanyquotaops (urid, corequotaid, operateamount, 
+      `operator`, operateorgid, operatedate, 
+      operateflag, signature, description
+      )
+    values (#{urid,jdbcType=VARCHAR}, #{corequotaid,jdbcType=VARCHAR}, #{operateamount,jdbcType=DECIMAL}, 
+      #{operator,jdbcType=VARCHAR}, #{operateorgid,jdbcType=VARCHAR}, #{operatedate,jdbcType=TIMESTAMP}, 
+      #{operateflag,jdbcType=VARCHAR}, #{signature,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ceying.tools.entity.scyp.biz.CoreCompanyQuotaOps">
+    insert into t_biz_corecompanyquotaops
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="urid != null">
+        urid,
+      </if>
+      <if test="corequotaid != null">
+        corequotaid,
+      </if>
+      <if test="operateamount != null">
+        operateamount,
+      </if>
+      <if test="operator != null">
+        `operator`,
+      </if>
+      <if test="operateorgid != null">
+        operateorgid,
+      </if>
+      <if test="operatedate != null">
+        operatedate,
+      </if>
+      <if test="operateflag != null">
+        operateflag,
+      </if>
+      <if test="signature != null">
+        signature,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="urid != null">
+        #{urid,jdbcType=VARCHAR},
+      </if>
+      <if test="corequotaid != null">
+        #{corequotaid,jdbcType=VARCHAR},
+      </if>
+      <if test="operateamount != null">
+        #{operateamount,jdbcType=DECIMAL},
+      </if>
+      <if test="operator != null">
+        #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="operateorgid != null">
+        #{operateorgid,jdbcType=VARCHAR},
+      </if>
+      <if test="operatedate != null">
+        #{operatedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operateflag != null">
+        #{operateflag,jdbcType=VARCHAR},
+      </if>
+      <if test="signature != null">
+        #{signature,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ceying.tools.entity.scyp.biz.CoreCompanyQuotaOps">
+    update t_biz_corecompanyquotaops
+    <set>
+      <if test="corequotaid != null">
+        corequotaid = #{corequotaid,jdbcType=VARCHAR},
+      </if>
+      <if test="operateamount != null">
+        operateamount = #{operateamount,jdbcType=DECIMAL},
+      </if>
+      <if test="operator != null">
+        `operator` = #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="operateorgid != null">
+        operateorgid = #{operateorgid,jdbcType=VARCHAR},
+      </if>
+      <if test="operatedate != null">
+        operatedate = #{operatedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operateflag != null">
+        operateflag = #{operateflag,jdbcType=VARCHAR},
+      </if>
+      <if test="signature != null">
+        signature = #{signature,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where urid = #{urid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ceying.tools.entity.scyp.biz.CoreCompanyQuotaOps">
+    update t_biz_corecompanyquotaops
+    set corequotaid = #{corequotaid,jdbcType=VARCHAR},
+      operateamount = #{operateamount,jdbcType=DECIMAL},
+      `operator` = #{operator,jdbcType=VARCHAR},
+      operateorgid = #{operateorgid,jdbcType=VARCHAR},
+      operatedate = #{operatedate,jdbcType=TIMESTAMP},
+      operateflag = #{operateflag,jdbcType=VARCHAR},
+      signature = #{signature,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR}
+    where urid = #{urid,jdbcType=VARCHAR}
+  </update>
+</mapper>

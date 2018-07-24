@@ -1,0 +1,504 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ceying.tools.dao.scyp.biz.TripartiteAgreementMapper">
+  <resultMap id="BaseResultMap" type="com.ceying.tools.entity.scyp.biz.TripartiteAgreement">
+    <id column="urid" jdbcType="VARCHAR" property="urid" />
+    <result column="tenantid" jdbcType="VARCHAR" property="tenantid" />
+    <result column="tatemplateid" jdbcType="VARCHAR" property="tatemplateid" />
+    <result column="accountspayableid" jdbcType="VARCHAR" property="accountspayableid" />
+    <result column="tacontractid" jdbcType="VARCHAR" property="tacontractid" />
+    <result column="bankid" jdbcType="VARCHAR" property="bankid" />
+    <result column="corecompanyid" jdbcType="VARCHAR" property="corecompanyid" />
+    <result column="supplierid" jdbcType="VARCHAR" property="supplierid" />
+    <result column="supplieraccountid" jdbcType="VARCHAR" property="supplieraccountid" />
+    <result column="financingamount" jdbcType="DECIMAL" property="financingamount" />
+    <result column="financingdate" jdbcType="TIMESTAMP" property="financingdate" />
+    <result column="isrecourse" jdbcType="VARCHAR" property="isrecourse" />
+    <result column="interestrate" jdbcType="DECIMAL" property="interestrate" />
+    <result column="lendingdate" jdbcType="TIMESTAMP" property="lendingdate" />
+    <result column="returndate" jdbcType="TIMESTAMP" property="returndate" />
+    <result column="supplierrate" jdbcType="DECIMAL" property="supplierrate" />
+    <result column="corecompanyrate" jdbcType="DECIMAL" property="corecompanyrate" />
+    <result column="isactive" jdbcType="CHAR" property="isactive" />
+    <result column="createdby" jdbcType="VARCHAR" property="createdby" />
+    <result column="createdon" jdbcType="TIMESTAMP" property="createdon" />
+    <result column="lastmodifiedby" jdbcType="VARCHAR" property="lastmodifiedby" />
+    <result column="lastmodifiedon" jdbcType="TIMESTAMP" property="lastmodifiedon" />
+    <result column="rowversion" jdbcType="INTEGER" property="rowversion" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="supplastoperateflag" jdbcType="VARCHAR" property="supplastoperateflag" />
+    <result column="corelastoperateflag" jdbcType="VARCHAR" property="corelastoperateflag" />
+    <result column="banklastoperateflag" jdbcType="VARCHAR" property="banklastoperateflag" />
+    <result column="approvestate" jdbcType="VARCHAR" property="approvestate" />
+    <result column="estimatereturndate" jdbcType="TIMESTAMP" property="estimatereturndate" />
+    <result column="accountspayablequoteid" jdbcType="VARCHAR" property="accountspayablequoteid" />
+    <result column="lendingafterflag" jdbcType="VARCHAR" property="lendingafterflag" />
+    <result column="aftersignflag" jdbcType="VARCHAR" property="aftersignflag" />
+    <result column="blockchainaddress" jdbcType="VARCHAR" property="blockchainaddress" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ceying.tools.entity.scyp.biz.TripartiteAgreement">
+    <result column="signaturecontent" jdbcType="LONGVARBINARY" property="signaturecontent" />
+    <result column="pdf_content" jdbcType="LONGVARBINARY" property="pdfContent" />
+    <result column="pdf_sign" jdbcType="LONGVARBINARY" property="pdfSign" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    urid, tenantid, tatemplateid, accountspayableid, tacontractid, bankid, corecompanyid, 
+    supplierid, supplieraccountid, financingamount, financingdate, isrecourse, interestrate, 
+    lendingdate, returndate, supplierrate, corecompanyrate, isactive, createdby, createdon, 
+    lastmodifiedby, lastmodifiedon, rowversion, description, supplastoperateflag, corelastoperateflag, 
+    banklastoperateflag, approvestate, estimatereturndate, accountspayablequoteid, lendingafterflag, 
+    aftersignflag, blockchainaddress
+  </sql>
+  <sql id="Blob_Column_List">
+    signaturecontent, pdf_content, pdf_sign
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_biz_tripartiteagreement
+    where urid = #{urid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from t_biz_tripartiteagreement
+    where urid = #{urid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ceying.tools.entity.scyp.biz.TripartiteAgreement">
+    insert into t_biz_tripartiteagreement (urid, tenantid, tatemplateid, 
+      accountspayableid, tacontractid, bankid, 
+      corecompanyid, supplierid, supplieraccountid, 
+      financingamount, financingdate, isrecourse, 
+      interestrate, lendingdate, returndate, 
+      supplierrate, corecompanyrate, isactive, 
+      createdby, createdon, lastmodifiedby, 
+      lastmodifiedon, rowversion, description, 
+      supplastoperateflag, corelastoperateflag, 
+      banklastoperateflag, approvestate, estimatereturndate, 
+      accountspayablequoteid, lendingafterflag, 
+      aftersignflag, blockchainaddress, signaturecontent, 
+      pdf_content, pdf_sign)
+    values (#{urid,jdbcType=VARCHAR}, #{tenantid,jdbcType=VARCHAR}, #{tatemplateid,jdbcType=VARCHAR}, 
+      #{accountspayableid,jdbcType=VARCHAR}, #{tacontractid,jdbcType=VARCHAR}, #{bankid,jdbcType=VARCHAR}, 
+      #{corecompanyid,jdbcType=VARCHAR}, #{supplierid,jdbcType=VARCHAR}, #{supplieraccountid,jdbcType=VARCHAR}, 
+      #{financingamount,jdbcType=DECIMAL}, #{financingdate,jdbcType=TIMESTAMP}, #{isrecourse,jdbcType=VARCHAR}, 
+      #{interestrate,jdbcType=DECIMAL}, #{lendingdate,jdbcType=TIMESTAMP}, #{returndate,jdbcType=TIMESTAMP}, 
+      #{supplierrate,jdbcType=DECIMAL}, #{corecompanyrate,jdbcType=DECIMAL}, #{isactive,jdbcType=CHAR}, 
+      #{createdby,jdbcType=VARCHAR}, #{createdon,jdbcType=TIMESTAMP}, #{lastmodifiedby,jdbcType=VARCHAR}, 
+      #{lastmodifiedon,jdbcType=TIMESTAMP}, #{rowversion,jdbcType=INTEGER}, #{description,jdbcType=VARCHAR}, 
+      #{supplastoperateflag,jdbcType=VARCHAR}, #{corelastoperateflag,jdbcType=VARCHAR}, 
+      #{banklastoperateflag,jdbcType=VARCHAR}, #{approvestate,jdbcType=VARCHAR}, #{estimatereturndate,jdbcType=TIMESTAMP}, 
+      #{accountspayablequoteid,jdbcType=VARCHAR}, #{lendingafterflag,jdbcType=VARCHAR}, 
+      #{aftersignflag,jdbcType=VARCHAR}, #{blockchainaddress,jdbcType=VARCHAR}, #{signaturecontent,jdbcType=LONGVARBINARY}, 
+      #{pdfContent,jdbcType=LONGVARBINARY}, #{pdfSign,jdbcType=LONGVARBINARY})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ceying.tools.entity.scyp.biz.TripartiteAgreement">
+    insert into t_biz_tripartiteagreement
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="urid != null">
+        urid,
+      </if>
+      <if test="tenantid != null">
+        tenantid,
+      </if>
+      <if test="tatemplateid != null">
+        tatemplateid,
+      </if>
+      <if test="accountspayableid != null">
+        accountspayableid,
+      </if>
+      <if test="tacontractid != null">
+        tacontractid,
+      </if>
+      <if test="bankid != null">
+        bankid,
+      </if>
+      <if test="corecompanyid != null">
+        corecompanyid,
+      </if>
+      <if test="supplierid != null">
+        supplierid,
+      </if>
+      <if test="supplieraccountid != null">
+        supplieraccountid,
+      </if>
+      <if test="financingamount != null">
+        financingamount,
+      </if>
+      <if test="financingdate != null">
+        financingdate,
+      </if>
+      <if test="isrecourse != null">
+        isrecourse,
+      </if>
+      <if test="interestrate != null">
+        interestrate,
+      </if>
+      <if test="lendingdate != null">
+        lendingdate,
+      </if>
+      <if test="returndate != null">
+        returndate,
+      </if>
+      <if test="supplierrate != null">
+        supplierrate,
+      </if>
+      <if test="corecompanyrate != null">
+        corecompanyrate,
+      </if>
+      <if test="isactive != null">
+        isactive,
+      </if>
+      <if test="createdby != null">
+        createdby,
+      </if>
+      <if test="createdon != null">
+        createdon,
+      </if>
+      <if test="lastmodifiedby != null">
+        lastmodifiedby,
+      </if>
+      <if test="lastmodifiedon != null">
+        lastmodifiedon,
+      </if>
+      <if test="rowversion != null">
+        rowversion,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="supplastoperateflag != null">
+        supplastoperateflag,
+      </if>
+      <if test="corelastoperateflag != null">
+        corelastoperateflag,
+      </if>
+      <if test="banklastoperateflag != null">
+        banklastoperateflag,
+      </if>
+      <if test="approvestate != null">
+        approvestate,
+      </if>
+      <if test="estimatereturndate != null">
+        estimatereturndate,
+      </if>
+      <if test="accountspayablequoteid != null">
+        accountspayablequoteid,
+      </if>
+      <if test="lendingafterflag != null">
+        lendingafterflag,
+      </if>
+      <if test="aftersignflag != null">
+        aftersignflag,
+      </if>
+      <if test="blockchainaddress != null">
+        blockchainaddress,
+      </if>
+      <if test="signaturecontent != null">
+        signaturecontent,
+      </if>
+      <if test="pdfContent != null">
+        pdf_content,
+      </if>
+      <if test="pdfSign != null">
+        pdf_sign,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="urid != null">
+        #{urid,jdbcType=VARCHAR},
+      </if>
+      <if test="tenantid != null">
+        #{tenantid,jdbcType=VARCHAR},
+      </if>
+      <if test="tatemplateid != null">
+        #{tatemplateid,jdbcType=VARCHAR},
+      </if>
+      <if test="accountspayableid != null">
+        #{accountspayableid,jdbcType=VARCHAR},
+      </if>
+      <if test="tacontractid != null">
+        #{tacontractid,jdbcType=VARCHAR},
+      </if>
+      <if test="bankid != null">
+        #{bankid,jdbcType=VARCHAR},
+      </if>
+      <if test="corecompanyid != null">
+        #{corecompanyid,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierid != null">
+        #{supplierid,jdbcType=VARCHAR},
+      </if>
+      <if test="supplieraccountid != null">
+        #{supplieraccountid,jdbcType=VARCHAR},
+      </if>
+      <if test="financingamount != null">
+        #{financingamount,jdbcType=DECIMAL},
+      </if>
+      <if test="financingdate != null">
+        #{financingdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isrecourse != null">
+        #{isrecourse,jdbcType=VARCHAR},
+      </if>
+      <if test="interestrate != null">
+        #{interestrate,jdbcType=DECIMAL},
+      </if>
+      <if test="lendingdate != null">
+        #{lendingdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="returndate != null">
+        #{returndate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="supplierrate != null">
+        #{supplierrate,jdbcType=DECIMAL},
+      </if>
+      <if test="corecompanyrate != null">
+        #{corecompanyrate,jdbcType=DECIMAL},
+      </if>
+      <if test="isactive != null">
+        #{isactive,jdbcType=CHAR},
+      </if>
+      <if test="createdby != null">
+        #{createdby,jdbcType=VARCHAR},
+      </if>
+      <if test="createdon != null">
+        #{createdon,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastmodifiedby != null">
+        #{lastmodifiedby,jdbcType=VARCHAR},
+      </if>
+      <if test="lastmodifiedon != null">
+        #{lastmodifiedon,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rowversion != null">
+        #{rowversion,jdbcType=INTEGER},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="supplastoperateflag != null">
+        #{supplastoperateflag,jdbcType=VARCHAR},
+      </if>
+      <if test="corelastoperateflag != null">
+        #{corelastoperateflag,jdbcType=VARCHAR},
+      </if>
+      <if test="banklastoperateflag != null">
+        #{banklastoperateflag,jdbcType=VARCHAR},
+      </if>
+      <if test="approvestate != null">
+        #{approvestate,jdbcType=VARCHAR},
+      </if>
+      <if test="estimatereturndate != null">
+        #{estimatereturndate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="accountspayablequoteid != null">
+        #{accountspayablequoteid,jdbcType=VARCHAR},
+      </if>
+      <if test="lendingafterflag != null">
+        #{lendingafterflag,jdbcType=VARCHAR},
+      </if>
+      <if test="aftersignflag != null">
+        #{aftersignflag,jdbcType=VARCHAR},
+      </if>
+      <if test="blockchainaddress != null">
+        #{blockchainaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="signaturecontent != null">
+        #{signaturecontent,jdbcType=LONGVARBINARY},
+      </if>
+      <if test="pdfContent != null">
+        #{pdfContent,jdbcType=LONGVARBINARY},
+      </if>
+      <if test="pdfSign != null">
+        #{pdfSign,jdbcType=LONGVARBINARY},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ceying.tools.entity.scyp.biz.TripartiteAgreement">
+    update t_biz_tripartiteagreement
+    <set>
+      <if test="tenantid != null">
+        tenantid = #{tenantid,jdbcType=VARCHAR},
+      </if>
+      <if test="tatemplateid != null">
+        tatemplateid = #{tatemplateid,jdbcType=VARCHAR},
+      </if>
+      <if test="accountspayableid != null">
+        accountspayableid = #{accountspayableid,jdbcType=VARCHAR},
+      </if>
+      <if test="tacontractid != null">
+        tacontractid = #{tacontractid,jdbcType=VARCHAR},
+      </if>
+      <if test="bankid != null">
+        bankid = #{bankid,jdbcType=VARCHAR},
+      </if>
+      <if test="corecompanyid != null">
+        corecompanyid = #{corecompanyid,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierid != null">
+        supplierid = #{supplierid,jdbcType=VARCHAR},
+      </if>
+      <if test="supplieraccountid != null">
+        supplieraccountid = #{supplieraccountid,jdbcType=VARCHAR},
+      </if>
+      <if test="financingamount != null">
+        financingamount = #{financingamount,jdbcType=DECIMAL},
+      </if>
+      <if test="financingdate != null">
+        financingdate = #{financingdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isrecourse != null">
+        isrecourse = #{isrecourse,jdbcType=VARCHAR},
+      </if>
+      <if test="interestrate != null">
+        interestrate = #{interestrate,jdbcType=DECIMAL},
+      </if>
+      <if test="lendingdate != null">
+        lendingdate = #{lendingdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="returndate != null">
+        returndate = #{returndate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="supplierrate != null">
+        supplierrate = #{supplierrate,jdbcType=DECIMAL},
+      </if>
+      <if test="corecompanyrate != null">
+        corecompanyrate = #{corecompanyrate,jdbcType=DECIMAL},
+      </if>
+      <if test="isactive != null">
+        isactive = #{isactive,jdbcType=CHAR},
+      </if>
+      <if test="createdby != null">
+        createdby = #{createdby,jdbcType=VARCHAR},
+      </if>
+      <if test="createdon != null">
+        createdon = #{createdon,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastmodifiedby != null">
+        lastmodifiedby = #{lastmodifiedby,jdbcType=VARCHAR},
+      </if>
+      <if test="lastmodifiedon != null">
+        lastmodifiedon = #{lastmodifiedon,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rowversion != null">
+        rowversion = #{rowversion,jdbcType=INTEGER},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="supplastoperateflag != null">
+        supplastoperateflag = #{supplastoperateflag,jdbcType=VARCHAR},
+      </if>
+      <if test="corelastoperateflag != null">
+        corelastoperateflag = #{corelastoperateflag,jdbcType=VARCHAR},
+      </if>
+      <if test="banklastoperateflag != null">
+        banklastoperateflag = #{banklastoperateflag,jdbcType=VARCHAR},
+      </if>
+      <if test="approvestate != null">
+        approvestate = #{approvestate,jdbcType=VARCHAR},
+      </if>
+      <if test="estimatereturndate != null">
+        estimatereturndate = #{estimatereturndate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="accountspayablequoteid != null">
+        accountspayablequoteid = #{accountspayablequoteid,jdbcType=VARCHAR},
+      </if>
+      <if test="lendingafterflag != null">
+        lendingafterflag = #{lendingafterflag,jdbcType=VARCHAR},
+      </if>
+      <if test="aftersignflag != null">
+        aftersignflag = #{aftersignflag,jdbcType=VARCHAR},
+      </if>
+      <if test="blockchainaddress != null">
+        blockchainaddress = #{blockchainaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="signaturecontent != null">
+        signaturecontent = #{signaturecontent,jdbcType=LONGVARBINARY},
+      </if>
+      <if test="pdfContent != null">
+        pdf_content = #{pdfContent,jdbcType=LONGVARBINARY},
+      </if>
+      <if test="pdfSign != null">
+        pdf_sign = #{pdfSign,jdbcType=LONGVARBINARY},
+      </if>
+    </set>
+    where urid = #{urid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.ceying.tools.entity.scyp.biz.TripartiteAgreement">
+    update t_biz_tripartiteagreement
+    set tenantid = #{tenantid,jdbcType=VARCHAR},
+      tatemplateid = #{tatemplateid,jdbcType=VARCHAR},
+      accountspayableid = #{accountspayableid,jdbcType=VARCHAR},
+      tacontractid = #{tacontractid,jdbcType=VARCHAR},
+      bankid = #{bankid,jdbcType=VARCHAR},
+      corecompanyid = #{corecompanyid,jdbcType=VARCHAR},
+      supplierid = #{supplierid,jdbcType=VARCHAR},
+      supplieraccountid = #{supplieraccountid,jdbcType=VARCHAR},
+      financingamount = #{financingamount,jdbcType=DECIMAL},
+      financingdate = #{financingdate,jdbcType=TIMESTAMP},
+      isrecourse = #{isrecourse,jdbcType=VARCHAR},
+      interestrate = #{interestrate,jdbcType=DECIMAL},
+      lendingdate = #{lendingdate,jdbcType=TIMESTAMP},
+      returndate = #{returndate,jdbcType=TIMESTAMP},
+      supplierrate = #{supplierrate,jdbcType=DECIMAL},
+      corecompanyrate = #{corecompanyrate,jdbcType=DECIMAL},
+      isactive = #{isactive,jdbcType=CHAR},
+      createdby = #{createdby,jdbcType=VARCHAR},
+      createdon = #{createdon,jdbcType=TIMESTAMP},
+      lastmodifiedby = #{lastmodifiedby,jdbcType=VARCHAR},
+      lastmodifiedon = #{lastmodifiedon,jdbcType=TIMESTAMP},
+      rowversion = #{rowversion,jdbcType=INTEGER},
+      description = #{description,jdbcType=VARCHAR},
+      supplastoperateflag = #{supplastoperateflag,jdbcType=VARCHAR},
+      corelastoperateflag = #{corelastoperateflag,jdbcType=VARCHAR},
+      banklastoperateflag = #{banklastoperateflag,jdbcType=VARCHAR},
+      approvestate = #{approvestate,jdbcType=VARCHAR},
+      estimatereturndate = #{estimatereturndate,jdbcType=TIMESTAMP},
+      accountspayablequoteid = #{accountspayablequoteid,jdbcType=VARCHAR},
+      lendingafterflag = #{lendingafterflag,jdbcType=VARCHAR},
+      aftersignflag = #{aftersignflag,jdbcType=VARCHAR},
+      blockchainaddress = #{blockchainaddress,jdbcType=VARCHAR},
+      signaturecontent = #{signaturecontent,jdbcType=LONGVARBINARY},
+      pdf_content = #{pdfContent,jdbcType=LONGVARBINARY},
+      pdf_sign = #{pdfSign,jdbcType=LONGVARBINARY}
+    where urid = #{urid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ceying.tools.entity.scyp.biz.TripartiteAgreement">
+    update t_biz_tripartiteagreement
+    set tenantid = #{tenantid,jdbcType=VARCHAR},
+      tatemplateid = #{tatemplateid,jdbcType=VARCHAR},
+      accountspayableid = #{accountspayableid,jdbcType=VARCHAR},
+      tacontractid = #{tacontractid,jdbcType=VARCHAR},
+      bankid = #{bankid,jdbcType=VARCHAR},
+      corecompanyid = #{corecompanyid,jdbcType=VARCHAR},
+      supplierid = #{supplierid,jdbcType=VARCHAR},
+      supplieraccountid = #{supplieraccountid,jdbcType=VARCHAR},
+      financingamount = #{financingamount,jdbcType=DECIMAL},
+      financingdate = #{financingdate,jdbcType=TIMESTAMP},
+      isrecourse = #{isrecourse,jdbcType=VARCHAR},
+      interestrate = #{interestrate,jdbcType=DECIMAL},
+      lendingdate = #{lendingdate,jdbcType=TIMESTAMP},
+      returndate = #{returndate,jdbcType=TIMESTAMP},
+      supplierrate = #{supplierrate,jdbcType=DECIMAL},
+      corecompanyrate = #{corecompanyrate,jdbcType=DECIMAL},
+      isactive = #{isactive,jdbcType=CHAR},
+      createdby = #{createdby,jdbcType=VARCHAR},
+      createdon = #{createdon,jdbcType=TIMESTAMP},
+      lastmodifiedby = #{lastmodifiedby,jdbcType=VARCHAR},
+      lastmodifiedon = #{lastmodifiedon,jdbcType=TIMESTAMP},
+      rowversion = #{rowversion,jdbcType=INTEGER},
+      description = #{description,jdbcType=VARCHAR},
+      supplastoperateflag = #{supplastoperateflag,jdbcType=VARCHAR},
+      corelastoperateflag = #{corelastoperateflag,jdbcType=VARCHAR},
+      banklastoperateflag = #{banklastoperateflag,jdbcType=VARCHAR},
+      approvestate = #{approvestate,jdbcType=VARCHAR},
+      estimatereturndate = #{estimatereturndate,jdbcType=TIMESTAMP},
+      accountspayablequoteid = #{accountspayablequoteid,jdbcType=VARCHAR},
+      lendingafterflag = #{lendingafterflag,jdbcType=VARCHAR},
+      aftersignflag = #{aftersignflag,jdbcType=VARCHAR},
+      blockchainaddress = #{blockchainaddress,jdbcType=VARCHAR}
+    where urid = #{urid,jdbcType=VARCHAR}
+  </update>
+</mapper>

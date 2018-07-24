@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ceying.tools.dao.scyp.system.SysLogMapper">
+  <resultMap id="BaseResultMap" type="com.ceying.tools.entity.scyp.system.SysLog">
+    <id column="log_id" jdbcType="VARCHAR" property="logId" />
+    <result column="org_id" jdbcType="VARCHAR" property="orgId" />
+    <result column="org_name" jdbcType="VARCHAR" property="orgName" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="access_date" jdbcType="TIMESTAMP" property="accessDate" />
+    <result column="access_time" jdbcType="TIMESTAMP" property="accessTime" />
+    <result column="sub_trans_code" jdbcType="VARCHAR" property="subTransCode" />
+    <result column="trans_code" jdbcType="VARCHAR" property="transCode" />
+    <result column="oper_contents" jdbcType="VARCHAR" property="operContents" />
+    <result column="ip_add" jdbcType="VARCHAR" property="ipAdd" />
+    <result column="host_name" jdbcType="VARCHAR" property="hostName" />
+    <result column="tenant_id" jdbcType="VARCHAR" property="tenantId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    log_id, org_id, org_name, user_id, user_name, access_date, access_time, sub_trans_code, 
+    trans_code, oper_contents, ip_add, host_name, tenant_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_sys_log
+    where log_id = #{logId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from t_sys_log
+    where log_id = #{logId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ceying.tools.entity.scyp.system.SysLog">
+    insert into t_sys_log (log_id, org_id, org_name, 
+      user_id, user_name, access_date, 
+      access_time, sub_trans_code, trans_code, 
+      oper_contents, ip_add, host_name, 
+      tenant_id)
+    values (#{logId,jdbcType=VARCHAR}, #{orgId,jdbcType=VARCHAR}, #{orgName,jdbcType=VARCHAR}, 
+      #{userId,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{accessDate,jdbcType=TIMESTAMP}, 
+      #{accessTime,jdbcType=TIMESTAMP}, #{subTransCode,jdbcType=VARCHAR}, #{transCode,jdbcType=VARCHAR}, 
+      #{operContents,jdbcType=VARCHAR}, #{ipAdd,jdbcType=VARCHAR}, #{hostName,jdbcType=VARCHAR}, 
+      #{tenantId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ceying.tools.entity.scyp.system.SysLog">
+    insert into t_sys_log
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="logId != null">
+        log_id,
+      </if>
+      <if test="orgId != null">
+        org_id,
+      </if>
+      <if test="orgName != null">
+        org_name,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="accessDate != null">
+        access_date,
+      </if>
+      <if test="accessTime != null">
+        access_time,
+      </if>
+      <if test="subTransCode != null">
+        sub_trans_code,
+      </if>
+      <if test="transCode != null">
+        trans_code,
+      </if>
+      <if test="operContents != null">
+        oper_contents,
+      </if>
+      <if test="ipAdd != null">
+        ip_add,
+      </if>
+      <if test="hostName != null">
+        host_name,
+      </if>
+      <if test="tenantId != null">
+        tenant_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="logId != null">
+        #{logId,jdbcType=VARCHAR},
+      </if>
+      <if test="orgId != null">
+        #{orgId,jdbcType=VARCHAR},
+      </if>
+      <if test="orgName != null">
+        #{orgName,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="accessDate != null">
+        #{accessDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="accessTime != null">
+        #{accessTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="subTransCode != null">
+        #{subTransCode,jdbcType=VARCHAR},
+      </if>
+      <if test="transCode != null">
+        #{transCode,jdbcType=VARCHAR},
+      </if>
+      <if test="operContents != null">
+        #{operContents,jdbcType=VARCHAR},
+      </if>
+      <if test="ipAdd != null">
+        #{ipAdd,jdbcType=VARCHAR},
+      </if>
+      <if test="hostName != null">
+        #{hostName,jdbcType=VARCHAR},
+      </if>
+      <if test="tenantId != null">
+        #{tenantId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ceying.tools.entity.scyp.system.SysLog">
+    update t_sys_log
+    <set>
+      <if test="orgId != null">
+        org_id = #{orgId,jdbcType=VARCHAR},
+      </if>
+      <if test="orgName != null">
+        org_name = #{orgName,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="accessDate != null">
+        access_date = #{accessDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="accessTime != null">
+        access_time = #{accessTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="subTransCode != null">
+        sub_trans_code = #{subTransCode,jdbcType=VARCHAR},
+      </if>
+      <if test="transCode != null">
+        trans_code = #{transCode,jdbcType=VARCHAR},
+      </if>
+      <if test="operContents != null">
+        oper_contents = #{operContents,jdbcType=VARCHAR},
+      </if>
+      <if test="ipAdd != null">
+        ip_add = #{ipAdd,jdbcType=VARCHAR},
+      </if>
+      <if test="hostName != null">
+        host_name = #{hostName,jdbcType=VARCHAR},
+      </if>
+      <if test="tenantId != null">
+        tenant_id = #{tenantId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where log_id = #{logId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ceying.tools.entity.scyp.system.SysLog">
+    update t_sys_log
+    set org_id = #{orgId,jdbcType=VARCHAR},
+      org_name = #{orgName,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=VARCHAR},
+      user_name = #{userName,jdbcType=VARCHAR},
+      access_date = #{accessDate,jdbcType=TIMESTAMP},
+      access_time = #{accessTime,jdbcType=TIMESTAMP},
+      sub_trans_code = #{subTransCode,jdbcType=VARCHAR},
+      trans_code = #{transCode,jdbcType=VARCHAR},
+      oper_contents = #{operContents,jdbcType=VARCHAR},
+      ip_add = #{ipAdd,jdbcType=VARCHAR},
+      host_name = #{hostName,jdbcType=VARCHAR},
+      tenant_id = #{tenantId,jdbcType=VARCHAR}
+    where log_id = #{logId,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ceying.tools.dao.scyp.key.KeyInventoryMapper">
+  <resultMap id="BaseResultMap" type="com.ceying.tools.entity.scyp.key.KeyInventory">
+    <id column="urid" jdbcType="VARCHAR" property="urid" />
+    <result column="tenantid" jdbcType="VARCHAR" property="tenantid" />
+    <result column="serialno" jdbcType="VARCHAR" property="serialno" />
+    <result column="source" jdbcType="VARCHAR" property="source" />
+    <result column="enteringdate" jdbcType="TIMESTAMP" property="enteringdate" />
+    <result column="target" jdbcType="VARCHAR" property="target" />
+    <result column="deliverydate" jdbcType="TIMESTAMP" property="deliverydate" />
+    <result column="lastoperateflag" jdbcType="VARCHAR" property="lastoperateflag" />
+    <result column="isactive" jdbcType="CHAR" property="isactive" />
+    <result column="createdby" jdbcType="VARCHAR" property="createdby" />
+    <result column="createdon" jdbcType="TIMESTAMP" property="createdon" />
+    <result column="lastmodifiedby" jdbcType="VARCHAR" property="lastmodifiedby" />
+    <result column="lastmodifiedon" jdbcType="TIMESTAMP" property="lastmodifiedon" />
+    <result column="rowversion" jdbcType="INTEGER" property="rowversion" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="applyorgid" jdbcType="VARCHAR" property="applyorgid" />
+    <result column="certsn" jdbcType="VARCHAR" property="certsn" />
+    <result column="owner" jdbcType="VARCHAR" property="owner" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    urid, tenantid, serialno, `source`, enteringdate, target, deliverydate, lastoperateflag, 
+    isactive, createdby, createdon, lastmodifiedby, lastmodifiedon, rowversion, description, 
+    applyorgid, certsn, `owner`
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_key_keyinventory
+    where urid = #{urid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from t_key_keyinventory
+    where urid = #{urid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ceying.tools.entity.scyp.key.KeyInventory">
+    insert into t_key_keyinventory (urid, tenantid, serialno, 
+      `source`, enteringdate, target, 
+      deliverydate, lastoperateflag, isactive, 
+      createdby, createdon, lastmodifiedby, 
+      lastmodifiedon, rowversion, description, 
+      applyorgid, certsn, `owner`
+      )
+    values (#{urid,jdbcType=VARCHAR}, #{tenantid,jdbcType=VARCHAR}, #{serialno,jdbcType=VARCHAR}, 
+      #{source,jdbcType=VARCHAR}, #{enteringdate,jdbcType=TIMESTAMP}, #{target,jdbcType=VARCHAR}, 
+      #{deliverydate,jdbcType=TIMESTAMP}, #{lastoperateflag,jdbcType=VARCHAR}, #{isactive,jdbcType=CHAR}, 
+      #{createdby,jdbcType=VARCHAR}, #{createdon,jdbcType=TIMESTAMP}, #{lastmodifiedby,jdbcType=VARCHAR}, 
+      #{lastmodifiedon,jdbcType=TIMESTAMP}, #{rowversion,jdbcType=INTEGER}, #{description,jdbcType=VARCHAR}, 
+      #{applyorgid,jdbcType=VARCHAR}, #{certsn,jdbcType=VARCHAR}, #{owner,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ceying.tools.entity.scyp.key.KeyInventory">
+    insert into t_key_keyinventory
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="urid != null">
+        urid,
+      </if>
+      <if test="tenantid != null">
+        tenantid,
+      </if>
+      <if test="serialno != null">
+        serialno,
+      </if>
+      <if test="source != null">
+        `source`,
+      </if>
+      <if test="enteringdate != null">
+        enteringdate,
+      </if>
+      <if test="target != null">
+        target,
+      </if>
+      <if test="deliverydate != null">
+        deliverydate,
+      </if>
+      <if test="lastoperateflag != null">
+        lastoperateflag,
+      </if>
+      <if test="isactive != null">
+        isactive,
+      </if>
+      <if test="createdby != null">
+        createdby,
+      </if>
+      <if test="createdon != null">
+        createdon,
+      </if>
+      <if test="lastmodifiedby != null">
+        lastmodifiedby,
+      </if>
+      <if test="lastmodifiedon != null">
+        lastmodifiedon,
+      </if>
+      <if test="rowversion != null">
+        rowversion,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="applyorgid != null">
+        applyorgid,
+      </if>
+      <if test="certsn != null">
+        certsn,
+      </if>
+      <if test="owner != null">
+        `owner`,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="urid != null">
+        #{urid,jdbcType=VARCHAR},
+      </if>
+      <if test="tenantid != null">
+        #{tenantid,jdbcType=VARCHAR},
+      </if>
+      <if test="serialno != null">
+        #{serialno,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null">
+        #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="enteringdate != null">
+        #{enteringdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="target != null">
+        #{target,jdbcType=VARCHAR},
+      </if>
+      <if test="deliverydate != null">
+        #{deliverydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastoperateflag != null">
+        #{lastoperateflag,jdbcType=VARCHAR},
+      </if>
+      <if test="isactive != null">
+        #{isactive,jdbcType=CHAR},
+      </if>
+      <if test="createdby != null">
+        #{createdby,jdbcType=VARCHAR},
+      </if>
+      <if test="createdon != null">
+        #{createdon,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastmodifiedby != null">
+        #{lastmodifiedby,jdbcType=VARCHAR},
+      </if>
+      <if test="lastmodifiedon != null">
+        #{lastmodifiedon,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rowversion != null">
+        #{rowversion,jdbcType=INTEGER},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="applyorgid != null">
+        #{applyorgid,jdbcType=VARCHAR},
+      </if>
+      <if test="certsn != null">
+        #{certsn,jdbcType=VARCHAR},
+      </if>
+      <if test="owner != null">
+        #{owner,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ceying.tools.entity.scyp.key.KeyInventory">
+    update t_key_keyinventory
+    <set>
+      <if test="tenantid != null">
+        tenantid = #{tenantid,jdbcType=VARCHAR},
+      </if>
+      <if test="serialno != null">
+        serialno = #{serialno,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null">
+        `source` = #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="enteringdate != null">
+        enteringdate = #{enteringdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="target != null">
+        target = #{target,jdbcType=VARCHAR},
+      </if>
+      <if test="deliverydate != null">
+        deliverydate = #{deliverydate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastoperateflag != null">
+        lastoperateflag = #{lastoperateflag,jdbcType=VARCHAR},
+      </if>
+      <if test="isactive != null">
+        isactive = #{isactive,jdbcType=CHAR},
+      </if>
+      <if test="createdby != null">
+        createdby = #{createdby,jdbcType=VARCHAR},
+      </if>
+      <if test="createdon != null">
+        createdon = #{createdon,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastmodifiedby != null">
+        lastmodifiedby = #{lastmodifiedby,jdbcType=VARCHAR},
+      </if>
+      <if test="lastmodifiedon != null">
+        lastmodifiedon = #{lastmodifiedon,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rowversion != null">
+        rowversion = #{rowversion,jdbcType=INTEGER},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="applyorgid != null">
+        applyorgid = #{applyorgid,jdbcType=VARCHAR},
+      </if>
+      <if test="certsn != null">
+        certsn = #{certsn,jdbcType=VARCHAR},
+      </if>
+      <if test="owner != null">
+        `owner` = #{owner,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where urid = #{urid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ceying.tools.entity.scyp.key.KeyInventory">
+    update t_key_keyinventory
+    set tenantid = #{tenantid,jdbcType=VARCHAR},
+      serialno = #{serialno,jdbcType=VARCHAR},
+      `source` = #{source,jdbcType=VARCHAR},
+      enteringdate = #{enteringdate,jdbcType=TIMESTAMP},
+      target = #{target,jdbcType=VARCHAR},
+      deliverydate = #{deliverydate,jdbcType=TIMESTAMP},
+      lastoperateflag = #{lastoperateflag,jdbcType=VARCHAR},
+      isactive = #{isactive,jdbcType=CHAR},
+      createdby = #{createdby,jdbcType=VARCHAR},
+      createdon = #{createdon,jdbcType=TIMESTAMP},
+      lastmodifiedby = #{lastmodifiedby,jdbcType=VARCHAR},
+      lastmodifiedon = #{lastmodifiedon,jdbcType=TIMESTAMP},
+      rowversion = #{rowversion,jdbcType=INTEGER},
+      description = #{description,jdbcType=VARCHAR},
+      applyorgid = #{applyorgid,jdbcType=VARCHAR},
+      certsn = #{certsn,jdbcType=VARCHAR},
+      `owner` = #{owner,jdbcType=VARCHAR}
+    where urid = #{urid,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ceying.tools.dao.scyp.system.OrganizationMapper">
+  <resultMap id="BaseResultMap" type="com.ceying.tools.entity.scyp.system.Organization">
+    <id column="org_id" jdbcType="VARCHAR" property="orgId" />
+    <result column="dimension" jdbcType="VARCHAR" property="dimension" />
+    <result column="org_code" jdbcType="VARCHAR" property="orgCode" />
+    <result column="org_name" jdbcType="VARCHAR" property="orgName" />
+    <result column="parent_id" jdbcType="VARCHAR" property="parentId" />
+    <result column="manage_id" jdbcType="VARCHAR" property="manageId" />
+    <result column="position_code" jdbcType="VARCHAR" property="positionCode" />
+    <result column="org_cate" jdbcType="VARCHAR" property="orgCate" />
+    <result column="org_level" jdbcType="VARCHAR" property="orgLevel" />
+    <result column="org_order" jdbcType="INTEGER" property="orgOrder" />
+    <result column="org_path" jdbcType="VARCHAR" property="orgPath" />
+    <result column="sso_org_code" jdbcType="VARCHAR" property="ssoOrgCode" />
+    <result column="sso_parent_code" jdbcType="VARCHAR" property="ssoParentCode" />
+    <result column="ext_id" jdbcType="VARCHAR" property="extId" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="tenant_id" jdbcType="VARCHAR" property="tenantId" />
+    <result column="shortorgname" jdbcType="VARCHAR" property="shortorgname" />
+    <result column="platformsupplierrate" jdbcType="DECIMAL" property="platformsupplierrate" />
+    <result column="corecompanyrate" jdbcType="DECIMAL" property="corecompanyrate" />
+    <result column="areaid" jdbcType="VARCHAR" property="areaid" />
+    <result column="financenumber" jdbcType="INTEGER" property="financenumber" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="legalperson" jdbcType="VARCHAR" property="legalperson" />
+    <result column="createdate" jdbcType="TIMESTAMP" property="createdate" />
+    <result column="lastmodifiedon" jdbcType="TIMESTAMP" property="lastmodifiedon" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    org_id, dimension, org_code, org_name, parent_id, manage_id, position_code, org_cate, 
+    org_level, org_order, org_path, sso_org_code, sso_parent_code, ext_id, remark, `status`, 
+    tenant_id, shortorgname, platformsupplierrate, corecompanyrate, areaid, financenumber, 
+    address, legalperson, createdate, lastmodifiedon
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_sys_organization
+    where org_id = #{orgId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from t_sys_organization
+    where org_id = #{orgId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ceying.tools.entity.scyp.system.Organization">
+    insert into t_sys_organization (org_id, dimension, org_code, 
+      org_name, parent_id, manage_id, 
+      position_code, org_cate, org_level, 
+      org_order, org_path, sso_org_code, 
+      sso_parent_code, ext_id, remark, 
+      `status`, tenant_id, shortorgname, 
+      platformsupplierrate, corecompanyrate, 
+      areaid, financenumber, address, 
+      legalperson, createdate, lastmodifiedon
+      )
+    values (#{orgId,jdbcType=VARCHAR}, #{dimension,jdbcType=VARCHAR}, #{orgCode,jdbcType=VARCHAR}, 
+      #{orgName,jdbcType=VARCHAR}, #{parentId,jdbcType=VARCHAR}, #{manageId,jdbcType=VARCHAR}, 
+      #{positionCode,jdbcType=VARCHAR}, #{orgCate,jdbcType=VARCHAR}, #{orgLevel,jdbcType=VARCHAR}, 
+      #{orgOrder,jdbcType=INTEGER}, #{orgPath,jdbcType=VARCHAR}, #{ssoOrgCode,jdbcType=VARCHAR}, 
+      #{ssoParentCode,jdbcType=VARCHAR}, #{extId,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{status,jdbcType=VARCHAR}, #{tenantId,jdbcType=VARCHAR}, #{shortorgname,jdbcType=VARCHAR}, 
+      #{platformsupplierrate,jdbcType=DECIMAL}, #{corecompanyrate,jdbcType=DECIMAL}, 
+      #{areaid,jdbcType=VARCHAR}, #{financenumber,jdbcType=INTEGER}, #{address,jdbcType=VARCHAR}, 
+      #{legalperson,jdbcType=VARCHAR}, #{createdate,jdbcType=TIMESTAMP}, #{lastmodifiedon,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ceying.tools.entity.scyp.system.Organization">
+    insert into t_sys_organization
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orgId != null">
+        org_id,
+      </if>
+      <if test="dimension != null">
+        dimension,
+      </if>
+      <if test="orgCode != null">
+        org_code,
+      </if>
+      <if test="orgName != null">
+        org_name,
+      </if>
+      <if test="parentId != null">
+        parent_id,
+      </if>
+      <if test="manageId != null">
+        manage_id,
+      </if>
+      <if test="positionCode != null">
+        position_code,
+      </if>
+      <if test="orgCate != null">
+        org_cate,
+      </if>
+      <if test="orgLevel != null">
+        org_level,
+      </if>
+      <if test="orgOrder != null">
+        org_order,
+      </if>
+      <if test="orgPath != null">
+        org_path,
+      </if>
+      <if test="ssoOrgCode != null">
+        sso_org_code,
+      </if>
+      <if test="ssoParentCode != null">
+        sso_parent_code,
+      </if>
+      <if test="extId != null">
+        ext_id,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="tenantId != null">
+        tenant_id,
+      </if>
+      <if test="shortorgname != null">
+        shortorgname,
+      </if>
+      <if test="platformsupplierrate != null">
+        platformsupplierrate,
+      </if>
+      <if test="corecompanyrate != null">
+        corecompanyrate,
+      </if>
+      <if test="areaid != null">
+        areaid,
+      </if>
+      <if test="financenumber != null">
+        financenumber,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="legalperson != null">
+        legalperson,
+      </if>
+      <if test="createdate != null">
+        createdate,
+      </if>
+      <if test="lastmodifiedon != null">
+        lastmodifiedon,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orgId != null">
+        #{orgId,jdbcType=VARCHAR},
+      </if>
+      <if test="dimension != null">
+        #{dimension,jdbcType=VARCHAR},
+      </if>
+      <if test="orgCode != null">
+        #{orgCode,jdbcType=VARCHAR},
+      </if>
+      <if test="orgName != null">
+        #{orgName,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null">
+        #{parentId,jdbcType=VARCHAR},
+      </if>
+      <if test="manageId != null">
+        #{manageId,jdbcType=VARCHAR},
+      </if>
+      <if test="positionCode != null">
+        #{positionCode,jdbcType=VARCHAR},
+      </if>
+      <if test="orgCate != null">
+        #{orgCate,jdbcType=VARCHAR},
+      </if>
+      <if test="orgLevel != null">
+        #{orgLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="orgOrder != null">
+        #{orgOrder,jdbcType=INTEGER},
+      </if>
+      <if test="orgPath != null">
+        #{orgPath,jdbcType=VARCHAR},
+      </if>
+      <if test="ssoOrgCode != null">
+        #{ssoOrgCode,jdbcType=VARCHAR},
+      </if>
+      <if test="ssoParentCode != null">
+        #{ssoParentCode,jdbcType=VARCHAR},
+      </if>
+      <if test="extId != null">
+        #{extId,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="tenantId != null">
+        #{tenantId,jdbcType=VARCHAR},
+      </if>
+      <if test="shortorgname != null">
+        #{shortorgname,jdbcType=VARCHAR},
+      </if>
+      <if test="platformsupplierrate != null">
+        #{platformsupplierrate,jdbcType=DECIMAL},
+      </if>
+      <if test="corecompanyrate != null">
+        #{corecompanyrate,jdbcType=DECIMAL},
+      </if>
+      <if test="areaid != null">
+        #{areaid,jdbcType=VARCHAR},
+      </if>
+      <if test="financenumber != null">
+        #{financenumber,jdbcType=INTEGER},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="legalperson != null">
+        #{legalperson,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null">
+        #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastmodifiedon != null">
+        #{lastmodifiedon,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ceying.tools.entity.scyp.system.Organization">
+    update t_sys_organization
+    <set>
+      <if test="dimension != null">
+        dimension = #{dimension,jdbcType=VARCHAR},
+      </if>
+      <if test="orgCode != null">
+        org_code = #{orgCode,jdbcType=VARCHAR},
+      </if>
+      <if test="orgName != null">
+        org_name = #{orgName,jdbcType=VARCHAR},
+      </if>
+      <if test="parentId != null">
+        parent_id = #{parentId,jdbcType=VARCHAR},
+      </if>
+      <if test="manageId != null">
+        manage_id = #{manageId,jdbcType=VARCHAR},
+      </if>
+      <if test="positionCode != null">
+        position_code = #{positionCode,jdbcType=VARCHAR},
+      </if>
+      <if test="orgCate != null">
+        org_cate = #{orgCate,jdbcType=VARCHAR},
+      </if>
+      <if test="orgLevel != null">
+        org_level = #{orgLevel,jdbcType=VARCHAR},
+      </if>
+      <if test="orgOrder != null">
+        org_order = #{orgOrder,jdbcType=INTEGER},
+      </if>
+      <if test="orgPath != null">
+        org_path = #{orgPath,jdbcType=VARCHAR},
+      </if>
+      <if test="ssoOrgCode != null">
+        sso_org_code = #{ssoOrgCode,jdbcType=VARCHAR},
+      </if>
+      <if test="ssoParentCode != null">
+        sso_parent_code = #{ssoParentCode,jdbcType=VARCHAR},
+      </if>
+      <if test="extId != null">
+        ext_id = #{extId,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="tenantId != null">
+        tenant_id = #{tenantId,jdbcType=VARCHAR},
+      </if>
+      <if test="shortorgname != null">
+        shortorgname = #{shortorgname,jdbcType=VARCHAR},
+      </if>
+      <if test="platformsupplierrate != null">
+        platformsupplierrate = #{platformsupplierrate,jdbcType=DECIMAL},
+      </if>
+      <if test="corecompanyrate != null">
+        corecompanyrate = #{corecompanyrate,jdbcType=DECIMAL},
+      </if>
+      <if test="areaid != null">
+        areaid = #{areaid,jdbcType=VARCHAR},
+      </if>
+      <if test="financenumber != null">
+        financenumber = #{financenumber,jdbcType=INTEGER},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="legalperson != null">
+        legalperson = #{legalperson,jdbcType=VARCHAR},
+      </if>
+      <if test="createdate != null">
+        createdate = #{createdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastmodifiedon != null">
+        lastmodifiedon = #{lastmodifiedon,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where org_id = #{orgId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ceying.tools.entity.scyp.system.Organization">
+    update t_sys_organization
+    set dimension = #{dimension,jdbcType=VARCHAR},
+      org_code = #{orgCode,jdbcType=VARCHAR},
+      org_name = #{orgName,jdbcType=VARCHAR},
+      parent_id = #{parentId,jdbcType=VARCHAR},
+      manage_id = #{manageId,jdbcType=VARCHAR},
+      position_code = #{positionCode,jdbcType=VARCHAR},
+      org_cate = #{orgCate,jdbcType=VARCHAR},
+      org_level = #{orgLevel,jdbcType=VARCHAR},
+      org_order = #{orgOrder,jdbcType=INTEGER},
+      org_path = #{orgPath,jdbcType=VARCHAR},
+      sso_org_code = #{ssoOrgCode,jdbcType=VARCHAR},
+      sso_parent_code = #{ssoParentCode,jdbcType=VARCHAR},
+      ext_id = #{extId,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      `status` = #{status,jdbcType=VARCHAR},
+      tenant_id = #{tenantId,jdbcType=VARCHAR},
+      shortorgname = #{shortorgname,jdbcType=VARCHAR},
+      platformsupplierrate = #{platformsupplierrate,jdbcType=DECIMAL},
+      corecompanyrate = #{corecompanyrate,jdbcType=DECIMAL},
+      areaid = #{areaid,jdbcType=VARCHAR},
+      financenumber = #{financenumber,jdbcType=INTEGER},
+      address = #{address,jdbcType=VARCHAR},
+      legalperson = #{legalperson,jdbcType=VARCHAR},
+      createdate = #{createdate,jdbcType=TIMESTAMP},
+      lastmodifiedon = #{lastmodifiedon,jdbcType=TIMESTAMP}
+    where org_id = #{orgId,jdbcType=VARCHAR}
+  </update>
+</mapper>

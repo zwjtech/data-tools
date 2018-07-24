@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ceying.tools.dao.scyp.biz.SupplierAccountsMapper">
+  <resultMap id="BaseResultMap" type="com.ceying.tools.entity.scyp.biz.SupplierAccounts">
+    <id column="urid" jdbcType="VARCHAR" property="urid" />
+    <result column="accountnumber" jdbcType="VARCHAR" property="accountnumber" />
+    <result column="accountname" jdbcType="VARCHAR" property="accountname" />
+    <result column="supplierid" jdbcType="VARCHAR" property="supplierid" />
+    <result column="isactive" jdbcType="VARCHAR" property="isactive" />
+    <result column="createdby" jdbcType="VARCHAR" property="createdby" />
+    <result column="createdon" jdbcType="TIMESTAMP" property="createdon" />
+    <result column="lastmodifiedby" jdbcType="VARCHAR" property="lastmodifiedby" />
+    <result column="lastmodifiedon" jdbcType="TIMESTAMP" property="lastmodifiedon" />
+    <result column="rowversion" jdbcType="INTEGER" property="rowversion" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="banklocationid" jdbcType="VARCHAR" property="banklocationid" />
+    <result column="bankid" jdbcType="VARCHAR" property="bankid" />
+    <result column="businesstype" jdbcType="VARCHAR" property="businesstype" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    urid, accountnumber, accountname, supplierid, isactive, createdby, createdon, lastmodifiedby, 
+    lastmodifiedon, rowversion, description, banklocationid, bankid, businesstype
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_biz_supplieraccounts
+    where urid = #{urid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from t_biz_supplieraccounts
+    where urid = #{urid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ceying.tools.entity.scyp.biz.SupplierAccounts">
+    insert into t_biz_supplieraccounts (urid, accountnumber, accountname, 
+      supplierid, isactive, createdby, 
+      createdon, lastmodifiedby, lastmodifiedon, 
+      rowversion, description, banklocationid, 
+      bankid, businesstype)
+    values (#{urid,jdbcType=VARCHAR}, #{accountnumber,jdbcType=VARCHAR}, #{accountname,jdbcType=VARCHAR}, 
+      #{supplierid,jdbcType=VARCHAR}, #{isactive,jdbcType=VARCHAR}, #{createdby,jdbcType=VARCHAR}, 
+      #{createdon,jdbcType=TIMESTAMP}, #{lastmodifiedby,jdbcType=VARCHAR}, #{lastmodifiedon,jdbcType=TIMESTAMP}, 
+      #{rowversion,jdbcType=INTEGER}, #{description,jdbcType=VARCHAR}, #{banklocationid,jdbcType=VARCHAR}, 
+      #{bankid,jdbcType=VARCHAR}, #{businesstype,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ceying.tools.entity.scyp.biz.SupplierAccounts">
+    insert into t_biz_supplieraccounts
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="urid != null">
+        urid,
+      </if>
+      <if test="accountnumber != null">
+        accountnumber,
+      </if>
+      <if test="accountname != null">
+        accountname,
+      </if>
+      <if test="supplierid != null">
+        supplierid,
+      </if>
+      <if test="isactive != null">
+        isactive,
+      </if>
+      <if test="createdby != null">
+        createdby,
+      </if>
+      <if test="createdon != null">
+        createdon,
+      </if>
+      <if test="lastmodifiedby != null">
+        lastmodifiedby,
+      </if>
+      <if test="lastmodifiedon != null">
+        lastmodifiedon,
+      </if>
+      <if test="rowversion != null">
+        rowversion,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="banklocationid != null">
+        banklocationid,
+      </if>
+      <if test="bankid != null">
+        bankid,
+      </if>
+      <if test="businesstype != null">
+        businesstype,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="urid != null">
+        #{urid,jdbcType=VARCHAR},
+      </if>
+      <if test="accountnumber != null">
+        #{accountnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="accountname != null">
+        #{accountname,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierid != null">
+        #{supplierid,jdbcType=VARCHAR},
+      </if>
+      <if test="isactive != null">
+        #{isactive,jdbcType=VARCHAR},
+      </if>
+      <if test="createdby != null">
+        #{createdby,jdbcType=VARCHAR},
+      </if>
+      <if test="createdon != null">
+        #{createdon,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastmodifiedby != null">
+        #{lastmodifiedby,jdbcType=VARCHAR},
+      </if>
+      <if test="lastmodifiedon != null">
+        #{lastmodifiedon,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rowversion != null">
+        #{rowversion,jdbcType=INTEGER},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="banklocationid != null">
+        #{banklocationid,jdbcType=VARCHAR},
+      </if>
+      <if test="bankid != null">
+        #{bankid,jdbcType=VARCHAR},
+      </if>
+      <if test="businesstype != null">
+        #{businesstype,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ceying.tools.entity.scyp.biz.SupplierAccounts">
+    update t_biz_supplieraccounts
+    <set>
+      <if test="accountnumber != null">
+        accountnumber = #{accountnumber,jdbcType=VARCHAR},
+      </if>
+      <if test="accountname != null">
+        accountname = #{accountname,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierid != null">
+        supplierid = #{supplierid,jdbcType=VARCHAR},
+      </if>
+      <if test="isactive != null">
+        isactive = #{isactive,jdbcType=VARCHAR},
+      </if>
+      <if test="createdby != null">
+        createdby = #{createdby,jdbcType=VARCHAR},
+      </if>
+      <if test="createdon != null">
+        createdon = #{createdon,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastmodifiedby != null">
+        lastmodifiedby = #{lastmodifiedby,jdbcType=VARCHAR},
+      </if>
+      <if test="lastmodifiedon != null">
+        lastmodifiedon = #{lastmodifiedon,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rowversion != null">
+        rowversion = #{rowversion,jdbcType=INTEGER},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="banklocationid != null">
+        banklocationid = #{banklocationid,jdbcType=VARCHAR},
+      </if>
+      <if test="bankid != null">
+        bankid = #{bankid,jdbcType=VARCHAR},
+      </if>
+      <if test="businesstype != null">
+        businesstype = #{businesstype,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where urid = #{urid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ceying.tools.entity.scyp.biz.SupplierAccounts">
+    update t_biz_supplieraccounts
+    set accountnumber = #{accountnumber,jdbcType=VARCHAR},
+      accountname = #{accountname,jdbcType=VARCHAR},
+      supplierid = #{supplierid,jdbcType=VARCHAR},
+      isactive = #{isactive,jdbcType=VARCHAR},
+      createdby = #{createdby,jdbcType=VARCHAR},
+      createdon = #{createdon,jdbcType=TIMESTAMP},
+      lastmodifiedby = #{lastmodifiedby,jdbcType=VARCHAR},
+      lastmodifiedon = #{lastmodifiedon,jdbcType=TIMESTAMP},
+      rowversion = #{rowversion,jdbcType=INTEGER},
+      description = #{description,jdbcType=VARCHAR},
+      banklocationid = #{banklocationid,jdbcType=VARCHAR},
+      bankid = #{bankid,jdbcType=VARCHAR},
+      businesstype = #{businesstype,jdbcType=VARCHAR}
+    where urid = #{urid,jdbcType=VARCHAR}
+  </update>
+</mapper>

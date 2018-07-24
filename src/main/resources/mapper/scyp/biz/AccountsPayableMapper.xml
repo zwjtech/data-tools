@@ -1,0 +1,455 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ceying.tools.dao.scyp.biz.AccountsPayableMapper">
+  <resultMap id="BaseResultMap" type="com.ceying.tools.entity.scyp.biz.AccountsPayable">
+    <id column="urid" jdbcType="VARCHAR" property="urid" />
+    <result column="tenantid" jdbcType="VARCHAR" property="tenantid" />
+    <result column="contractid" jdbcType="VARCHAR" property="contractid" />
+    <result column="supplierid" jdbcType="VARCHAR" property="supplierid" />
+    <result column="corecompanyid" jdbcType="VARCHAR" property="corecompanyid" />
+    <result column="bankid" jdbcType="VARCHAR" property="bankid" />
+    <result column="billdate" jdbcType="DATE" property="billdate" />
+    <result column="amount" jdbcType="DECIMAL" property="amount" />
+    <result column="payabledate" jdbcType="DATE" property="payabledate" />
+    <result column="createdby" jdbcType="VARCHAR" property="createdby" />
+    <result column="createdon" jdbcType="TIMESTAMP" property="createdon" />
+    <result column="lastmodifiedby" jdbcType="VARCHAR" property="lastmodifiedby" />
+    <result column="lastmodifiedon" jdbcType="TIMESTAMP" property="lastmodifiedon" />
+    <result column="rowversion" jdbcType="INTEGER" property="rowversion" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="lastoperationflag" jdbcType="VARCHAR" property="lastoperationflag" />
+    <result column="financingamount" jdbcType="DECIMAL" property="financingamount" />
+    <result column="financingdate" jdbcType="TIMESTAMP" property="financingdate" />
+    <result column="attribute1" jdbcType="VARCHAR" property="attribute1" />
+    <result column="attribute2" jdbcType="VARCHAR" property="attribute2" />
+    <result column="isactive" jdbcType="CHAR" property="isactive" />
+    <result column="payableno" jdbcType="VARCHAR" property="payableno" />
+    <result column="freezeamount" jdbcType="DECIMAL" property="freezeamount" />
+    <result column="corecompanysupplierrate" jdbcType="DECIMAL" property="corecompanysupplierrate" />
+    <result column="isfirstfinance" jdbcType="CHAR" property="isfirstfinance" />
+    <result column="securitydeposit" jdbcType="DECIMAL" property="securitydeposit" />
+    <result column="invoicenumber" jdbcType="VARCHAR" property="invoicenumber" />
+    <result column="expiringdate" jdbcType="DATE" property="expiringdate" />
+    <result column="businesstype" jdbcType="VARCHAR" property="businesstype" />
+    <result column="supplierrate" jdbcType="DECIMAL" property="supplierrate" />
+    <result column="suppliercorerate" jdbcType="DECIMAL" property="suppliercorerate" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.ceying.tools.entity.scyp.biz.AccountsPayable">
+    <result column="signaturecontent" jdbcType="LONGVARBINARY" property="signaturecontent" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    urid, tenantid, contractid, supplierid, corecompanyid, bankid, billdate, amount, 
+    payabledate, createdby, createdon, lastmodifiedby, lastmodifiedon, rowversion, description, 
+    lastoperationflag, financingamount, financingdate, attribute1, attribute2, isactive, 
+    payableno, freezeamount, corecompanysupplierrate, isfirstfinance, securitydeposit, 
+    invoicenumber, expiringdate, businesstype, supplierrate, suppliercorerate
+  </sql>
+  <sql id="Blob_Column_List">
+    signaturecontent
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_biz_accountspayable
+    where urid = #{urid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from t_biz_accountspayable
+    where urid = #{urid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ceying.tools.entity.scyp.biz.AccountsPayable">
+    insert into t_biz_accountspayable (urid, tenantid, contractid, 
+      supplierid, corecompanyid, bankid, 
+      billdate, amount, payabledate, 
+      createdby, createdon, lastmodifiedby, 
+      lastmodifiedon, rowversion, description, 
+      lastoperationflag, financingamount, financingdate, 
+      attribute1, attribute2, isactive, 
+      payableno, freezeamount, corecompanysupplierrate, 
+      isfirstfinance, securitydeposit, invoicenumber, 
+      expiringdate, businesstype, supplierrate, 
+      suppliercorerate, signaturecontent
+      )
+    values (#{urid,jdbcType=VARCHAR}, #{tenantid,jdbcType=VARCHAR}, #{contractid,jdbcType=VARCHAR}, 
+      #{supplierid,jdbcType=VARCHAR}, #{corecompanyid,jdbcType=VARCHAR}, #{bankid,jdbcType=VARCHAR}, 
+      #{billdate,jdbcType=DATE}, #{amount,jdbcType=DECIMAL}, #{payabledate,jdbcType=DATE}, 
+      #{createdby,jdbcType=VARCHAR}, #{createdon,jdbcType=TIMESTAMP}, #{lastmodifiedby,jdbcType=VARCHAR}, 
+      #{lastmodifiedon,jdbcType=TIMESTAMP}, #{rowversion,jdbcType=INTEGER}, #{description,jdbcType=VARCHAR}, 
+      #{lastoperationflag,jdbcType=VARCHAR}, #{financingamount,jdbcType=DECIMAL}, #{financingdate,jdbcType=TIMESTAMP}, 
+      #{attribute1,jdbcType=VARCHAR}, #{attribute2,jdbcType=VARCHAR}, #{isactive,jdbcType=CHAR}, 
+      #{payableno,jdbcType=VARCHAR}, #{freezeamount,jdbcType=DECIMAL}, #{corecompanysupplierrate,jdbcType=DECIMAL}, 
+      #{isfirstfinance,jdbcType=CHAR}, #{securitydeposit,jdbcType=DECIMAL}, #{invoicenumber,jdbcType=VARCHAR}, 
+      #{expiringdate,jdbcType=DATE}, #{businesstype,jdbcType=VARCHAR}, #{supplierrate,jdbcType=DECIMAL}, 
+      #{suppliercorerate,jdbcType=DECIMAL}, #{signaturecontent,jdbcType=LONGVARBINARY}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ceying.tools.entity.scyp.biz.AccountsPayable">
+    insert into t_biz_accountspayable
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="urid != null">
+        urid,
+      </if>
+      <if test="tenantid != null">
+        tenantid,
+      </if>
+      <if test="contractid != null">
+        contractid,
+      </if>
+      <if test="supplierid != null">
+        supplierid,
+      </if>
+      <if test="corecompanyid != null">
+        corecompanyid,
+      </if>
+      <if test="bankid != null">
+        bankid,
+      </if>
+      <if test="billdate != null">
+        billdate,
+      </if>
+      <if test="amount != null">
+        amount,
+      </if>
+      <if test="payabledate != null">
+        payabledate,
+      </if>
+      <if test="createdby != null">
+        createdby,
+      </if>
+      <if test="createdon != null">
+        createdon,
+      </if>
+      <if test="lastmodifiedby != null">
+        lastmodifiedby,
+      </if>
+      <if test="lastmodifiedon != null">
+        lastmodifiedon,
+      </if>
+      <if test="rowversion != null">
+        rowversion,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="lastoperationflag != null">
+        lastoperationflag,
+      </if>
+      <if test="financingamount != null">
+        financingamount,
+      </if>
+      <if test="financingdate != null">
+        financingdate,
+      </if>
+      <if test="attribute1 != null">
+        attribute1,
+      </if>
+      <if test="attribute2 != null">
+        attribute2,
+      </if>
+      <if test="isactive != null">
+        isactive,
+      </if>
+      <if test="payableno != null">
+        payableno,
+      </if>
+      <if test="freezeamount != null">
+        freezeamount,
+      </if>
+      <if test="corecompanysupplierrate != null">
+        corecompanysupplierrate,
+      </if>
+      <if test="isfirstfinance != null">
+        isfirstfinance,
+      </if>
+      <if test="securitydeposit != null">
+        securitydeposit,
+      </if>
+      <if test="invoicenumber != null">
+        invoicenumber,
+      </if>
+      <if test="expiringdate != null">
+        expiringdate,
+      </if>
+      <if test="businesstype != null">
+        businesstype,
+      </if>
+      <if test="supplierrate != null">
+        supplierrate,
+      </if>
+      <if test="suppliercorerate != null">
+        suppliercorerate,
+      </if>
+      <if test="signaturecontent != null">
+        signaturecontent,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="urid != null">
+        #{urid,jdbcType=VARCHAR},
+      </if>
+      <if test="tenantid != null">
+        #{tenantid,jdbcType=VARCHAR},
+      </if>
+      <if test="contractid != null">
+        #{contractid,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierid != null">
+        #{supplierid,jdbcType=VARCHAR},
+      </if>
+      <if test="corecompanyid != null">
+        #{corecompanyid,jdbcType=VARCHAR},
+      </if>
+      <if test="bankid != null">
+        #{bankid,jdbcType=VARCHAR},
+      </if>
+      <if test="billdate != null">
+        #{billdate,jdbcType=DATE},
+      </if>
+      <if test="amount != null">
+        #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="payabledate != null">
+        #{payabledate,jdbcType=DATE},
+      </if>
+      <if test="createdby != null">
+        #{createdby,jdbcType=VARCHAR},
+      </if>
+      <if test="createdon != null">
+        #{createdon,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastmodifiedby != null">
+        #{lastmodifiedby,jdbcType=VARCHAR},
+      </if>
+      <if test="lastmodifiedon != null">
+        #{lastmodifiedon,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rowversion != null">
+        #{rowversion,jdbcType=INTEGER},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="lastoperationflag != null">
+        #{lastoperationflag,jdbcType=VARCHAR},
+      </if>
+      <if test="financingamount != null">
+        #{financingamount,jdbcType=DECIMAL},
+      </if>
+      <if test="financingdate != null">
+        #{financingdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="attribute1 != null">
+        #{attribute1,jdbcType=VARCHAR},
+      </if>
+      <if test="attribute2 != null">
+        #{attribute2,jdbcType=VARCHAR},
+      </if>
+      <if test="isactive != null">
+        #{isactive,jdbcType=CHAR},
+      </if>
+      <if test="payableno != null">
+        #{payableno,jdbcType=VARCHAR},
+      </if>
+      <if test="freezeamount != null">
+        #{freezeamount,jdbcType=DECIMAL},
+      </if>
+      <if test="corecompanysupplierrate != null">
+        #{corecompanysupplierrate,jdbcType=DECIMAL},
+      </if>
+      <if test="isfirstfinance != null">
+        #{isfirstfinance,jdbcType=CHAR},
+      </if>
+      <if test="securitydeposit != null">
+        #{securitydeposit,jdbcType=DECIMAL},
+      </if>
+      <if test="invoicenumber != null">
+        #{invoicenumber,jdbcType=VARCHAR},
+      </if>
+      <if test="expiringdate != null">
+        #{expiringdate,jdbcType=DATE},
+      </if>
+      <if test="businesstype != null">
+        #{businesstype,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierrate != null">
+        #{supplierrate,jdbcType=DECIMAL},
+      </if>
+      <if test="suppliercorerate != null">
+        #{suppliercorerate,jdbcType=DECIMAL},
+      </if>
+      <if test="signaturecontent != null">
+        #{signaturecontent,jdbcType=LONGVARBINARY},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ceying.tools.entity.scyp.biz.AccountsPayable">
+    update t_biz_accountspayable
+    <set>
+      <if test="tenantid != null">
+        tenantid = #{tenantid,jdbcType=VARCHAR},
+      </if>
+      <if test="contractid != null">
+        contractid = #{contractid,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierid != null">
+        supplierid = #{supplierid,jdbcType=VARCHAR},
+      </if>
+      <if test="corecompanyid != null">
+        corecompanyid = #{corecompanyid,jdbcType=VARCHAR},
+      </if>
+      <if test="bankid != null">
+        bankid = #{bankid,jdbcType=VARCHAR},
+      </if>
+      <if test="billdate != null">
+        billdate = #{billdate,jdbcType=DATE},
+      </if>
+      <if test="amount != null">
+        amount = #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="payabledate != null">
+        payabledate = #{payabledate,jdbcType=DATE},
+      </if>
+      <if test="createdby != null">
+        createdby = #{createdby,jdbcType=VARCHAR},
+      </if>
+      <if test="createdon != null">
+        createdon = #{createdon,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastmodifiedby != null">
+        lastmodifiedby = #{lastmodifiedby,jdbcType=VARCHAR},
+      </if>
+      <if test="lastmodifiedon != null">
+        lastmodifiedon = #{lastmodifiedon,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rowversion != null">
+        rowversion = #{rowversion,jdbcType=INTEGER},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="lastoperationflag != null">
+        lastoperationflag = #{lastoperationflag,jdbcType=VARCHAR},
+      </if>
+      <if test="financingamount != null">
+        financingamount = #{financingamount,jdbcType=DECIMAL},
+      </if>
+      <if test="financingdate != null">
+        financingdate = #{financingdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="attribute1 != null">
+        attribute1 = #{attribute1,jdbcType=VARCHAR},
+      </if>
+      <if test="attribute2 != null">
+        attribute2 = #{attribute2,jdbcType=VARCHAR},
+      </if>
+      <if test="isactive != null">
+        isactive = #{isactive,jdbcType=CHAR},
+      </if>
+      <if test="payableno != null">
+        payableno = #{payableno,jdbcType=VARCHAR},
+      </if>
+      <if test="freezeamount != null">
+        freezeamount = #{freezeamount,jdbcType=DECIMAL},
+      </if>
+      <if test="corecompanysupplierrate != null">
+        corecompanysupplierrate = #{corecompanysupplierrate,jdbcType=DECIMAL},
+      </if>
+      <if test="isfirstfinance != null">
+        isfirstfinance = #{isfirstfinance,jdbcType=CHAR},
+      </if>
+      <if test="securitydeposit != null">
+        securitydeposit = #{securitydeposit,jdbcType=DECIMAL},
+      </if>
+      <if test="invoicenumber != null">
+        invoicenumber = #{invoicenumber,jdbcType=VARCHAR},
+      </if>
+      <if test="expiringdate != null">
+        expiringdate = #{expiringdate,jdbcType=DATE},
+      </if>
+      <if test="businesstype != null">
+        businesstype = #{businesstype,jdbcType=VARCHAR},
+      </if>
+      <if test="supplierrate != null">
+        supplierrate = #{supplierrate,jdbcType=DECIMAL},
+      </if>
+      <if test="suppliercorerate != null">
+        suppliercorerate = #{suppliercorerate,jdbcType=DECIMAL},
+      </if>
+      <if test="signaturecontent != null">
+        signaturecontent = #{signaturecontent,jdbcType=LONGVARBINARY},
+      </if>
+    </set>
+    where urid = #{urid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.ceying.tools.entity.scyp.biz.AccountsPayable">
+    update t_biz_accountspayable
+    set tenantid = #{tenantid,jdbcType=VARCHAR},
+      contractid = #{contractid,jdbcType=VARCHAR},
+      supplierid = #{supplierid,jdbcType=VARCHAR},
+      corecompanyid = #{corecompanyid,jdbcType=VARCHAR},
+      bankid = #{bankid,jdbcType=VARCHAR},
+      billdate = #{billdate,jdbcType=DATE},
+      amount = #{amount,jdbcType=DECIMAL},
+      payabledate = #{payabledate,jdbcType=DATE},
+      createdby = #{createdby,jdbcType=VARCHAR},
+      createdon = #{createdon,jdbcType=TIMESTAMP},
+      lastmodifiedby = #{lastmodifiedby,jdbcType=VARCHAR},
+      lastmodifiedon = #{lastmodifiedon,jdbcType=TIMESTAMP},
+      rowversion = #{rowversion,jdbcType=INTEGER},
+      description = #{description,jdbcType=VARCHAR},
+      lastoperationflag = #{lastoperationflag,jdbcType=VARCHAR},
+      financingamount = #{financingamount,jdbcType=DECIMAL},
+      financingdate = #{financingdate,jdbcType=TIMESTAMP},
+      attribute1 = #{attribute1,jdbcType=VARCHAR},
+      attribute2 = #{attribute2,jdbcType=VARCHAR},
+      isactive = #{isactive,jdbcType=CHAR},
+      payableno = #{payableno,jdbcType=VARCHAR},
+      freezeamount = #{freezeamount,jdbcType=DECIMAL},
+      corecompanysupplierrate = #{corecompanysupplierrate,jdbcType=DECIMAL},
+      isfirstfinance = #{isfirstfinance,jdbcType=CHAR},
+      securitydeposit = #{securitydeposit,jdbcType=DECIMAL},
+      invoicenumber = #{invoicenumber,jdbcType=VARCHAR},
+      expiringdate = #{expiringdate,jdbcType=DATE},
+      businesstype = #{businesstype,jdbcType=VARCHAR},
+      supplierrate = #{supplierrate,jdbcType=DECIMAL},
+      suppliercorerate = #{suppliercorerate,jdbcType=DECIMAL},
+      signaturecontent = #{signaturecontent,jdbcType=LONGVARBINARY}
+    where urid = #{urid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ceying.tools.entity.scyp.biz.AccountsPayable">
+    update t_biz_accountspayable
+    set tenantid = #{tenantid,jdbcType=VARCHAR},
+      contractid = #{contractid,jdbcType=VARCHAR},
+      supplierid = #{supplierid,jdbcType=VARCHAR},
+      corecompanyid = #{corecompanyid,jdbcType=VARCHAR},
+      bankid = #{bankid,jdbcType=VARCHAR},
+      billdate = #{billdate,jdbcType=DATE},
+      amount = #{amount,jdbcType=DECIMAL},
+      payabledate = #{payabledate,jdbcType=DATE},
+      createdby = #{createdby,jdbcType=VARCHAR},
+      createdon = #{createdon,jdbcType=TIMESTAMP},
+      lastmodifiedby = #{lastmodifiedby,jdbcType=VARCHAR},
+      lastmodifiedon = #{lastmodifiedon,jdbcType=TIMESTAMP},
+      rowversion = #{rowversion,jdbcType=INTEGER},
+      description = #{description,jdbcType=VARCHAR},
+      lastoperationflag = #{lastoperationflag,jdbcType=VARCHAR},
+      financingamount = #{financingamount,jdbcType=DECIMAL},
+      financingdate = #{financingdate,jdbcType=TIMESTAMP},
+      attribute1 = #{attribute1,jdbcType=VARCHAR},
+      attribute2 = #{attribute2,jdbcType=VARCHAR},
+      isactive = #{isactive,jdbcType=CHAR},
+      payableno = #{payableno,jdbcType=VARCHAR},
+      freezeamount = #{freezeamount,jdbcType=DECIMAL},
+      corecompanysupplierrate = #{corecompanysupplierrate,jdbcType=DECIMAL},
+      isfirstfinance = #{isfirstfinance,jdbcType=CHAR},
+      securitydeposit = #{securitydeposit,jdbcType=DECIMAL},
+      invoicenumber = #{invoicenumber,jdbcType=VARCHAR},
+      expiringdate = #{expiringdate,jdbcType=DATE},
+      businesstype = #{businesstype,jdbcType=VARCHAR},
+      supplierrate = #{supplierrate,jdbcType=DECIMAL},
+      suppliercorerate = #{suppliercorerate,jdbcType=DECIMAL}
+    where urid = #{urid,jdbcType=VARCHAR}
+  </update>
+</mapper>

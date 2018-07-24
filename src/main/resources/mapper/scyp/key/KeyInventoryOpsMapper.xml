@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ceying.tools.dao.scyp.key.KeyInventoryOpsMapper">
+  <resultMap id="BaseResultMap" type="com.ceying.tools.entity.scyp.key.KeyInventoryOps">
+    <result column="urid" jdbcType="VARCHAR" property="urid" />
+    <result column="keyinventoryid" jdbcType="VARCHAR" property="keyinventoryid" />
+    <result column="operator" jdbcType="VARCHAR" property="operator" />
+    <result column="operateorgid" jdbcType="VARCHAR" property="operateorgid" />
+    <result column="operatedate" jdbcType="DATE" property="operatedate" />
+    <result column="operateflag" jdbcType="VARCHAR" property="operateflag" />
+    <result column="signature" jdbcType="VARCHAR" property="signature" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+  </resultMap>
+  <insert id="insert" parameterType="com.ceying.tools.entity.scyp.key.KeyInventoryOps">
+    insert into t_key_keyinventoryops (urid, keyinventoryid, `operator`, 
+      operateorgid, operatedate, operateflag, 
+      signature, description)
+    values (#{urid,jdbcType=VARCHAR}, #{keyinventoryid,jdbcType=VARCHAR}, #{operator,jdbcType=VARCHAR}, 
+      #{operateorgid,jdbcType=VARCHAR}, #{operatedate,jdbcType=DATE}, #{operateflag,jdbcType=VARCHAR}, 
+      #{signature,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ceying.tools.entity.scyp.key.KeyInventoryOps">
+    insert into t_key_keyinventoryops
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="urid != null">
+        urid,
+      </if>
+      <if test="keyinventoryid != null">
+        keyinventoryid,
+      </if>
+      <if test="operator != null">
+        `operator`,
+      </if>
+      <if test="operateorgid != null">
+        operateorgid,
+      </if>
+      <if test="operatedate != null">
+        operatedate,
+      </if>
+      <if test="operateflag != null">
+        operateflag,
+      </if>
+      <if test="signature != null">
+        signature,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="urid != null">
+        #{urid,jdbcType=VARCHAR},
+      </if>
+      <if test="keyinventoryid != null">
+        #{keyinventoryid,jdbcType=VARCHAR},
+      </if>
+      <if test="operator != null">
+        #{operator,jdbcType=VARCHAR},
+      </if>
+      <if test="operateorgid != null">
+        #{operateorgid,jdbcType=VARCHAR},
+      </if>
+      <if test="operatedate != null">
+        #{operatedate,jdbcType=DATE},
+      </if>
+      <if test="operateflag != null">
+        #{operateflag,jdbcType=VARCHAR},
+      </if>
+      <if test="signature != null">
+        #{signature,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>
